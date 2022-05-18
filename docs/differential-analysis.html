@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package</title>
+  <meta name="description" content="Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+  <meta name="twitter:description" content="Chapter 8 Differential Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+
+<meta name="author" content="Hua Zou" />
+
+
+<meta name="date" content="2022-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="microbial-composition.html"/>
+<link rel="next" href="references.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.21/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MGS microbiota data analysis based on XMAS package</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-tutorial"><i class="fa fa-check"></i><b>1.1</b> Preparing for the tutorial<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workflow-description"><i class="fa fa-check"></i><b>1.2</b> Workflow description<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#systematic-information"><i class="fa fa-check"></i><b>1.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html"><i class="fa fa-check"></i><b>2</b> Convert inputdata into phyloseq object<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metaphlan23"><i class="fa fa-check"></i><b>2.1</b> Metaphlan2/3<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#summarize-phyloseq-class-object"><i class="fa fa-check"></i><b>2.2</b> Summarize phyloseq-class object<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#systematic-information-1"><i class="fa fa-check"></i><b>2.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quality-control.html"><a href="quality-control.html"><i class="fa fa-check"></i><b>3</b> Quality Control<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="quality-control.html"><a href="quality-control.html#spike-in-sample-brs"><i class="fa fa-check"></i><b>3.1</b> spike-in sample (BRS)<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="quality-control.html"><a href="quality-control.html#spike-in-samples-remove"><i class="fa fa-check"></i><b>3.2</b> Spike-in sample’s remove<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="quality-control.html"><a href="quality-control.html#systematic-information-2"><i class="fa fa-check"></i><b>3.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>4</b> Data processing<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-processing.html"><a href="data-processing.html#extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>4.1</b> Extracting specific taxonomic level<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="data-processing.html"><a href="data-processing.html#filtering-the-low-relative-abundance-or-unclassified-taxa-by-the-threshold-total-counts-1e-4"><i class="fa fa-check"></i><b>4.2</b> Filtering the low relative abundance or unclassified taxa by the threshold (total counts &lt; 1e-4)<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="data-processing.html"><a href="data-processing.html#trimming-the-taxa-with-low-occurrence-less-than-threshold"><i class="fa fa-check"></i><b>4.3</b> Trimming the taxa with low occurrence less than threshold<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="data-processing.html"><a href="data-processing.html#systematic-information-3"><i class="fa fa-check"></i><b>4.4</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diversity-analysis.html"><a href="diversity-analysis.html"><i class="fa fa-check"></i><b>5</b> Diversity analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diversity-analysis.html"><a href="diversity-analysis.html#alpha-diveristy"><i class="fa fa-check"></i><b>5.1</b> Alpha diveristy<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="diversity-analysis.html"><a href="diversity-analysis.html#beta-diversity"><i class="fa fa-check"></i><b>5.2</b> Beta diversity<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="diversity-analysis.html"><a href="diversity-analysis.html#systematic-information-4"><i class="fa fa-check"></i><b>5.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html"><i class="fa fa-check"></i><b>6</b> PERMANOVA + beta dispersion + Ordination<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#permanova"><i class="fa fa-check"></i><b>6.1</b> PERMANOVA<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#beta-dispersion"><i class="fa fa-check"></i><b>6.2</b> beta dispersion<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#ordination"><i class="fa fa-check"></i><b>6.3</b> Ordination<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#systematic-information-5"><i class="fa fa-check"></i><b>6.4</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="microbial-composition.html"><a href="microbial-composition.html"><i class="fa fa-check"></i><b>7</b> Microbial composition<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="microbial-composition.html"><a href="microbial-composition.html#stacked-barplot"><i class="fa fa-check"></i><b>7.1</b> Stacked barplot<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="microbial-composition.html"><a href="microbial-composition.html#core-microbiota"><i class="fa fa-check"></i><b>7.2</b> Core microbiota<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="microbial-composition.html"><a href="microbial-composition.html#systematic-information-6"><i class="fa fa-check"></i><b>7.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="differential-analysis.html"><a href="differential-analysis.html"><i class="fa fa-check"></i><b>8</b> Differential Analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="differential-analysis.html"><a href="differential-analysis.html#liner-discriminant-analysis-lda-effect-size-lefse"><i class="fa fa-check"></i><b>8.1</b> Liner discriminant analysis (LDA) effect size (LEfSe)<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="differential-analysis.html"><a href="differential-analysis.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>8.2</b> Wilcoxon Rank-Sum test<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="differential-analysis.html"><a href="differential-analysis.html#dominant-taxa"><i class="fa fa-check"></i><b>8.3</b> Dominant taxa<span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="differential-analysis.html"><a href="differential-analysis.html#multiple-differential-analysis-by-one-function"><i class="fa fa-check"></i><b>8.4</b> Multiple differential analysis by one function<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="differential-analysis.html"><a href="differential-analysis.html#systematic-information-7"><i class="fa fa-check"></i><b>8.5</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MGS microbiota data analysis based on XMAS package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="differential-analysis" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Differential Analysis<a href="differential-analysis.html#differential-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Loading packages</strong></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="differential-analysis.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS)</span>
+<span id="cb48-2"><a href="differential-analysis.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb48-3"><a href="differential-analysis.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb48-4"><a href="differential-analysis.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb48-5"><a href="differential-analysis.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb48-6"><a href="differential-analysis.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
+<p>There are more than 10 approaches to perform differential analysis. Here, we choose two of them and recommend users going to <strong>Chapter 10</strong> to see more detials.</p>
+<div id="liner-discriminant-analysis-lda-effect-size-lefse" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Liner discriminant analysis (LDA) effect size (LEfSe)<a href="differential-analysis.html#liner-discriminant-analysis-lda-effect-size-lefse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Calculation</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="differential-analysis.html#cb49-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_lefse <span class="ot">&lt;-</span> <span class="fu">run_lefse</span>(</span>
+<span id="cb49-2"><a href="differential-analysis.html#cb49-2" aria-hidden="true" tabindex="-1"></a>                    metaphlan2_ps_final,</span>
+<span id="cb49-3"><a href="differential-analysis.html#cb49-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb49-4"><a href="differential-analysis.html#cb49-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>),</span>
+<span id="cb49-5"><a href="differential-analysis.html#cb49-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transform =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb49-6"><a href="differential-analysis.html#cb49-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">norm =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb49-7"><a href="differential-analysis.html#cb49-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">wl.p =</span> <span class="fl">0.05</span>,</span>
+<span id="cb49-8"><a href="differential-analysis.html#cb49-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Lda =</span> <span class="dv">0</span>)</span>
+<span id="cb49-9"><a href="differential-analysis.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metaphlan2_ps_lefse)</span></code></pre></div>
+<pre><code>##                            TaxaID         Block Enrichment     LDA_Score EffectSize Log2FoldChange (Median)\nAA_vs_BB
+## 1 s__Bacteroides_thetaiotaomicron 7_AA vs 15_BB         AA -0.0103249698  1.9418180                          5.505858
+## 2            s__Dorea_longicatena 7_AA vs 15_BB         BB  0.0001704455  1.7435380                                NA
+## 3       s__Clostridium_bartlettii 7_AA vs 15_BB         BB  0.0004552621  0.5784397                                NA
+## 4           s__Eubacterium_hallii 7_AA vs 15_BB         BB  0.0016959113  0.7995960                                NA
+## 5        s__Megamonas_rupellensis 7_AA vs 15_BB         BB  0.0021444361  0.5938727                                NA
+## 6      s__Collinsella_aerofaciens 7_AA vs 15_BB         BB  0.0025432767  0.9034469                                NA
+##   Median Abundance\n(All) Median Abundance\nAA Median Abundance\nBB Log2FoldChange (Mean)\nAA_vs_BB
+## 1              0.00247415            0.0453799            0.0009987                        3.327766
+## 2              0.00078795            0.0000000            0.0081496                       -7.307095
+## 3              0.00025355            0.0000000            0.0004470                       -3.821895
+## 4              0.00436885            0.0000000            0.0109294                       -3.781465
+## 5              0.00000000            0.0005600            0.0000000                        5.020069
+## 6              0.00738145            0.0000000            0.0112480                       -3.336571
+##   Mean Abundance\n(All) Mean Abundance\nAA Mean Abundance\nBB Occurrence (100%)\n(All) Occurrence (100%)\nAA
+## 1          0.0219183273       5.677024e-02       5.654100e-03                    90.91                100.00
+## 2          0.0065455500       6.044286e-05       9.571933e-03                    63.64                 42.86
+## 3          0.0012202818       1.225143e-04       1.732573e-03                    68.18                 42.86
+## 4          0.0087429000       9.019000e-04       1.240203e-02                    63.64                 42.86
+## 5          0.0008989182       2.650157e-03       8.167333e-05                    31.82                 57.14
+## 6          0.0118099818       1.638929e-03       1.655647e-02                    63.64                 42.86
+##   Occurrence (100%)\nBB       Odds Ratio (95% CI)
+## 1                 86.67          0.038 (-6.4;6.4)
+## 2                 73.33 8.9e+12 (8.9e+12;8.9e+12)
+## 3                 80.00             600 (610;580)
+## 4                 73.33             110 (120;100)
+## 5                 20.00           0.0055 (-10;10)
+## 6                 73.33                41 (48;34)</code></pre>
+<ul>
+<li>Visualization</li>
+</ul>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="differential-analysis.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># in order to show barplot (don&#39;t run it in reality)</span></span>
+<span id="cb51-2"><a href="differential-analysis.html#cb51-2" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_lefse<span class="sc">$</span>LDA_Score <span class="ot">&lt;-</span> metaphlan2_ps_lefse<span class="sc">$</span>LDA_Score <span class="sc">*</span> <span class="dv">1000</span></span>
+<span id="cb51-3"><a href="differential-analysis.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_lefse</span>(</span>
+<span id="cb51-4"><a href="differential-analysis.html#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">da_res =</span> metaphlan2_ps_lefse,</span>
+<span id="cb51-5"><a href="differential-analysis.html#cb51-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_index =</span> <span class="st">&quot;LDA_Score&quot;</span>,</span>
+<span id="cb51-6"><a href="differential-analysis.html#cb51-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">x_index_cutoff =</span> <span class="dv">2</span>,</span>
+<span id="cb51-7"><a href="differential-analysis.html#cb51-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">group_color =</span> <span class="fu">c</span>(<span class="st">&quot;green&quot;</span>, <span class="st">&quot;red&quot;</span>))</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-57"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-57-1.png" alt="Lefse analysis" width="576" />
+<p class="caption">
+Figure 8.1: Lefse analysis
+</p>
+</div>
+</div>
+<div id="wilcoxon-rank-sum-test" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Wilcoxon Rank-Sum test<a href="differential-analysis.html#wilcoxon-rank-sum-test" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Calculation</li>
+</ul>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="differential-analysis.html#cb52-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_wilcox <span class="ot">&lt;-</span> <span class="fu">run_wilcox</span>(</span>
+<span id="cb52-2"><a href="differential-analysis.html#cb52-2" aria-hidden="true" tabindex="-1"></a>                    metaphlan2_ps_final,</span>
+<span id="cb52-3"><a href="differential-analysis.html#cb52-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb52-4"><a href="differential-analysis.html#cb52-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>),</span>
+<span id="cb52-5"><a href="differential-analysis.html#cb52-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transform =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb52-6"><a href="differential-analysis.html#cb52-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">norm =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb52-7"><a href="differential-analysis.html#cb52-7" aria-hidden="true" tabindex="-1"></a>                    <span class="at">p_adjust =</span> <span class="st">&quot;BH&quot;</span>,</span>
+<span id="cb52-8"><a href="differential-analysis.html#cb52-8" aria-hidden="true" tabindex="-1"></a>                    <span class="at">pvalue_cutoff =</span> <span class="fl">0.05</span>)</span>
+<span id="cb52-9"><a href="differential-analysis.html#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="differential-analysis.html#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metaphlan2_ps_wilcox)</span></code></pre></div>
+<pre><code>##                      TaxaID         Block Enrichment EffectSize Statistic    Pvalue AdjustedPvalue
+## 1   s__Alistipes_finegoldii 7_AA vs 15_BB  Nonsignif 1.23094855      73.5 0.1145448      0.4521504
+## 2 s__Alistipes_indistinctus 7_AA vs 15_BB  Nonsignif 0.78954179      66.0 0.2677815      0.6616137
+## 3  s__Alistipes_onderdonkii 7_AA vs 15_BB  Nonsignif 1.14756258      63.5 0.4370143      0.7578592
+## 4   s__Alistipes_putredinis 7_AA vs 15_BB  Nonsignif 1.34298152      54.0 0.9409918      0.9830621
+## 5       s__Alistipes_shahii 7_AA vs 15_BB  Nonsignif 1.04736939      71.0 0.1751506      0.5801989
+## 6    s__Anaerostipes_hadrus 7_AA vs 15_BB  Nonsignif 0.02734989      30.5 0.1258306      0.4625882
+##   Log2FoldChange (Median)\nAA_vs_BB Median Abundance\n(All) Median Abundance\nAA Median Abundance\nBB
+## 1                                NA              0.00000000            0.0027362            0.0000000
+## 2                                NA              0.00000000            0.0000000            0.0000000
+## 3                          5.819157              0.00000825            0.0002823            0.0000050
+## 4                                NA              0.00016915            0.0000000            0.0002200
+## 5                                NA              0.00012580            0.0062474            0.0000000
+## 6                         -3.900867              0.00013665            0.0000144            0.0002151
+##   Log2FoldChange (Rank)\nAA_vs_BB Mean Rank Abundance\nAA Mean Rank Abundance\nBB Occurrence (100%)\n(All)
+## 1                      0.52169761                   14.50                   10.10                    45.45
+## 2                      0.34139504                   13.43                   10.60                    31.82
+## 3                      0.27924089                   13.07                   10.77                    54.55
+## 4                      0.03870725                   11.71                   11.40                    54.55
+## 5                      0.46134594                   14.14                   10.27                    50.00
+## 6                     -0.63360363                    8.36                   12.97                    72.73
+##   Occurrence (100%)\nAA Occurrence (100%)\nBB Odds Ratio (95% CI)
+## 1                 57.14                 40.00     0.0028 (-12;12)
+## 2                 42.86                 26.67    0.067 (-5.2;5.4)
+## 3                 57.14                 53.33     0.38 (-1.5;2.3)
+## 4                 42.86                 60.00    0.47 (-0.99;1.9)
+## 5                 57.14                 46.67     0.17 (-3.2;3.6)
+## 6                 57.14                 80.00          31 (38;24)</code></pre>
+<ul>
+<li>Volcano</li>
+</ul>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="differential-analysis.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_volcano</span>(</span>
+<span id="cb54-2"><a href="differential-analysis.html#cb54-2" aria-hidden="true" tabindex="-1"></a>    metaphlan2_ps_wilcox,</span>
+<span id="cb54-3"><a href="differential-analysis.html#cb54-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>),</span>
+<span id="cb54-4"><a href="differential-analysis.html#cb54-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_index =</span> <span class="st">&quot;Log2FoldChange (Rank)</span><span class="sc">\n</span><span class="st">AA_vs_BB&quot;</span>,</span>
+<span id="cb54-5"><a href="differential-analysis.html#cb54-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_index_cutoff =</span> <span class="fl">0.5</span>,</span>
+<span id="cb54-6"><a href="differential-analysis.html#cb54-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_index =</span> <span class="st">&quot;Pvalue&quot;</span>,</span>
+<span id="cb54-7"><a href="differential-analysis.html#cb54-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_index_cutoff =</span> <span class="fl">0.05</span>,</span>
+<span id="cb54-8"><a href="differential-analysis.html#cb54-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">group_color =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;grey&quot;</span>, <span class="st">&quot;blue&quot;</span>),</span>
+<span id="cb54-9"><a href="differential-analysis.html#cb54-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">topN =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-59"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-59-1.png" alt="Wilcoxon Rank-Sum test" width="768" />
+<p class="caption">
+Figure 8.2: Wilcoxon Rank-Sum test
+</p>
+</div>
+</div>
+<div id="dominant-taxa" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Dominant taxa<a href="differential-analysis.html#dominant-taxa" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Display the significant taxa with selection using boxplot.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="differential-analysis.html#cb55-1" aria-hidden="true" tabindex="-1"></a>DA_wilcox <span class="ot">&lt;-</span> <span class="fu">run_wilcox</span>(</span>
+<span id="cb55-2"><a href="differential-analysis.html#cb55-2" aria-hidden="true" tabindex="-1"></a>   metaphlan2_ps_final,</span>
+<span id="cb55-3"><a href="differential-analysis.html#cb55-3" aria-hidden="true" tabindex="-1"></a>   <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb55-4"><a href="differential-analysis.html#cb55-4" aria-hidden="true" tabindex="-1"></a>   <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>),</span>
+<span id="cb55-5"><a href="differential-analysis.html#cb55-5" aria-hidden="true" tabindex="-1"></a>   <span class="at">transform =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb55-6"><a href="differential-analysis.html#cb55-6" aria-hidden="true" tabindex="-1"></a>   <span class="at">norm =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb55-7"><a href="differential-analysis.html#cb55-7" aria-hidden="true" tabindex="-1"></a>   <span class="at">p_adjust =</span> <span class="st">&quot;BH&quot;</span>,</span>
+<span id="cb55-8"><a href="differential-analysis.html#cb55-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">pvalue_cutoff =</span> <span class="fl">0.05</span>)</span>
+<span id="cb55-9"><a href="differential-analysis.html#cb55-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-10"><a href="differential-analysis.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_topN_boxplot</span>(</span>
+<span id="cb55-11"><a href="differential-analysis.html#cb55-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ps =</span> metaphlan2_ps_final,</span>
+<span id="cb55-12"><a href="differential-analysis.html#cb55-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">da_res =</span> DA_wilcox,</span>
+<span id="cb55-13"><a href="differential-analysis.html#cb55-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_index =</span> <span class="st">&quot;Log2FoldChange (Median)</span><span class="sc">\n</span><span class="st">AA_vs_BB&quot;</span>,</span>
+<span id="cb55-14"><a href="differential-analysis.html#cb55-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x_index_cutoff =</span> <span class="fl">0.2</span>,</span>
+<span id="cb55-15"><a href="differential-analysis.html#cb55-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_index =</span> <span class="st">&quot;Pvalue&quot;</span>,</span>
+<span id="cb55-16"><a href="differential-analysis.html#cb55-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y_index_cutoff =</span> <span class="fl">0.3</span>,</span>
+<span id="cb55-17"><a href="differential-analysis.html#cb55-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">prevalence =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb55-18"><a href="differential-analysis.html#cb55-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">topN =</span> <span class="dv">3</span>,</span>
+<span id="cb55-19"><a href="differential-analysis.html#cb55-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-60"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-60-1.png" alt="Dominant Taxa" width="768" />
+<p class="caption">
+Figure 8.3: Dominant Taxa
+</p>
+</div>
+</div>
+<div id="multiple-differential-analysis-by-one-function" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Multiple differential analysis by one function<a href="differential-analysis.html#multiple-differential-analysis-by-one-function" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>here, we provide the <code>run_multiple_da</code> for obtaining the results list from multiple differential analysis methods.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="differential-analysis.html#cb56-1" aria-hidden="true" tabindex="-1"></a>multiple_res <span class="ot">&lt;-</span> <span class="fu">run_multiple_da</span>(</span>
+<span id="cb56-2"><a href="differential-analysis.html#cb56-2" aria-hidden="true" tabindex="-1"></a>       metaphlan2_ps_final,</span>
+<span id="cb56-3"><a href="differential-analysis.html#cb56-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb56-4"><a href="differential-analysis.html#cb56-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>),</span>
+<span id="cb56-5"><a href="differential-analysis.html#cb56-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">da_method =</span> <span class="fu">c</span>(<span class="st">&quot;wilcox&quot;</span>, <span class="st">&quot;limma_voom&quot;</span>, <span class="st">&quot;ttest&quot;</span>),</span>
+<span id="cb56-6"><a href="differential-analysis.html#cb56-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">norm =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb56-7"><a href="differential-analysis.html#cb56-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">transform =</span> <span class="st">&quot;identity&quot;</span>,</span>
+<span id="cb56-8"><a href="differential-analysis.html#cb56-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">p_adjust =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb56-9"><a href="differential-analysis.html#cb56-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">pvalue_cutoff =</span> <span class="fl">0.05</span>)</span>
+<span id="cb56-10"><a href="differential-analysis.html#cb56-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-11"><a href="differential-analysis.html#cb56-11" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(multiple_res)</span></code></pre></div>
+<pre><code>## [1] &quot;wilcox&quot;     &quot;limma_voom&quot; &quot;ttest&quot;</code></pre>
+<ul>
+<li>plot results</li>
+</ul>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="differential-analysis.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_multiple_DA</span>(</span>
+<span id="cb58-2"><a href="differential-analysis.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Multip_DA_res =</span> multiple_res,</span>
+<span id="cb58-3"><a href="differential-analysis.html#cb58-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_index =</span> <span class="st">&quot;AdjustedPvalue&quot;</span>,</span>
+<span id="cb58-4"><a href="differential-analysis.html#cb58-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">y_index_cutoff =</span> <span class="fl">0.5</span>,</span>
+<span id="cb58-5"><a href="differential-analysis.html#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">cellwidth =</span> <span class="dv">35</span>,</span>
+<span id="cb58-6"><a href="differential-analysis.html#cb58-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cellheight =</span> <span class="dv">10</span>,</span>
+<span id="cb58-7"><a href="differential-analysis.html#cb58-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">fontsize_number =</span> <span class="dv">15</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-62"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-62-1.png" alt="Multiple DA results" width="768" />
+<p class="caption">
+Figure 8.4: Multiple DA results
+</p>
+</div>
+</div>
+<div id="systematic-information-7" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Systematic Information<a href="differential-analysis.html#systematic-information-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="differential-analysis.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.1.2 (2021-11-01)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Monterey 12.2.1
+## 
+## Matrix products: default
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] ggpubr_0.4.0    ggplot2_3.3.5   phyloseq_1.38.0 tibble_3.1.6    dplyr_1.0.8     XMAS_2.1.0     
+## 
+## loaded via a namespace (and not attached):
+##   [1] utf8_1.2.2                  tidyselect_1.1.2            RSQLite_2.2.10              AnnotationDbi_1.56.2       
+##   [5] htmlwidgets_1.5.4           grid_4.1.2                  BiocParallel_1.28.3         munsell_0.5.0              
+##   [9] codetools_0.2-18            DT_0.21                     withr_2.5.0                 colorspace_2.0-3           
+##  [13] Biobase_2.54.0              highr_0.9                   knitr_1.37                  rstudioapi_0.13            
+##  [17] pscl_1.5.5                  stats4_4.1.2                bayesm_3.1-4                robustbase_0.93-9          
+##  [21] ggsignif_0.6.3              MatrixGenerics_1.6.0        labeling_0.4.2              optparse_1.7.1             
+##  [25] mbzinb_0.2                  GenomeInfoDbData_1.2.7      lpsymphony_1.22.0           pheatmap_1.0.12            
+##  [29] bit64_4.0.5                 farver_2.1.0                rhdf5_2.38.1                vctrs_0.3.8                
+##  [33] generics_0.1.2              TH.data_1.1-0               xfun_0.30                   Maaslin2_1.8.0             
+##  [37] R6_2.5.1                    GenomeInfoDb_1.30.1         locfit_1.5-9.5              RcppZiggurat_0.1.6         
+##  [41] bitops_1.0-7                rhdf5filters_1.6.0          cachem_1.0.6                DelayedArray_0.20.0        
+##  [45] assertthat_0.2.1            scales_1.1.1                multcomp_1.4-18             nnet_7.3-17                
+##  [49] gtable_0.3.0                sandwich_3.0-1              rlang_1.0.2                 genefilter_1.76.0          
+##  [53] splines_4.1.2               protoclust_1.6.3            rstatix_0.7.0               broom_0.7.12               
+##  [57] checkmate_2.0.0             yaml_2.3.5                  reshape2_1.4.4              abind_1.4-5                
+##  [61] crosstalk_1.2.0             backports_1.4.1             Rfast_2.0.6                 qvalue_2.26.0              
+##  [65] Hmisc_4.6-0                 DiagrammeR_1.0.9            tensorA_0.36.2              tools_4.1.2                
+##  [69] bookdown_0.24               zCompositions_1.4.0         ellipsis_0.3.2              gplots_3.1.1               
+##  [73] jquerylib_0.1.4             biomformat_1.22.0           RColorBrewer_1.1-2          BiocGenerics_0.40.0        
+##  [77] Rcpp_1.0.8.2                plyr_1.8.6                  base64enc_0.1-3             visNetwork_2.1.0           
+##  [81] zlibbioc_1.40.0             purrr_0.3.4                 RCurl_1.98-1.6              rpart_4.1.16               
+##  [85] Wrench_1.12.0               cowplot_1.1.1               S4Vectors_0.32.3            zoo_1.8-9                  
+##  [89] SummarizedExperiment_1.24.0 ggrepel_0.9.1               cluster_2.1.2               magrittr_2.0.2             
+##  [93] data.table_1.14.2           truncnorm_1.0-8             mvtnorm_1.1-3               matrixStats_0.61.0         
+##  [97] ALDEx2_1.26.0               corncob_0.2.0               RAIDA_1.0                   evaluate_0.15              
+## [101] xtable_1.8-4                XML_3.99-0.9                jpeg_0.1-9                  IRanges_2.28.0             
+## [105] gridExtra_2.3               shape_1.4.6                 compiler_4.1.2              KernSmooth_2.23-20         
+## [109] crayon_1.5.0                htmltools_0.5.2             mgcv_1.8-39                 pcaPP_1.9-74               
+## [113] Formula_1.2-4               tidyr_1.2.0                 geneplotter_1.72.0          libcoin_1.0-9              
+## [117] DBI_1.1.2                   biglm_0.9-2.1               MASS_7.3-55                 compositions_2.0-4         
+## [121] Matrix_1.4-0                ade4_1.7-18                 getopt_1.20.3               car_3.0-12                 
+## [125] permute_0.9-7               cli_3.2.0                   parallel_4.1.2              igraph_1.2.11              
+## [129] GenomicRanges_1.46.1        pkgconfig_2.0.3             coin_1.4-2                  foreign_0.8-82             
+## [133] foreach_1.5.2               annotate_1.72.0             bslib_0.3.1                 multtest_2.50.0            
+## [137] XVector_0.34.0              NADA_1.6-1.1                stringr_1.4.0               digest_0.6.29              
+## [141] vegan_2.5-7                 Biostrings_2.62.0           rmarkdown_2.13              htmlTable_2.4.0            
+## [145] edgeR_3.36.0                gtools_3.9.2                modeltools_0.2-23           lifecycle_1.0.1            
+## [149] nlme_3.1-155                jsonlite_1.8.0              Rhdf5lib_1.16.0             carData_3.0-5              
+## [153] limma_3.50.1                fansi_1.0.2                 pillar_1.7.0                lattice_0.20-45            
+## [157] KEGGREST_1.34.0             fastmap_1.1.0               httr_1.4.2                  DEoptimR_1.0-10            
+## [161] survival_3.3-1              glue_1.6.2                  png_0.1-7                   iterators_1.0.14           
+## [165] glmnet_4.1-3                bit_4.0.4                   stringi_1.7.6               sass_0.4.0                 
+## [169] metagenomeSeq_1.36.0        blob_1.2.2                  DESeq2_1.34.0               latticeExtra_0.6-29        
+## [173] caTools_1.18.2              memoise_2.0.1               ape_5.6-2</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="microbial-composition.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="references.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/XbiomeAnalysis/MGS_DataAnalysis_template/blob/main/07-Differential.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MGS microbiota data analysis based on XMAS package.pdf", "MGS microbiota data analysis based on XMAS package.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

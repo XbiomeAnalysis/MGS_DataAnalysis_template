@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package</title>
+  <meta name="description" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
+  
+  <meta name="twitter:description" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
+  
+
+<meta name="author" content="Hua Zou" />
+
+
+<meta name="date" content="2022-05-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="convert-inputdata-into-phyloseq-object.html"/>
+<link rel="next" href="data-processing.html"/>
+<script src="libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.9/grViz.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.21/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MGS microbiota data analysis based on XMAS package</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites<span></span></a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-tutorial"><i class="fa fa-check"></i><b>1.1</b> Preparing for the tutorial<span></span></a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workflow-description"><i class="fa fa-check"></i><b>1.2</b> Workflow description<span></span></a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#systematic-information"><i class="fa fa-check"></i><b>1.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html"><i class="fa fa-check"></i><b>2</b> Convert inputdata into phyloseq object<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metaphlan23"><i class="fa fa-check"></i><b>2.1</b> Metaphlan2/3<span></span></a></li>
+<li class="chapter" data-level="2.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#summarize-phyloseq-class-object"><i class="fa fa-check"></i><b>2.2</b> Summarize phyloseq-class object<span></span></a></li>
+<li class="chapter" data-level="2.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#systematic-information-1"><i class="fa fa-check"></i><b>2.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quality-control.html"><a href="quality-control.html"><i class="fa fa-check"></i><b>3</b> Quality Control<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="quality-control.html"><a href="quality-control.html#spike-in-sample-brs"><i class="fa fa-check"></i><b>3.1</b> spike-in sample (BRS)<span></span></a></li>
+<li class="chapter" data-level="3.2" data-path="quality-control.html"><a href="quality-control.html#spike-in-samples-remove"><i class="fa fa-check"></i><b>3.2</b> Spike-in sample’s remove<span></span></a></li>
+<li class="chapter" data-level="3.3" data-path="quality-control.html"><a href="quality-control.html#systematic-information-2"><i class="fa fa-check"></i><b>3.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>4</b> Data processing<span></span></a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-processing.html"><a href="data-processing.html#extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>4.1</b> Extracting specific taxonomic level<span></span></a></li>
+<li class="chapter" data-level="4.2" data-path="data-processing.html"><a href="data-processing.html#filtering-the-low-relative-abundance-or-unclassified-taxa-by-the-threshold-total-counts-1e-4"><i class="fa fa-check"></i><b>4.2</b> Filtering the low relative abundance or unclassified taxa by the threshold (total counts &lt; 1e-4)<span></span></a></li>
+<li class="chapter" data-level="4.3" data-path="data-processing.html"><a href="data-processing.html#trimming-the-taxa-with-low-occurrence-less-than-threshold"><i class="fa fa-check"></i><b>4.3</b> Trimming the taxa with low occurrence less than threshold<span></span></a></li>
+<li class="chapter" data-level="4.4" data-path="data-processing.html"><a href="data-processing.html#systematic-information-3"><i class="fa fa-check"></i><b>4.4</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diversity-analysis.html"><a href="diversity-analysis.html"><i class="fa fa-check"></i><b>5</b> Diversity analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diversity-analysis.html"><a href="diversity-analysis.html#alpha-diveristy"><i class="fa fa-check"></i><b>5.1</b> Alpha diveristy<span></span></a></li>
+<li class="chapter" data-level="5.2" data-path="diversity-analysis.html"><a href="diversity-analysis.html#beta-diversity"><i class="fa fa-check"></i><b>5.2</b> Beta diversity<span></span></a></li>
+<li class="chapter" data-level="5.3" data-path="diversity-analysis.html"><a href="diversity-analysis.html#systematic-information-4"><i class="fa fa-check"></i><b>5.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html"><i class="fa fa-check"></i><b>6</b> PERMANOVA + beta dispersion + Ordination<span></span></a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#permanova"><i class="fa fa-check"></i><b>6.1</b> PERMANOVA<span></span></a></li>
+<li class="chapter" data-level="6.2" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#beta-dispersion"><i class="fa fa-check"></i><b>6.2</b> beta dispersion<span></span></a></li>
+<li class="chapter" data-level="6.3" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#ordination"><i class="fa fa-check"></i><b>6.3</b> Ordination<span></span></a></li>
+<li class="chapter" data-level="6.4" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#systematic-information-5"><i class="fa fa-check"></i><b>6.4</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="microbial-composition.html"><a href="microbial-composition.html"><i class="fa fa-check"></i><b>7</b> Microbial composition<span></span></a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="microbial-composition.html"><a href="microbial-composition.html#stacked-barplot"><i class="fa fa-check"></i><b>7.1</b> Stacked barplot<span></span></a></li>
+<li class="chapter" data-level="7.2" data-path="microbial-composition.html"><a href="microbial-composition.html#core-microbiota"><i class="fa fa-check"></i><b>7.2</b> Core microbiota<span></span></a></li>
+<li class="chapter" data-level="7.3" data-path="microbial-composition.html"><a href="microbial-composition.html#systematic-information-6"><i class="fa fa-check"></i><b>7.3</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="differential-analysis.html"><a href="differential-analysis.html"><i class="fa fa-check"></i><b>8</b> Differential Analysis<span></span></a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="differential-analysis.html"><a href="differential-analysis.html#liner-discriminant-analysis-lda-effect-size-lefse"><i class="fa fa-check"></i><b>8.1</b> Liner discriminant analysis (LDA) effect size (LEfSe)<span></span></a></li>
+<li class="chapter" data-level="8.2" data-path="differential-analysis.html"><a href="differential-analysis.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>8.2</b> Wilcoxon Rank-Sum test<span></span></a></li>
+<li class="chapter" data-level="8.3" data-path="differential-analysis.html"><a href="differential-analysis.html#dominant-taxa"><i class="fa fa-check"></i><b>8.3</b> Dominant taxa<span></span></a></li>
+<li class="chapter" data-level="8.4" data-path="differential-analysis.html"><a href="differential-analysis.html#multiple-differential-analysis-by-one-function"><i class="fa fa-check"></i><b>8.4</b> Multiple differential analysis by one function<span></span></a></li>
+<li class="chapter" data-level="8.5" data-path="differential-analysis.html"><a href="differential-analysis.html#systematic-information-7"><i class="fa fa-check"></i><b>8.5</b> Systematic Information<span></span></a></li>
+</ul></li>
+<li><a href="references.html#references">References<span></span></a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MGS microbiota data analysis based on XMAS package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="quality-control" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Quality Control<a href="quality-control.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Loading packages</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="quality-control.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS)</span>
+<span id="cb9-2"><a href="quality-control.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-3"><a href="quality-control.html#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb9-4"><a href="quality-control.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb9-5"><a href="quality-control.html#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb9-6"><a href="quality-control.html#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span></code></pre></div>
+<p>The taxonomic levels of spike-in sample’s bacteria is species. Firstly, using the <code>summarize_taxa</code> to get the genus level phyloseq object and then do <code>run_RefCheck</code> under the optimal parameters.</p>
+<div id="spike-in-sample-brs" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> spike-in sample (BRS)<a href="quality-control.html#spike-in-sample-brs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="quality-control.html#cb10-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species <span class="ot">&lt;-</span> <span class="fu">summarize_taxa</span>(metaphlan2_ps, <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb10-2"><a href="quality-control.html#cb10-2" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species<span class="sc">@</span>sam_data</span>
+<span id="cb10-3"><a href="quality-control.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">##      Group phynotype</span></span>
+<span id="cb10-4"><a href="quality-control.html#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="do">## s1      BB      0.00</span></span>
+<span id="cb10-5"><a href="quality-control.html#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="do">## s2      AA      2.50</span></span>
+<span id="cb10-6"><a href="quality-control.html#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="do">## s3      BB      0.00</span></span>
+<span id="cb10-7"><a href="quality-control.html#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="do">## s4      AA      1.25</span></span>
+<span id="cb10-8"><a href="quality-control.html#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="do">## s5      AA     30.00</span></span>
+<span id="cb10-9"><a href="quality-control.html#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="do">## s6      AA     15.00</span></span>
+<span id="cb10-10"><a href="quality-control.html#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="do">## s7      BB      8.75</span></span>
+<span id="cb10-11"><a href="quality-control.html#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="do">## s8      BB      0.00</span></span>
+<span id="cb10-12"><a href="quality-control.html#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="do">## s9      BB      3.75</span></span>
+<span id="cb10-13"><a href="quality-control.html#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="do">## s10     BB      2.50</span></span>
+<span id="cb10-14"><a href="quality-control.html#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="do">## s11     BB     15.00</span></span>
+<span id="cb10-15"><a href="quality-control.html#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="do">## s12     BB      2.50</span></span>
+<span id="cb10-16"><a href="quality-control.html#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="do">## s13     BB      2.50</span></span>
+<span id="cb10-17"><a href="quality-control.html#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="do">## s14     BB      0.00</span></span>
+<span id="cb10-18"><a href="quality-control.html#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="do">## s15     BB      1.07</span></span>
+<span id="cb10-19"><a href="quality-control.html#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="do">## s16     BB      2.50</span></span>
+<span id="cb10-20"><a href="quality-control.html#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="do">## s17     AA      5.00</span></span>
+<span id="cb10-21"><a href="quality-control.html#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="do">## s18     BB     35.00</span></span>
+<span id="cb10-22"><a href="quality-control.html#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="do">## s19     BB      7.50</span></span>
+<span id="cb10-23"><a href="quality-control.html#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="do">## s20     BB     15.00</span></span>
+<span id="cb10-24"><a href="quality-control.html#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="do">## s21     AA      3.75</span></span>
+<span id="cb10-25"><a href="quality-control.html#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="do">## s22     AA      3.75</span></span>
+<span id="cb10-26"><a href="quality-control.html#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="do">## refE    QC        NA</span></span>
+<span id="cb10-27"><a href="quality-control.html#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="quality-control.html#cb10-28" aria-hidden="true" tabindex="-1"></a>RefCheck_MGS <span class="ot">&lt;-</span> <span class="fu">run_RefCheck</span>(</span>
+<span id="cb10-29"><a href="quality-control.html#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">ps=</span>metaphlan2_ps_species,</span>
+<span id="cb10-30"><a href="quality-control.html#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">BRS_ID=</span><span class="st">&quot;refE&quot;</span>,</span>
+<span id="cb10-31"><a href="quality-control.html#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">Reference=</span><span class="cn">NULL</span>,</span>
+<span id="cb10-32"><a href="quality-control.html#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ref_type=</span><span class="st">&quot;MGS&quot;</span>,</span>
+<span id="cb10-33"><a href="quality-control.html#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">Save=</span><span class="cn">NULL</span></span>
+<span id="cb10-34"><a href="quality-control.html#cb10-34" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+</div>
+<div id="spike-in-samples-remove" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Spike-in sample’s remove<a href="quality-control.html#spike-in-samples-remove" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="quality-control.html#cb11-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_NoQC <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
+<span id="cb11-2"><a href="quality-control.html#cb11-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ps =</span> metaphlan2_ps,</span>
+<span id="cb11-3"><a href="quality-control.html#cb11-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb11-4"><a href="quality-control.html#cb11-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>,</span>
+<span id="cb11-5"><a href="quality-control.html#cb11-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">discard =</span> <span class="cn">TRUE</span></span>
+<span id="cb11-6"><a href="quality-control.html#cb11-6" aria-hidden="true" tabindex="-1"></a>                     )</span>
+<span id="cb11-7"><a href="quality-control.html#cb11-7" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_NoQC</span></code></pre></div>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 326 taxa and 22 samples ]
+## sample_data() Sample Data:       [ 22 samples by 2 sample variables ]
+## tax_table()   Taxonomy Table:    [ 326 taxa by 7 taxonomic ranks ]</code></pre>
+</div>
+<div id="systematic-information-2" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Systematic Information<a href="quality-control.html#systematic-information-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="quality-control.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
+<pre><code>## R version 4.1.2 (2021-11-01)
+## Platform: x86_64-apple-darwin17.0 (64-bit)
+## Running under: macOS Monterey 12.2.1
+## 
+## Matrix products: default
+## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+## 
+## locale:
+## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+## 
+## attached base packages:
+## [1] stats     graphics  grDevices utils     datasets  methods   base     
+## 
+## other attached packages:
+## [1] ggpubr_0.4.0    ggplot2_3.3.5   phyloseq_1.38.0 tibble_3.1.6    dplyr_1.0.8     XMAS_2.1.0     
+## 
+## loaded via a namespace (and not attached):
+##   [1] utf8_1.2.2                  tidyselect_1.1.2            RSQLite_2.2.10              AnnotationDbi_1.56.2       
+##   [5] htmlwidgets_1.5.4           grid_4.1.2                  BiocParallel_1.28.3         munsell_0.5.0              
+##   [9] codetools_0.2-18            DT_0.21                     withr_2.5.0                 colorspace_2.0-3           
+##  [13] Biobase_2.54.0              highr_0.9                   knitr_1.37                  rstudioapi_0.13            
+##  [17] pscl_1.5.5                  stats4_4.1.2                bayesm_3.1-4                robustbase_0.93-9          
+##  [21] ggsignif_0.6.3              MatrixGenerics_1.6.0        labeling_0.4.2              optparse_1.7.1             
+##  [25] mbzinb_0.2                  GenomeInfoDbData_1.2.7      lpsymphony_1.22.0           pheatmap_1.0.12            
+##  [29] bit64_4.0.5                 farver_2.1.0                rhdf5_2.38.1                vctrs_0.3.8                
+##  [33] generics_0.1.2              TH.data_1.1-0               xfun_0.30                   Maaslin2_1.8.0             
+##  [37] R6_2.5.1                    GenomeInfoDb_1.30.1         locfit_1.5-9.5              RcppZiggurat_0.1.6         
+##  [41] bitops_1.0-7                rhdf5filters_1.6.0          cachem_1.0.6                DelayedArray_0.20.0        
+##  [45] assertthat_0.2.1            scales_1.1.1                multcomp_1.4-18             nnet_7.3-17                
+##  [49] gtable_0.3.0                sandwich_3.0-1              rlang_1.0.2                 genefilter_1.76.0          
+##  [53] splines_4.1.2               protoclust_1.6.3            rstatix_0.7.0               broom_0.7.12               
+##  [57] checkmate_2.0.0             yaml_2.3.5                  reshape2_1.4.4              abind_1.4-5                
+##  [61] crosstalk_1.2.0             backports_1.4.1             Rfast_2.0.6                 qvalue_2.26.0              
+##  [65] Hmisc_4.6-0                 DiagrammeR_1.0.9            tensorA_0.36.2              tools_4.1.2                
+##  [69] bookdown_0.24               zCompositions_1.4.0         ellipsis_0.3.2              gplots_3.1.1               
+##  [73] jquerylib_0.1.4             biomformat_1.22.0           RColorBrewer_1.1-2          BiocGenerics_0.40.0        
+##  [77] Rcpp_1.0.8.2                plyr_1.8.6                  base64enc_0.1-3             visNetwork_2.1.0           
+##  [81] zlibbioc_1.40.0             purrr_0.3.4                 RCurl_1.98-1.6              rpart_4.1.16               
+##  [85] Wrench_1.12.0               cowplot_1.1.1               S4Vectors_0.32.3            zoo_1.8-9                  
+##  [89] SummarizedExperiment_1.24.0 ggrepel_0.9.1               cluster_2.1.2               magrittr_2.0.2             
+##  [93] data.table_1.14.2           truncnorm_1.0-8             mvtnorm_1.1-3               matrixStats_0.61.0         
+##  [97] ALDEx2_1.26.0               corncob_0.2.0               RAIDA_1.0                   evaluate_0.15              
+## [101] xtable_1.8-4                XML_3.99-0.9                jpeg_0.1-9                  IRanges_2.28.0             
+## [105] gridExtra_2.3               shape_1.4.6                 compiler_4.1.2              KernSmooth_2.23-20         
+## [109] crayon_1.5.0                htmltools_0.5.2             mgcv_1.8-39                 pcaPP_1.9-74               
+## [113] Formula_1.2-4               tidyr_1.2.0                 geneplotter_1.72.0          libcoin_1.0-9              
+## [117] DBI_1.1.2                   biglm_0.9-2.1               MASS_7.3-55                 compositions_2.0-4         
+## [121] Matrix_1.4-0                ade4_1.7-18                 getopt_1.20.3               car_3.0-12                 
+## [125] permute_0.9-7               cli_3.2.0                   parallel_4.1.2              igraph_1.2.11              
+## [129] GenomicRanges_1.46.1        pkgconfig_2.0.3             coin_1.4-2                  foreign_0.8-82             
+## [133] foreach_1.5.2               annotate_1.72.0             bslib_0.3.1                 multtest_2.50.0            
+## [137] XVector_0.34.0              NADA_1.6-1.1                stringr_1.4.0               digest_0.6.29              
+## [141] vegan_2.5-7                 Biostrings_2.62.0           rmarkdown_2.13              htmlTable_2.4.0            
+## [145] edgeR_3.36.0                gtools_3.9.2                modeltools_0.2-23           lifecycle_1.0.1            
+## [149] nlme_3.1-155                jsonlite_1.8.0              Rhdf5lib_1.16.0             carData_3.0-5              
+## [153] limma_3.50.1                fansi_1.0.2                 pillar_1.7.0                lattice_0.20-45            
+## [157] KEGGREST_1.34.0             fastmap_1.1.0               httr_1.4.2                  DEoptimR_1.0-10            
+## [161] survival_3.3-1              glue_1.6.2                  png_0.1-7                   iterators_1.0.14           
+## [165] glmnet_4.1-3                bit_4.0.4                   stringi_1.7.6               sass_0.4.0                 
+## [169] metagenomeSeq_1.36.0        blob_1.2.2                  DESeq2_1.34.0               latticeExtra_0.6-29        
+## [173] caTools_1.18.2              memoise_2.0.1               ape_5.6-2</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="convert-inputdata-into-phyloseq-object.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-processing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/XbiomeAnalysis/MGS_DataAnalysis_template/blob/main/02-Quality-evaluation.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MGS microbiota data analysis based on XMAS package.pdf", "MGS microbiota data analysis based on XMAS package.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

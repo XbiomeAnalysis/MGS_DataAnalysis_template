@@ -1,0 +1,137 @@
+# Differential Analysis
+
+
+**Loading packages**
+```R
+library(XMAS)
+library(dplyr)
+library(tibble)
+library(phyloseq)
+library(ggplot2)
+library(ggpubr)
+```
+
+
+There are more than 10 approaches to perform differential analysis. Here, we choose two of them and recommend users going to **Chapter 10** to see more detials.
+
+## Liner discriminant analysis (LDA) effect size (LEfSe)
+
+* Calculation
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_lefse <- run_lefse(
+                    metaphlan2_ps_final,
+                    group = "Group",
+                    group_names = c("AA", "BB"),
+                    transform = "identity",
+                    norm = "none",
+                    wl.p = 0.05,
+                    Lda = 0)
+head(metaphlan2_ps_lefse)
+```
+
+* Visualization
+```{r, warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.align="center", fig.cap="Lefse analysis"}
+# in order to show barplot (don't run it in reality)
+metaphlan2_ps_lefse$LDA_Score <- metaphlan2_ps_lefse$LDA_Score * 1000
+plot_lefse(
+  da_res = metaphlan2_ps_lefse,
+  x_index = "LDA_Score",
+  x_index_cutoff = 2,
+  group_color = c("green", "red"))
+```
+
+
+## Wilcoxon Rank-Sum test
+
+* Calculation
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_wilcox <- run_wilcox(
+                    metaphlan2_ps_final,
+                    group = "Group",
+                    group_names = c("AA", "BB"),
+                    transform = "identity",
+                    norm = "none",
+                    p_adjust = "BH",
+                    pvalue_cutoff = 0.05)
+
+head(metaphlan2_ps_wilcox)
+```
+
+
+* Volcano
+```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=6, fig.align="center", fig.cap="Wilcoxon Rank-Sum test"}
+plot_volcano(
+    metaphlan2_ps_wilcox,
+    group_names = c("AA", "BB"),
+    x_index = "Log2FoldChange (Rank)\nAA_vs_BB",
+    x_index_cutoff = 0.5,
+    y_index = "Pvalue",
+    y_index_cutoff = 0.05,
+    group_color = c("red", "grey", "blue"),
+    topN = 5)
+```
+
+
+## Dominant taxa
+
+Display the significant taxa with selection using boxplot.
+
+```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=3, fig.cap="Dominant Taxa"}
+DA_wilcox <- run_wilcox(
+   metaphlan2_ps_final,
+   group = "Group",
+   group_names = c("AA", "BB"),
+   transform = "identity",
+   norm = "none",
+   p_adjust = "BH",
+   pvalue_cutoff = 0.05)
+
+plot_topN_boxplot(
+    ps = metaphlan2_ps_final,
+    da_res = DA_wilcox,
+    x_index = "Log2FoldChange (Median)\nAA_vs_BB",
+    x_index_cutoff = 0.2,
+    y_index = "Pvalue",
+    y_index_cutoff = 0.3,
+    prevalence = TRUE,
+    topN = 3,
+    group = "Group")
+```
+
+
+## Multiple differential analysis by one function
+
+here, we provide the `run_multiple_da` for obtaining the results list from multiple differential analysis methods.
+
+```{r, warning=FALSE, message=FALSE}
+multiple_res <- run_multiple_da(
+       metaphlan2_ps_final,
+       group = "Group",
+       group_names = c("AA", "BB"),
+       da_method = c("wilcox", "limma_voom", "ttest"),
+       norm = "none",
+       transform = "identity",
+       p_adjust = "none",
+       pvalue_cutoff = 0.05)
+
+names(multiple_res)
+```
+
+
+* plot  results
+```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=13, fig.cap="Multiple DA results"}
+plot_multiple_DA(
+  Multip_DA_res = multiple_res,
+  y_index = "AdjustedPvalue",
+  y_index_cutoff = 0.5,
+  cellwidth = 35,
+  cellheight = 10,
+  fontsize_number = 15)
+```
+
+
+## Systematic Information
+```{r}
+sessionInfo()
+```
+

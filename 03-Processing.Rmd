@@ -1,0 +1,43 @@
+# Data processing
+
+
+
+**Loading packages**
+
+```R
+library(XMAS)
+library(dplyr)
+library(tibble)
+library(phyloseq)
+library(ggplot2)
+library(ggpubr)
+```
+
+
+This part has too may procedures and we only choose some of them. Please go to **Chapter 6** to see more approaches and details for being familiar with this part.
+
+## Extracting specific taxonomic level
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps_NoQC, taxa_level = "Species")
+metaphlan2_ps_species
+```
+
+## Filtering the low relative abundance or unclassified taxa by the threshold (total counts < 1e-4)
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species_filter <- run_filter(metaphlan2_ps_species, cutoff = 1e-4, unclass = TRUE)
+metaphlan2_ps_species_filter 
+```
+
+## Trimming the taxa with low occurrence less than threshold
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species_filter_trim <- run_trim(metaphlan2_ps_species_filter, cutoff = 0.2, trim = "feature")
+metaphlan2_ps_final <- metaphlan2_ps_species_filter_trim
+metaphlan2_ps_final
+```
+
+Finally, we obtained the final phyloseq-class object _metaphlan2\_ps\_species\_filter\_trim_ and changed its name.
+
+## Systematic Information
+```{r}
+sessionInfo()
+```
