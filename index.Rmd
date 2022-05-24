@@ -88,9 +88,3 @@ tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8 -> tab9 -> tab10 ->
 [13]: paste0('DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()')
 ")
 ```
-
-
-## Systematic Information
-```{r}
-sessionInfo()
-```

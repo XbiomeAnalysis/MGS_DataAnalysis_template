@@ -14,31 +14,34 @@ library(ggpubr)
 
 ## PERMANOVA
 ```{r, warning=FALSE, message=FALSE}
-dada2_ps_per <- run_permanova(ps=metaphlan2_ps_final, method = "bray")
-print(dada2_ps_per)
+metaphlan2_ps_per <- run_permanova(ps=metaphlan2_ps_species_filter_trim, method = "bray", columns = "Group")
+print(metaphlan2_ps_per)
 ```
 
 The PERMANOVA result of the Group (AdjustedPvalue > 0.05) revealed that the two groups had not the distinct patterns of microbial community.
 
 ## beta dispersion 
 ```{r}
-beta_df <- run_beta_diversity(ps=metaphlan2_ps_final, method = "bray", group = "Group")
+beta_df <- run_beta_diversity(ps=metaphlan2_ps_species_filter_trim, method = "bray", group = "Group")
 ```
 
 
 ## Ordination
 
 We performed ordination by using Principal Coordinate Analysis (PCoA). If you want to try other methods please go to see **Chapter 8** for more details.
-```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=8, fig.align="center", fig.cap="PCoA"}
-dada2_ps_ordination <- run_ordination(
-                       ps = metaphlan2_ps_final,
+```{r, warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.align="center", fig.cap="PCoA"}
+metaphlan2_ps_ordination <- run_ordination(
+                       ps = metaphlan2_ps_species_filter_trim,
                        group = "Group",
                        method = "PCoA")
 
-plot_Ordination(ResultList = dada2_ps_ordination, 
+plot_Ordination(ResultList = metaphlan2_ps_ordination, 
                 group = "Group", 
                 group_names = c("AA", "BB"),
-                group_color = c("blue", "red"))
+                group_color = c("blue", "red"),
+                circle_type = "ellipse_groups",
+                sidelinechart = FALSE,
+                sideboxplot = TRUE)
 ```
 
 

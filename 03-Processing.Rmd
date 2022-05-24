@@ -18,7 +18,7 @@ This part has too may procedures and we only choose some of them. Please go to *
 
 ## Extracting specific taxonomic level
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps_NoQC, taxa_level = "Species")
+metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps_remove_BRS, taxa_level = "Species")
 metaphlan2_ps_species
 ```
 
@@ -31,8 +31,7 @@ metaphlan2_ps_species_filter
 ## Trimming the taxa with low occurrence less than threshold
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_species_filter_trim <- run_trim(metaphlan2_ps_species_filter, cutoff = 0.2, trim = "feature")
-metaphlan2_ps_final <- metaphlan2_ps_species_filter_trim
-metaphlan2_ps_final
+metaphlan2_ps_species_filter_trim
 ```
 
 Finally, we obtained the final phyloseq-class object _metaphlan2\_ps\_species\_filter\_trim_ and changed its name.

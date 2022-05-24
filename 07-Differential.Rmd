@@ -19,20 +19,16 @@ There are more than 10 approaches to perform differential analysis. Here, we cho
 * Calculation
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_lefse <- run_lefse(
-                    metaphlan2_ps_final,
+                    metaphlan2_ps_species_filter_trim,
                     group = "Group",
                     group_names = c("AA", "BB"),
-                    transform = "identity",
-                    norm = "none",
-                    wl.p = 0.05,
+                    norm = "CPM",
                     Lda = 0)
 head(metaphlan2_ps_lefse)
 ```
 
 * Visualization
 ```{r, warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.align="center", fig.cap="Lefse analysis"}
-# in order to show barplot (don't run it in reality)
-metaphlan2_ps_lefse$LDA_Score <- metaphlan2_ps_lefse$LDA_Score * 1000
 plot_lefse(
   da_res = metaphlan2_ps_lefse,
   x_index = "LDA_Score",
@@ -46,13 +42,9 @@ plot_lefse(
 * Calculation
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_wilcox <- run_wilcox(
-                    metaphlan2_ps_final,
+                    metaphlan2_ps_species_filter_trim,
                     group = "Group",
-                    group_names = c("AA", "BB"),
-                    transform = "identity",
-                    norm = "none",
-                    p_adjust = "BH",
-                    pvalue_cutoff = 0.05)
+                    group_names = c("AA", "BB"))
 
 head(metaphlan2_ps_wilcox)
 ```
@@ -68,7 +60,8 @@ plot_volcano(
     y_index = "Pvalue",
     y_index_cutoff = 0.05,
     group_color = c("red", "grey", "blue"),
-    topN = 5)
+    topN = 4,
+    taxa_name = "s__Megamonas_rupellensis")
 ```
 
 
@@ -76,25 +69,15 @@ plot_volcano(
 
 Display the significant taxa with selection using boxplot.
 
-```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=3, fig.cap="Dominant Taxa"}
-DA_wilcox <- run_wilcox(
-   metaphlan2_ps_final,
-   group = "Group",
-   group_names = c("AA", "BB"),
-   transform = "identity",
-   norm = "none",
-   p_adjust = "BH",
-   pvalue_cutoff = 0.05)
-
+```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=10, fig.height=4, fig.cap="Dominant Taxa"}
 plot_topN_boxplot(
-    ps = metaphlan2_ps_final,
-    da_res = DA_wilcox,
-    x_index = "Log2FoldChange (Median)\nAA_vs_BB",
-    x_index_cutoff = 0.2,
+    ps = metaphlan2_ps_species_filter_trim,
+    da_res = metaphlan2_ps_wilcox,
+    x_index = "Log2FoldChange (Rank)\nAA_vs_BB",
+    x_index_cutoff = 0.5,
     y_index = "Pvalue",
-    y_index_cutoff = 0.3,
-    prevalence = TRUE,
-    topN = 3,
+    y_index_cutoff = 0.05,
+    topN = 4,
     group = "Group")
 ```
 
@@ -105,14 +88,10 @@ here, we provide the `run_multiple_da` for obtaining the results list from multi
 
 ```{r, warning=FALSE, message=FALSE}
 multiple_res <- run_multiple_da(
-       metaphlan2_ps_final,
+       metaphlan2_ps_species_filter_trim,
        group = "Group",
        group_names = c("AA", "BB"),
-       da_method = c("wilcox", "limma_voom", "ttest"),
-       norm = "none",
-       transform = "identity",
-       p_adjust = "none",
-       pvalue_cutoff = 0.05)
+       da_method = c("wilcox", "limma_voom", "ttest"))
 
 names(multiple_res)
 ```
@@ -122,7 +101,9 @@ names(multiple_res)
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=13, fig.cap="Multiple DA results"}
 plot_multiple_DA(
   Multip_DA_res = multiple_res,
-  y_index = "AdjustedPvalue",
+  x_index_list = c("Log2FoldChange (Rank)\nAA_vs_BB", "logFC", "Log2FoldChange (geometricmean)\nAA_vs_BB"),
+  x_index_cutoff = 0,  
+  y_index = "Pvalue",
   y_index_cutoff = 0.5,
   cellwidth = 35,
   cellheight = 10,

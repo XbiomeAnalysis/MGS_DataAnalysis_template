@@ -15,28 +15,29 @@ library(ggpubr)
 The taxonomic levels of spike-in sample's bacteria is species. Firstly, using the `summarize_taxa` to get the genus level phyloseq object and then do `run_RefCheck` under the optimal parameters.
 
 ## spike-in sample (BRS)
-```{r, warning=FALSE, message=FALSE, collapse=TRUE}
+
+* get the BRS_ID
+```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps, taxa_level = "Species")
 metaphlan2_ps_species@sam_data
-
-RefCheck_MGS <- run_RefCheck(
+```
+* run `run_RefCheck`
+```{r, warning=FALSE, message=FALSE, collapse=TRUE}
+run_RefCheck(
     ps=metaphlan2_ps_species,
     BRS_ID="refE",
     Reference=NULL,
     Ref_type="MGS",
-    Save=NULL
-    )
+    Save=NULL)
 ```
 
-## Spike-in sample's remove
+## Spike-in sample's (BRS) remove
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_NoQC <- get_GroupPhyloseq(
+metaphlan2_ps_remove_BRS <- get_GroupPhyloseq(
                      ps = metaphlan2_ps,
                      group = "Group",
-                     group_names = "QC",
-                     discard = TRUE
-                     )
-metaphlan2_ps_NoQC
+                     group_names = "QC")
+metaphlan2_ps_remove_BRS
 ```
 
 
