@@ -14,7 +14,7 @@ library(ggpubr)
 ```
 
 
-This part has too may procedures and we only choose some of them. Please go to **Chapter 6** to see more approaches and details for being familiar with this part.
+This part has too may procedures and we only choose some of them. Please go to **[XMAS tutorial: Chapter 6](https://xbiomeanalysis.github.io/XMAS_tutorial/pre-processing.html)** to see more approaches and details for being familiar with this part.
 
 ## Extracting specific taxonomic level
 ```{r, warning=FALSE, message=FALSE}
