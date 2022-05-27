@@ -253,7 +253,7 @@ div.csl-indent {
 <div id="differential-analysis" class="section level1 hasAnchor" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Differential Analysis<a href="differential-analysis.html#differential-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Loading packages</strong></p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="differential-analysis.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS)</span>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="differential-analysis.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS2)</span>
 <span id="cb55-2"><a href="differential-analysis.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb55-3"><a href="differential-analysis.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
 <span id="cb55-4"><a href="differential-analysis.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
@@ -273,41 +273,27 @@ div.csl-indent {
 <span id="cb56-5"><a href="differential-analysis.html#cb56-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">norm =</span> <span class="st">&quot;CPM&quot;</span>,</span>
 <span id="cb56-6"><a href="differential-analysis.html#cb56-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Lda =</span> <span class="dv">0</span>)</span>
 <span id="cb56-7"><a href="differential-analysis.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metaphlan2_ps_lefse)</span></code></pre></div>
-<pre><code>##                            TaxaID         Block Enrichment LDA_Score EffectSize
-## 1 s__Bacteroides_thetaiotaomicron 7_AA vs 15_BB         AA -4.424546   3.617996
-## 2        s__Megamonas_rupellensis 7_AA vs 15_BB         BB  2.620337   1.964931
-## 3       s__Clostridium_bartlettii 7_AA vs 15_BB         BB  3.556783   1.585460
-## 4            s__Dorea_longicatena 7_AA vs 15_BB         BB  3.757349   3.324470
-## 5           s__Ruminococcus_obeum 7_AA vs 15_BB         BB  3.830650   3.233014
-## 6         s__Ruminococcus_torques 7_AA vs 15_BB         BB  3.841490   1.718488
-##   Log2FoldChange (Median)\nAA_vs_BB Median Abundance\n(All) Median Abundance\nAA
-## 1                          5.381835               3626.6258           46672.3795
-## 2                                NA                  0.0000             696.1790
-## 3                                NA                301.5399               0.0000
-## 4                                NA                830.7987               0.0000
-## 5                         -5.093080               8098.0608             360.8439
-## 6                         -2.667017               4806.8158            1096.7357
-##   Median Abundance\nBB Log2FoldChange (Mean)\nAA_vs_BB Mean Abundance\n(All) Mean Abundance\nAA
-## 1            1119.3508                        3.179359             24351.508         61892.9455
-## 2               0.0000                        5.427947              1263.429          3782.4986
-## 3             501.0011                       -3.798289              1379.263           140.6860
-## 4            9534.0308                       -7.282836              7575.907            71.1401
-## 5           12316.5574                       -2.669016             10704.595          2299.8308
-## 6            6965.5274                       -2.425578              9957.454          2501.1119
-##   Mean Abundance\nBB Occurrence (100%)\n(All) Occurrence (100%)\nAA Occurrence (100%)\nBB
-## 1         6832.17069                    90.91                100.00                 86.67
-## 2           87.86256                    31.82                 57.14                 20.00
-## 3         1957.26519                    68.18                 42.86                 80.00
-## 4        11078.13206                    63.64                 42.86                 73.33
-## 5        14626.81876                    90.91                 71.43                100.00
-## 6        13437.07968                   100.00                100.00                100.00
-##         Odds Ratio (95% CI)
-## 1          0.058 (-5.5;5.6)
-## 2          0.00044 (-15;15)
-## 3             620 (630;610)
-## 4 7.8e+16 (7.8e+16;7.8e+16)
-## 5                22 (28;16)
-## 6             520 (530;510)</code></pre>
+<pre><code>##                            TaxaID         Block Enrichment LDA_Score EffectSize Log2FoldChange (Median)\nAA_vs_BB
+## 1 s__Bacteroides_thetaiotaomicron 7_AA vs 15_BB         AA -4.424546   3.617996                          5.381835
+## 2        s__Megamonas_rupellensis 7_AA vs 15_BB         BB  2.620337   1.964931                                NA
+## 3       s__Clostridium_bartlettii 7_AA vs 15_BB         BB  3.556783   1.585460                                NA
+## 4            s__Dorea_longicatena 7_AA vs 15_BB         BB  3.757349   3.324470                                NA
+## 5           s__Ruminococcus_obeum 7_AA vs 15_BB         BB  3.830650   3.233014                         -5.093080
+## 6         s__Ruminococcus_torques 7_AA vs 15_BB         BB  3.841490   1.718488                         -2.667017
+##   Median Abundance\n(All) Median Abundance\nAA Median Abundance\nBB Log2FoldChange (Mean)\nAA_vs_BB Mean Abundance\n(All)
+## 1               3626.6258           46672.3795            1119.3508                        3.179359             24351.508
+## 2                  0.0000             696.1790               0.0000                        5.427947              1263.429
+## 3                301.5399               0.0000             501.0011                       -3.798289              1379.263
+## 4                830.7987               0.0000            9534.0308                       -7.282836              7575.907
+## 5               8098.0608             360.8439           12316.5574                       -2.669016             10704.595
+## 6               4806.8158            1096.7357            6965.5274                       -2.425578              9957.454
+##   Mean Abundance\nAA Mean Abundance\nBB Occurrence (100%)\n(All) Occurrence (100%)\nAA Occurrence (100%)\nBB       Odds Ratio (95% CI)
+## 1         61892.9455         6832.17069                    90.91                100.00                 86.67          0.058 (-5.5;5.6)
+## 2          3782.4986           87.86256                    31.82                 57.14                 20.00          0.00044 (-15;15)
+## 3           140.6860         1957.26519                    68.18                 42.86                 80.00             620 (630;610)
+## 4            71.1401        11078.13206                    63.64                 42.86                 73.33 7.8e+16 (7.8e+16;7.8e+16)
+## 5          2299.8308        14626.81876                    90.91                 71.43                100.00                22 (28;16)
+## 6          2501.1119        13437.07968                   100.00                100.00                100.00             520 (530;510)</code></pre>
 <ul>
 <li>Visualization</li>
 </ul>
@@ -334,41 +320,27 @@ Figure 8.1: Lefse analysis
 <span id="cb59-4"><a href="differential-analysis.html#cb59-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">group_names =</span> <span class="fu">c</span>(<span class="st">&quot;AA&quot;</span>, <span class="st">&quot;BB&quot;</span>))</span>
 <span id="cb59-5"><a href="differential-analysis.html#cb59-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb59-6"><a href="differential-analysis.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(metaphlan2_ps_wilcox)</span></code></pre></div>
-<pre><code>##                      TaxaID         Block Enrichment EffectSize Statistic    Pvalue AdjustedPvalue
-## 1   s__Alistipes_finegoldii 7_AA vs 15_BB  Nonsignif 1.23094855      73.5 0.1145448      0.4521504
-## 2 s__Alistipes_indistinctus 7_AA vs 15_BB  Nonsignif 0.78954179      66.0 0.2677815      0.6616137
-## 3  s__Alistipes_onderdonkii 7_AA vs 15_BB  Nonsignif 1.14756258      63.5 0.4370143      0.7578592
-## 4   s__Alistipes_putredinis 7_AA vs 15_BB  Nonsignif 1.34298152      54.0 0.9409918      0.9830621
-## 5       s__Alistipes_shahii 7_AA vs 15_BB  Nonsignif 1.04736939      71.0 0.1751506      0.5801989
-## 6    s__Anaerostipes_hadrus 7_AA vs 15_BB  Nonsignif 0.02734989      30.5 0.1258306      0.4625882
-##   Log2FoldChange (Median)\nAA_vs_BB Median Abundance\n(All) Median Abundance\nAA
-## 1                                NA              0.00000000            0.0027362
-## 2                                NA              0.00000000            0.0000000
-## 3                          5.819157              0.00000825            0.0002823
-## 4                                NA              0.00016915            0.0000000
-## 5                                NA              0.00012580            0.0062474
-## 6                         -3.900867              0.00013665            0.0000144
-##   Median Abundance\nBB Log2FoldChange (Rank)\nAA_vs_BB Mean Rank Abundance\nAA
-## 1            0.0000000                      0.52169761                   14.50
-## 2            0.0000000                      0.34139504                   13.43
-## 3            0.0000050                      0.27924089                   13.07
-## 4            0.0002200                      0.03870725                   11.71
-## 5            0.0000000                      0.46134594                   14.14
-## 6            0.0002151                     -0.63360363                    8.36
-##   Mean Rank Abundance\nBB Occurrence (100%)\n(All) Occurrence (100%)\nAA Occurrence (100%)\nBB
-## 1                   10.10                    45.45                 57.14                 40.00
-## 2                   10.60                    31.82                 42.86                 26.67
-## 3                   10.77                    54.55                 57.14                 53.33
-## 4                   11.40                    54.55                 42.86                 60.00
-## 5                   10.27                    50.00                 57.14                 46.67
-## 6                   12.97                    72.73                 57.14                 80.00
-##   Odds Ratio (95% CI)
-## 1     0.0028 (-12;12)
-## 2    0.067 (-5.2;5.4)
-## 3     0.38 (-1.5;2.3)
-## 4    0.47 (-0.99;1.9)
-## 5     0.17 (-3.2;3.6)
-## 6          31 (38;24)</code></pre>
+<pre><code>##                      TaxaID         Block Enrichment EffectSize Statistic    Pvalue AdjustedPvalue Log2FoldChange (Median)\nAA_vs_BB
+## 1   s__Alistipes_finegoldii 7_AA vs 15_BB  Nonsignif 1.23094855      73.5 0.1145448      0.4521504                                NA
+## 2 s__Alistipes_indistinctus 7_AA vs 15_BB  Nonsignif 0.78954179      66.0 0.2677815      0.6616137                                NA
+## 3  s__Alistipes_onderdonkii 7_AA vs 15_BB  Nonsignif 1.14756258      63.5 0.4370143      0.7578592                          5.819157
+## 4   s__Alistipes_putredinis 7_AA vs 15_BB  Nonsignif 1.34298152      54.0 0.9409918      0.9830621                                NA
+## 5       s__Alistipes_shahii 7_AA vs 15_BB  Nonsignif 1.04736939      71.0 0.1751506      0.5801989                                NA
+## 6    s__Anaerostipes_hadrus 7_AA vs 15_BB  Nonsignif 0.02734989      30.5 0.1258306      0.4625882                         -3.900867
+##   Median Abundance\n(All) Median Abundance\nAA Median Abundance\nBB Log2FoldChange (Rank)\nAA_vs_BB Mean Rank Abundance\nAA
+## 1              0.00000000            0.0027362            0.0000000                      0.52169761                   14.50
+## 2              0.00000000            0.0000000            0.0000000                      0.34139504                   13.43
+## 3              0.00000825            0.0002823            0.0000050                      0.27924089                   13.07
+## 4              0.00016915            0.0000000            0.0002200                      0.03870725                   11.71
+## 5              0.00012580            0.0062474            0.0000000                      0.46134594                   14.14
+## 6              0.00013665            0.0000144            0.0002151                     -0.63360363                    8.36
+##   Mean Rank Abundance\nBB Occurrence (100%)\n(All) Occurrence (100%)\nAA Occurrence (100%)\nBB Odds Ratio (95% CI)
+## 1                   10.10                    45.45                 57.14                 40.00     0.0028 (-12;12)
+## 2                   10.60                    31.82                 42.86                 26.67    0.067 (-5.2;5.4)
+## 3                   10.77                    54.55                 57.14                 53.33     0.38 (-1.5;2.3)
+## 4                   11.40                    54.55                 42.86                 60.00    0.47 (-0.99;1.9)
+## 5                   10.27                    50.00                 57.14                 46.67     0.17 (-3.2;3.6)
+## 6                   12.97                    72.73                 57.14                 80.00          31 (38;24)</code></pre>
 <ul>
 <li>Volcano</li>
 </ul>
@@ -455,52 +427,42 @@ Figure 8.4: Multiple DA results
 ## [1] stats4    stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-##  [1] SummarizedExperiment_1.24.0 Biobase_2.54.0              GenomicRanges_1.46.1       
-##  [4] GenomeInfoDb_1.30.1         IRanges_2.28.0              S4Vectors_0.32.3           
-##  [7] BiocGenerics_0.40.0         MatrixGenerics_1.6.0        matrixStats_0.61.0         
-## [10] ggpubr_0.4.0                ggplot2_3.3.5               phyloseq_1.38.0            
-## [13] tibble_3.1.6                dplyr_1.0.8                 XMAS_2.1.2                 
+##  [1] SummarizedExperiment_1.24.0 Biobase_2.54.0              GenomicRanges_1.46.1        GenomeInfoDb_1.30.1        
+##  [5] IRanges_2.28.0              S4Vectors_0.32.3            BiocGenerics_0.40.0         MatrixGenerics_1.6.0       
+##  [9] matrixStats_0.61.0          ggpubr_0.4.0                ggplot2_3.3.5               phyloseq_1.38.0            
+## [13] tibble_3.1.6                dplyr_1.0.8                 XMAS2_2.1.2                
 ## 
 ## loaded via a namespace (and not attached):
-##   [1] utf8_1.2.2             tidyselect_1.1.2       RSQLite_2.2.10         AnnotationDbi_1.56.2  
-##   [5] htmlwidgets_1.5.4      grid_4.1.2             BiocParallel_1.28.3    munsell_0.5.0         
-##   [9] codetools_0.2-18       DT_0.21                withr_2.5.0            colorspace_2.0-3      
-##  [13] highr_0.9              knitr_1.37             rstudioapi_0.13        pscl_1.5.5            
-##  [17] robustbase_0.93-9      bayesm_3.1-4           ggsignif_0.6.3         labeling_0.4.2        
-##  [21] mbzinb_0.2             GenomeInfoDbData_1.2.7 bit64_4.0.5            farver_2.1.0          
-##  [25] pheatmap_1.0.12        rhdf5_2.38.1           vctrs_0.3.8            generics_0.1.2        
-##  [29] TH.data_1.1-0          xfun_0.30              R6_2.5.1               locfit_1.5-9.5        
-##  [33] RcppZiggurat_0.1.6     bitops_1.0-7           rhdf5filters_1.6.0     cachem_1.0.6          
-##  [37] DelayedArray_0.20.0    assertthat_0.2.1       scales_1.1.1           multcomp_1.4-18       
-##  [41] nnet_7.3-17            gtable_0.3.0           sandwich_3.0-1         rlang_1.0.2           
-##  [45] genefilter_1.76.0      splines_4.1.2          rstatix_0.7.0          broom_0.7.12          
-##  [49] checkmate_2.0.0        yaml_2.3.5             reshape2_1.4.4         abind_1.4-5           
-##  [53] crosstalk_1.2.0        backports_1.4.1        Rfast_2.0.6            Hmisc_4.6-0           
-##  [57] DiagrammeR_1.0.9       tensorA_0.36.2         tools_4.1.2            bookdown_0.24         
-##  [61] zCompositions_1.4.0    ellipsis_0.3.2         gplots_3.1.1           jquerylib_0.1.4       
-##  [65] biomformat_1.22.0      RColorBrewer_1.1-2     Rcpp_1.0.8.2           plyr_1.8.6            
-##  [69] base64enc_0.1-3        visNetwork_2.1.0       zlibbioc_1.40.0        purrr_0.3.4           
-##  [73] RCurl_1.98-1.6         rpart_4.1.16           Wrench_1.12.0          cowplot_1.1.1         
-##  [77] zoo_1.8-9              ggrepel_0.9.1          cluster_2.1.2          magrittr_2.0.2        
-##  [81] data.table_1.14.2      truncnorm_1.0-8        mvtnorm_1.1-3          ALDEx2_1.26.0         
-##  [85] evaluate_0.15          xtable_1.8-4           XML_3.99-0.9           jpeg_0.1-9            
-##  [89] gridExtra_2.3          shape_1.4.6            compiler_4.1.2         KernSmooth_2.23-20    
-##  [93] crayon_1.5.0           htmltools_0.5.2        mgcv_1.8-39            Formula_1.2-4         
-##  [97] tidyr_1.2.0            geneplotter_1.72.0     libcoin_1.0-9          DBI_1.1.2             
-## [101] MASS_7.3-55            compositions_2.0-4     Matrix_1.4-0           ade4_1.7-18           
-## [105] car_3.0-12             permute_0.9-7          cli_3.2.0              parallel_4.1.2        
-## [109] igraph_1.2.11          pkgconfig_2.0.3        coin_1.4-2             foreign_0.8-82        
-## [113] foreach_1.5.2          annotate_1.72.0        bslib_0.3.1            multtest_2.50.0       
-## [117] XVector_0.34.0         NADA_1.6-1.1           stringr_1.4.0          digest_0.6.29         
-## [121] vegan_2.5-7            Biostrings_2.62.0      rmarkdown_2.13         htmlTable_2.4.0       
-## [125] edgeR_3.36.0           gtools_3.9.2           modeltools_0.2-23      lifecycle_1.0.1       
-## [129] nlme_3.1-155           jsonlite_1.8.0         Rhdf5lib_1.16.0        carData_3.0-5         
-## [133] limma_3.50.1           fansi_1.0.2            pillar_1.7.0           lattice_0.20-45       
-## [137] KEGGREST_1.34.0        fastmap_1.1.0          httr_1.4.2             DEoptimR_1.0-10       
-## [141] survival_3.3-1         glue_1.6.2             png_0.1-7              iterators_1.0.14      
-## [145] glmnet_4.1-3           bit_4.0.4              stringi_1.7.6          sass_0.4.0            
-## [149] metagenomeSeq_1.36.0   blob_1.2.2             DESeq2_1.34.0          latticeExtra_0.6-29   
-## [153] caTools_1.18.2         memoise_2.0.1          ape_5.6-2</code></pre>
+##   [1] backports_1.4.1        Hmisc_4.6-0            plyr_1.8.6             igraph_1.2.11          splines_4.1.2         
+##   [6] crosstalk_1.2.0        BiocParallel_1.28.3    TH.data_1.1-0          digest_0.6.29          foreach_1.5.2         
+##  [11] htmltools_0.5.2        fansi_1.0.2            checkmate_2.0.0        magrittr_2.0.2         memoise_2.0.1         
+##  [16] cluster_2.1.2          limma_3.50.1           Biostrings_2.62.0      annotate_1.72.0        bayesm_3.1-4          
+##  [21] sandwich_3.0-1         metagenomeSeq_1.36.0   jpeg_0.1-9             colorspace_2.0-3       ggrepel_0.9.1         
+##  [26] blob_1.2.2             xfun_0.30              crayon_1.5.0           RCurl_1.98-1.6         jsonlite_1.8.0        
+##  [31] libcoin_1.0-9          genefilter_1.76.0      survival_3.3-1         zoo_1.8-9              iterators_1.0.14      
+##  [36] ape_5.6-2              glue_1.6.2             gtable_0.3.0           zlibbioc_1.40.0        XVector_0.34.0        
+##  [41] compositions_2.0-4     DelayedArray_0.20.0    car_3.0-12             Rhdf5lib_1.16.0        shape_1.4.6           
+##  [46] DEoptimR_1.0-10        abind_1.4-5            scales_1.1.1           pheatmap_1.0.12        mvtnorm_1.1-3         
+##  [51] DBI_1.1.2              edgeR_3.36.0           rstatix_0.7.0          Rcpp_1.0.8.2           xtable_1.8-4          
+##  [56] htmlTable_2.4.0        foreign_0.8-82         bit_4.0.4              Formula_1.2-4          DT_0.21               
+##  [61] glmnet_4.1-3           htmlwidgets_1.5.4      httr_1.4.2             DiagrammeR_1.0.9       gplots_3.1.1          
+##  [66] RColorBrewer_1.1-2     modeltools_0.2-23      ellipsis_0.3.2         farver_2.1.0           pkgconfig_2.0.3       
+##  [71] XML_3.99-0.9           nnet_7.3-17            sass_0.4.0             locfit_1.5-9.5         utf8_1.2.2            
+##  [76] labeling_0.4.2         tidyselect_1.1.2       rlang_1.0.2            reshape2_1.4.4         AnnotationDbi_1.56.2  
+##  [81] munsell_0.5.0          tools_4.1.2            visNetwork_2.1.0       cachem_1.0.6           cli_3.2.0             
+##  [86] generics_0.1.2         RSQLite_2.2.10         ade4_1.7-18            broom_0.7.12           evaluate_0.15         
+##  [91] biomformat_1.22.0      stringr_1.4.0          fastmap_1.1.0          yaml_2.3.5             knitr_1.37            
+##  [96] bit64_4.0.5            robustbase_0.93-9      caTools_1.18.2         purrr_0.3.4            KEGGREST_1.34.0       
+## [101] coin_1.4-2             nlme_3.1-155           compiler_4.1.2         rstudioapi_0.13        png_0.1-7             
+## [106] ggsignif_0.6.3         geneplotter_1.72.0     bslib_0.3.1            stringi_1.7.6          highr_0.9             
+## [111] lattice_0.20-45        Matrix_1.4-0           tensorA_0.36.2         vegan_2.5-7            permute_0.9-7         
+## [116] multtest_2.50.0        vctrs_0.3.8            pillar_1.7.0           lifecycle_1.0.1        rhdf5filters_1.6.0    
+## [121] jquerylib_0.1.4        cowplot_1.1.1          data.table_1.14.2      bitops_1.0-7           R6_2.5.1              
+## [126] latticeExtra_0.6-29    bookdown_0.24          KernSmooth_2.23-20     gridExtra_2.3          codetools_0.2-18      
+## [131] MASS_7.3-55            gtools_3.9.2           assertthat_0.2.1       Wrench_1.12.0          rhdf5_2.38.1          
+## [136] DESeq2_1.34.0          withr_2.5.0            multcomp_1.4-18        GenomeInfoDbData_1.2.7 mgcv_1.8-39           
+## [141] parallel_4.1.2         grid_4.1.2             rpart_4.1.16           tidyr_1.2.0            rmarkdown_2.13        
+## [146] carData_3.0-5          base64enc_0.1-3</code></pre>
 
 </div>
 </div>
