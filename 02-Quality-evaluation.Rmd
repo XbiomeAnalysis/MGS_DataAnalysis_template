@@ -3,13 +3,11 @@
 
 **Loading packages**
 
-```R
+```{r, echo=TRUE, results="hide", warning=FALSE, message=FALSE}
 library(XMAS)
 library(dplyr)
 library(tibble)
 library(phyloseq)
-library(ggplot2)
-library(ggpubr)
 ```
 
 The taxonomic levels of spike-in sample's bacteria is species. Firstly, using the `summarize_taxa` to get the genus level phyloseq object and then do `run_RefCheck` under the optimal parameters.
@@ -21,6 +19,7 @@ The taxonomic levels of spike-in sample's bacteria is species. Firstly, using th
 metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps, taxa_level = "Species")
 metaphlan2_ps_species@sam_data
 ```
+
 * run `run_RefCheck`
 ```{r, warning=FALSE, message=FALSE, collapse=TRUE}
 run_RefCheck(
