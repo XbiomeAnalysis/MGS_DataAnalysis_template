@@ -24,7 +24,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-05-27" />
+<meta name="date" content="2022-05-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -253,7 +253,7 @@ div.csl-indent {
 <div id="header">
 <h1 class="title">MGS microbiota data analysis based on XMAS package</h1>
 <p class="author"><em>Hua Zou</em></p>
-<p class="date"><em>2022-05-27</em></p>
+<p class="date"><em>2022-05-31</em></p>
 </div>
 <div id="prerequisites" class="section level1 hasAnchor" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Prerequisites<a href="index.html#prerequisites" class="anchor-section" aria-label="Anchor link to header"></a></h1>
@@ -281,8 +281,8 @@ div.csl-indent {
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 </li>
 </ol>
-<div id="htmlwidget-6200bd87f6aa2201a818" style="width:672px;height:768px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6200bd87f6aa2201a818">{"x":{"diagram":"digraph flowchart { \n\n# initiate graph\ngraph [layout = dot, rankdir = TB, label = \"[dada2_res|metadata|tree]\n\n\", labelloc = t]\n\n\n# global node settings\nnode [shape = rectangle, style = filled, fillcolor = Linen, fontname = arial, width = 4]\n \ntab1 [label = \"Importing data: import_dada2()/summarize_phyloseq()\"]  \ntab2 [label = \"Quality Control(RefCheck/Remove): summarize_taxa()/run_RefCheck()/get_GroupPhyloseq()\"]  \ntab3 [label = \"Quality Control(Rarefaction curves): plot_RarefCure()\"]\ntab4 [label = \"Quality Control(Reads Track): plot_Dada2Track()\"]  \ntab5 [label = \"Quality Control(Variability): plot_taxa_cv()/plot_read_distribution()\"]  \ntab6 [label = \"Data processing(Rarefy): normalize()\"]\ntab7 [label = \"Data processing(Extract specific taxonomic level): summarize_taxa()\"]  \ntab8 [label = \"Data processing(Count2Relative): summarize_taxa(absolute = FALSE)\"]  \ntab9 [label = \"Data processing(Filter&trim): run_filter()/run_trim()\"]\ntab10 [label = \"GlobalView(Alpha diveristy): run_alpha_diversity()/plot_boxplot()\"]  \ntab11 [label = \"GlobalView(Beta diveristy): run_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()\"]  \ntab12 [label = \"GlobalView(microbial composition): plot_StackBarPlot()/plot_core_taxa()/core_members()\"]\ntab13 [label = \"DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()\"] \n \ntab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8 -> tab9 -> tab10 -> tab11 -> tab12 -> tab13;  \n}  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f3d5fff67e22d5c9d97d" style="width:672px;height:768px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f3d5fff67e22d5c9d97d">{"x":{"diagram":"digraph flowchart { \n\n# initiate graph\ngraph [layout = dot, rankdir = TB, label = \"[metaphlan|metadata|tree]\n\n\", labelloc = t]\n\n\n# global node settings\nnode [shape = rectangle, style = filled, fillcolor = Linen, fontname = arial, width = 4]\n \ntab1 [label = \"Importing data: import_metaphlan_taxa()/import_metaphlan2()/summarize_phyloseq()\"]  \ntab2 [label = \"Quality Control(RefCheck/Remove): run_RefCheck()/get_GroupPhyloseq()\"]  \ntab3 [label = \"Data processing(Extract specific taxonomic level): summarize_taxa()\"]\ntab4 [label = \"Data processing(Filter&trim): run_filter()/run_trim()\"]  \ntab5 [label = \"GlobalView(Alpha diveristy): run_alpha_diversity()/plot_boxplot()\"]  \ntab6 [label = \"GlobalView(Beta diveristy): run_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()\"]\ntab7 [label = \"GlobalView(microbial composition): plot_StackBarPlot()/plot_core_taxa()/core_members()\"]  \ntab8 [label = \"DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()\"]\n \ntab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8;  \n}  ","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 1.1: Functions of XMAS 2.0 in MGS
 </p>

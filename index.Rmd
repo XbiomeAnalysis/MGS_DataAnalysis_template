@@ -49,7 +49,7 @@ The standard data analysis of 16S and MGS data by **XMAS 2.0**. The upstream pro
 DiagrammeR::grViz(diagram = "digraph flowchart { 
 
 # initiate graph
-graph [layout = dot, rankdir = TB, label = '[dada2_res|metadata|tree]\n\n', labelloc = t]
+graph [layout = dot, rankdir = TB, label = '[metaphlan|metadata|tree]\n\n', labelloc = t]
 
 
 # global node settings
@@ -62,29 +62,19 @@ tab4 [label = '@@4']
 tab5 [label = '@@5']  
 tab6 [label = '@@6']
 tab7 [label = '@@7']  
-tab8 [label = '@@8']  
-tab9 [label = '@@9']
-tab10 [label = '@@10']  
-tab11 [label = '@@11']  
-tab12 [label = '@@12']
-tab13 [label = '@@13'] 
+tab8 [label = '@@8']
  
-tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8 -> tab9 -> tab10 -> tab11 -> tab12 -> tab13;  
+tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8;  
 }  
 
   
-[1]: paste0('Importing data: import_dada2()/summarize_phyloseq()')
-[2]: paste0('Quality Control(RefCheck/Remove): summarize_taxa()/run_RefCheck()/get_GroupPhyloseq()')
-[3]: paste0('Quality Control(Rarefaction curves): plot_RarefCure()')  
-[4]: paste0('Quality Control(Reads Track): plot_Dada2Track()')  
-[5]: paste0('Quality Control(Variability): plot_taxa_cv()/plot_read_distribution()')  
-[6]: paste0('Data processing(Rarefy): normalize()') 
-[7]: paste0('Data processing(Extract specific taxonomic level): summarize_taxa()') 
-[8]: paste0('Data processing(Count2Relative): summarize_taxa(absolute = FALSE)') 
-[9]: paste0('Data processing(Filter&trim): run_filter()/run_trim()') 
-[10]: paste0('GlobalView(Alpha diveristy): run_alpha_diversity()/plot_boxplot()') 
-[11]: paste0('GlobalView(Beta diveristy): run_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()') 
-[12]: paste0('GlobalView(microbial composition): plot_StackBarPlot()/plot_core_taxa()/core_members()')
-[13]: paste0('DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()')
+[1]: paste0('Importing data: import_metaphlan_taxa()/import_metaphlan2()/summarize_phyloseq()')
+[2]: paste0('Quality Control(RefCheck/Remove): run_RefCheck()/get_GroupPhyloseq()')
+[3]: paste0('Data processing(Extract specific taxonomic level): summarize_taxa()') 
+[4]: paste0('Data processing(Filter&trim): run_filter()/run_trim()') 
+[5]: paste0('GlobalView(Alpha diveristy): run_alpha_diversity()/plot_boxplot()') 
+[6]: paste0('GlobalView(Beta diveristy): run_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()') 
+[7]: paste0('GlobalView(microbial composition): plot_StackBarPlot()/plot_core_taxa()/core_members()')
+[8]: paste0('DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()')
 ")
 ```
