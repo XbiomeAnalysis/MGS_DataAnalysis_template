@@ -229,6 +229,18 @@ div.csl-indent {
 <li class="chapter" data-level="8.5" data-path="differential-analysis.html"><a href="differential-analysis.html#multiple-differential-analysis-by-one-function"><i class="fa fa-check"></i><b>8.5</b> Multiple differential analysis by one function<span></span></a></li>
 <li class="chapter" data-level="8.6" data-path="differential-analysis.html"><a href="differential-analysis.html#systematic-information-6"><i class="fa fa-check"></i><b>8.6</b> Systematic Information<span></span></a></li>
 </ul></li>
+<li class="chapter" data-level="9" data-path="test-example.html"><a href="test-example.html"><i class="fa fa-check"></i><b>9</b> Test Example<span></span></a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="test-example.html"><a href="test-example.html#loading-packages"><i class="fa fa-check"></i><b>9.1</b> Loading packages<span></span></a></li>
+<li class="chapter" data-level="9.2" data-path="test-example.html"><a href="test-example.html#loading-data"><i class="fa fa-check"></i><b>9.2</b> Loading data<span></span></a></li>
+<li class="chapter" data-level="9.3" data-path="test-example.html"><a href="test-example.html#step1-convert-inputs-into-phyloseq-data"><i class="fa fa-check"></i><b>9.3</b> Step1: Convert inputs into phyloseq data<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="test-example.html"><a href="test-example.html#step2-transform-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>9.4</b> Step2: Transform limit of detection (LOD) into Zeros<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="test-example.html"><a href="test-example.html#step3-brs-checking"><i class="fa fa-check"></i><b>9.5</b> Step3: BRS checking<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="test-example.html"><a href="test-example.html#step4-extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>9.6</b> Step4: Extracting specific taxonomic level<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="test-example.html"><a href="test-example.html#step7-globalview"><i class="fa fa-check"></i><b>9.7</b> Step7: GlobalView<span></span></a></li>
+<li class="chapter" data-level="9.8" data-path="test-example.html"><a href="test-example.html#step6-differential-analysis"><i class="fa fa-check"></i><b>9.8</b> Step6: Differential Analysis<span></span></a></li>
+<li class="chapter" data-level="9.9" data-path="test-example.html"><a href="test-example.html#systematic-information-7"><i class="fa fa-check"></i><b>9.9</b> Systematic Information<span></span></a></li>
+</ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -316,23 +328,23 @@ div.csl-indent {
 <span id="cb18-23"><a href="quality-control.html#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA  0.22002 0.26062 0.28058 0.33329  0.07093  0.06778  0.05229  0.04781  0.06825  0.15573000</span></span>
 <span id="cb18-24"><a href="quality-control.html#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                       7.33876 7.34799 7.14891 6.47250  8.88190  9.72198  9.72162 10.57600 32.69000 11.09996222</span></span>
 <span id="cb18-25"><a href="quality-control.html#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="do">##                                                                                Evaluation</span></span>
-<span id="cb18-26"><a href="quality-control.html#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum              refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-27"><a href="quality-control.html#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis               refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-28"><a href="quality-control.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii        refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-29"><a href="quality-control.html#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis        refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-30"><a href="quality-control.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron        refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-31"><a href="quality-control.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens             refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-32"><a href="quality-control.html#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                   refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-33"><a href="quality-control.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans               refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-34"><a href="quality-control.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius            refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-35"><a href="quality-control.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens           refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-36"><a href="quality-control.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                  refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-37"><a href="quality-control.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                   refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-38"><a href="quality-control.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-39"><a href="quality-control.html#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                    refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-40"><a href="quality-control.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum   refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-41"><a href="quality-control.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span>
-<span id="cb18-42"><a href="quality-control.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                      refE didn&#39;t pass the threshold (2022-06-01 14:40:18).</span></span></code></pre></div>
+<span id="cb18-26"><a href="quality-control.html#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum              refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-27"><a href="quality-control.html#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis               refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-28"><a href="quality-control.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii        refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-29"><a href="quality-control.html#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis        refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-30"><a href="quality-control.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron        refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-31"><a href="quality-control.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens             refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-32"><a href="quality-control.html#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                   refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-33"><a href="quality-control.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans               refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-34"><a href="quality-control.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius            refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-35"><a href="quality-control.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens           refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-36"><a href="quality-control.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                  refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-37"><a href="quality-control.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                   refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-38"><a href="quality-control.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-39"><a href="quality-control.html#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                    refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-40"><a href="quality-control.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum   refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-41"><a href="quality-control.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span>
+<span id="cb18-42"><a href="quality-control.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                      refE didn&#39;t pass the threshold (2022-06-01 18:37:42).</span></span></code></pre></div>
 </div>
 <div id="spike-in-samples-brs-remove" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Spike-in sample’s (BRS) remove<a href="quality-control.html#spike-in-samples-brs-remove" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -364,41 +376,42 @@ div.csl-indent {
 ## 
 ## other attached packages:
 ##  [1] magrittr_2.0.2              glue_1.6.2                  Gmisc_3.0.0                 htmlTable_2.4.0            
-##  [5] Rcpp_1.0.8.2                SummarizedExperiment_1.24.0 Biobase_2.54.0              GenomicRanges_1.46.1       
-##  [9] GenomeInfoDb_1.30.1         IRanges_2.28.0              S4Vectors_0.32.3            BiocGenerics_0.40.0        
-## [13] MatrixGenerics_1.6.0        matrixStats_0.61.0          ggpubr_0.4.0                ggplot2_3.3.5              
-## [17] phyloseq_1.38.0             tibble_3.1.6                dplyr_1.0.8                 XMAS2_2.1.3                
+##  [5] Rcpp_1.0.8.2                readxl_1.4.0                SummarizedExperiment_1.24.0 Biobase_2.54.0             
+##  [9] GenomicRanges_1.46.1        GenomeInfoDb_1.30.1         IRanges_2.28.0              S4Vectors_0.32.3           
+## [13] BiocGenerics_0.40.0         MatrixGenerics_1.6.0        matrixStats_0.61.0          ggpubr_0.4.0               
+## [17] ggplot2_3.3.5               phyloseq_1.38.0             tibble_3.1.6                dplyr_1.0.8                
+## [21] XMAS2_2.1.3                
 ## 
 ## loaded via a namespace (and not attached):
-##   [1] backports_1.4.1        Hmisc_4.6-0            plyr_1.8.6             igraph_1.2.11          splines_4.1.2         
-##   [6] crosstalk_1.2.0        BiocParallel_1.28.3    TH.data_1.1-0          digest_0.6.29          foreach_1.5.2         
+##   [1] backports_1.4.1        Hmisc_4.6-0            corrplot_0.92          plyr_1.8.6             igraph_1.2.11         
+##   [6] splines_4.1.2          BiocParallel_1.28.3    TH.data_1.1-0          digest_0.6.29          foreach_1.5.2         
 ##  [11] htmltools_0.5.2        fansi_1.0.2            checkmate_2.0.0        memoise_2.0.1          cluster_2.1.2         
-##  [16] limma_3.50.1           Biostrings_2.62.0      annotate_1.72.0        bayesm_3.1-4           sandwich_3.0-1        
-##  [21] metagenomeSeq_1.36.0   jpeg_0.1-9             colorspace_2.0-3       ggrepel_0.9.1          blob_1.2.2            
-##  [26] xfun_0.30              crayon_1.5.0           RCurl_1.98-1.6         jsonlite_1.8.0         libcoin_1.0-9         
-##  [31] genefilter_1.76.0      survival_3.3-1         zoo_1.8-9              iterators_1.0.14       ape_5.6-2             
-##  [36] gtable_0.3.0           zlibbioc_1.40.0        XVector_0.34.0         compositions_2.0-4     DelayedArray_0.20.0   
-##  [41] car_3.0-12             Rhdf5lib_1.16.0        shape_1.4.6            DEoptimR_1.0-10        abind_1.4-5           
-##  [46] scales_1.1.1           pheatmap_1.0.12        mvtnorm_1.1-3          DBI_1.1.2              edgeR_3.36.0          
-##  [51] rstatix_0.7.0          xtable_1.8-4           foreign_0.8-82         bit_4.0.4              Formula_1.2-4         
-##  [56] DT_0.21                glmnet_4.1-3           htmlwidgets_1.5.4      httr_1.4.2             DiagrammeR_1.0.9      
-##  [61] gplots_3.1.1           RColorBrewer_1.1-2     modeltools_0.2-23      ellipsis_0.3.2         farver_2.1.0          
-##  [66] pkgconfig_2.0.3        XML_3.99-0.9           sass_0.4.0             nnet_7.3-17            locfit_1.5-9.5        
-##  [71] utf8_1.2.2             labeling_0.4.2         tidyselect_1.1.2       rlang_1.0.2            reshape2_1.4.4        
-##  [76] AnnotationDbi_1.56.2   munsell_0.5.0          tools_4.1.2            visNetwork_2.1.0       cachem_1.0.6          
-##  [81] cli_3.2.0              generics_0.1.2         RSQLite_2.2.10         ade4_1.7-18            broom_0.7.12          
-##  [86] evaluate_0.15          biomformat_1.22.0      stringr_1.4.0          fastmap_1.1.0          yaml_2.3.5            
-##  [91] knitr_1.37             bit64_4.0.5            robustbase_0.93-9      caTools_1.18.2         forestplot_2.0.1      
-##  [96] purrr_0.3.4            KEGGREST_1.34.0        coin_1.4-2             nlme_3.1-155           compiler_4.1.2        
-## [101] rstudioapi_0.13        png_0.1-7              ggsignif_0.6.3         geneplotter_1.72.0     bslib_0.3.1           
-## [106] stringi_1.7.6          highr_0.9              lattice_0.20-45        Matrix_1.4-0           tensorA_0.36.2        
-## [111] vegan_2.5-7            permute_0.9-7          multtest_2.50.0        vctrs_0.3.8            pillar_1.7.0          
-## [116] lifecycle_1.0.1        rhdf5filters_1.6.0     jquerylib_0.1.4        cowplot_1.1.1          data.table_1.14.2     
-## [121] bitops_1.0-7           R6_2.5.1               latticeExtra_0.6-29    bookdown_0.24          KernSmooth_2.23-20    
-## [126] gridExtra_2.3          codetools_0.2-18       MASS_7.3-55            gtools_3.9.2           assertthat_0.2.1      
-## [131] Wrench_1.12.0          rhdf5_2.38.1           DESeq2_1.34.0          withr_2.5.0            multcomp_1.4-18       
-## [136] GenomeInfoDbData_1.2.7 mgcv_1.8-39            parallel_4.1.2         rpart_4.1.16           tidyr_1.2.0           
-## [141] rmarkdown_2.13         carData_3.0-5          lubridate_1.8.0        base64enc_0.1-3</code></pre>
+##  [16] limma_3.50.1           Biostrings_2.62.0      annotate_1.72.0        sandwich_3.0-1         metagenomeSeq_1.36.0  
+##  [21] jpeg_0.1-9             colorspace_2.0-3       blob_1.2.2             ggrepel_0.9.1          xfun_0.30             
+##  [26] crayon_1.5.0           RCurl_1.98-1.6         jsonlite_1.8.0         libcoin_1.0-9          genefilter_1.76.0     
+##  [31] survival_3.3-1         zoo_1.8-9              iterators_1.0.14       ape_5.6-2              gtable_0.3.0          
+##  [36] zlibbioc_1.40.0        XVector_0.34.0         DelayedArray_0.20.0    car_3.0-12             RcppZiggurat_0.1.6    
+##  [41] Rhdf5lib_1.16.0        shape_1.4.6            pscl_1.5.5             abind_1.4-5            scales_1.1.1          
+##  [46] pheatmap_1.0.12        mvtnorm_1.1-3          DBI_1.1.2              edgeR_3.36.0           rstatix_0.7.0         
+##  [51] xtable_1.8-4           foreign_0.8-82         bit_4.0.4              Formula_1.2-4          truncnorm_1.0-8       
+##  [56] glmnet_4.1-3           htmlwidgets_1.5.4      httr_1.4.2             gplots_3.1.1           RColorBrewer_1.1-2    
+##  [61] modeltools_0.2-23      ellipsis_0.3.2         NADA_1.6-1.1           pkgconfig_2.0.3        XML_3.99-0.9          
+##  [66] farver_2.1.0           nnet_7.3-17            sass_0.4.0             locfit_1.5-9.5         utf8_1.2.2            
+##  [71] tidyselect_1.1.2       labeling_0.4.2         rlang_1.0.2            reshape2_1.4.4         AnnotationDbi_1.56.2  
+##  [76] munsell_0.5.0          cellranger_1.1.0       tools_4.1.2            cachem_1.0.6           cli_3.2.0             
+##  [81] generics_0.1.2         RSQLite_2.2.10         ade4_1.7-18            broom_0.7.12           evaluate_0.15         
+##  [86] biomformat_1.22.0      stringr_1.4.0          fastmap_1.1.0          yaml_2.3.5             knitr_1.37            
+##  [91] bit64_4.0.5            caTools_1.18.2         forestplot_2.0.1       purrr_0.3.4            KEGGREST_1.34.0       
+##  [96] coin_1.4-2             nlme_3.1-155           mbzinb_0.2             compiler_4.1.2         rstudioapi_0.13       
+## [101] png_0.1-7              ggsignif_0.6.3         zCompositions_1.4.0    geneplotter_1.72.0     bslib_0.3.1           
+## [106] stringi_1.7.6          highr_0.9              lattice_0.20-45        Matrix_1.4-0           vegan_2.5-7           
+## [111] permute_0.9-7          multtest_2.50.0        vctrs_0.3.8            pillar_1.7.0           lifecycle_1.0.1       
+## [116] rhdf5filters_1.6.0     jquerylib_0.1.4        data.table_1.14.2      cowplot_1.1.1          bitops_1.0-7          
+## [121] latticeExtra_0.6-29    R6_2.5.1               bookdown_0.24          gridExtra_2.3          KernSmooth_2.23-20    
+## [126] codetools_0.2-18       MASS_7.3-55            gtools_3.9.2           assertthat_0.2.1       Wrench_1.12.0         
+## [131] rhdf5_2.38.1           DESeq2_1.34.0          withr_2.5.0            multcomp_1.4-18        GenomeInfoDbData_1.2.7
+## [136] mgcv_1.8-39            parallel_4.1.2         rpart_4.1.16           tidyr_1.2.0            Rfast_2.0.6           
+## [141] rmarkdown_2.13         carData_3.0-5          ALDEx2_1.26.0          lubridate_1.8.0        base64enc_0.1-3</code></pre>
 
 </div>
 </div>
