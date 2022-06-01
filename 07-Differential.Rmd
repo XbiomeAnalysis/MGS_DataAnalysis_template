@@ -14,7 +14,23 @@ library(SummarizedExperiment)
 ```
 
 
-There are more than 10 approaches to perform differential analysis. Here, we choose two of them and recommend users going to **Chapter 10** to see more detials.
+There are more than 10 approaches to perform differential analysis. Here, we choose two of them and recommend users going to **Chapter 10** to see more details.
+
+## Filtering & Trimming
+
+We suggest that filtering taxa with low abundance (the summarized value under cutoff: `1e-4`) and trimming taxa with low prevalence (default: `0.2`).
+
+## Filtering the low relative abundance or unclassified taxa by the threshold (total counts < 1e-4)
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species_filter <- run_filter(metaphlan2_ps_species, cutoff = 1e-4, unclass = TRUE)
+metaphlan2_ps_species_filter 
+```
+
+## Trimming the taxa with low occurrence less than threshold
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species_filter_trim <- run_trim(metaphlan2_ps_species_filter, cutoff = 0.2, trim = "feature")
+metaphlan2_ps_species_filter_trim
+```
 
 ## Liner discriminant analysis (LDA) effect size (LEfSe)
 

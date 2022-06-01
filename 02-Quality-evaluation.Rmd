@@ -16,14 +16,13 @@ The taxonomic levels of spike-in sample's bacteria is species. Firstly, using th
 
 * get the BRS_ID
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps, taxa_level = "Species")
-metaphlan2_ps_species@sam_data
+metaphlan2_ps_Species_LOD@sam_data
 ```
 
 * run `run_RefCheck`
 ```{r, warning=FALSE, message=FALSE, collapse=TRUE}
 run_RefCheck(
-    ps=metaphlan2_ps_species,
+    ps=metaphlan2_ps_Species_LOD,
     BRS_ID="refE",
     Reference=NULL,
     Ref_type="MGS",
@@ -32,13 +31,12 @@ run_RefCheck(
 
 ## Spike-in sample's (BRS) remove
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_remove_BRS <- get_GroupPhyloseq(
-                     ps = metaphlan2_ps,
+metaphlan2_ps_Species_LOD_remove_BRS <- get_GroupPhyloseq(
+                     ps = metaphlan2_ps_Species_LOD,
                      group = "Group",
                      group_names = "QC")
-metaphlan2_ps_remove_BRS
+metaphlan2_ps_Species_LOD_remove_BRS
 ```
-
 
 
 ## Systematic Information

@@ -45,36 +45,60 @@ The standard data analysis of 16S and MGS data by **XMAS 2.0**. The upstream pro
 6. Composition analysis;
 
 7. Differential analysis.
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.height=8, fig.align="center", fig.cap="Functions of XMAS 2.0 in MGS"}
-DiagrammeR::grViz(diagram = "digraph flowchart { 
 
-# initiate graph
-graph [layout = dot, rankdir = TB, label = '[metaphlan|metadata|tree]\n\n', labelloc = t]
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.width=8, fig.align="center", fig.cap="Functions of XMAS 2.0"}
+library(Gmisc, quietly = TRUE)
+library(glue)
+library(htmlTable)
+library(grid)
+library(magrittr)
+
+ImportData <- boxGrob("Step1: Importing data\nimport_metaphlan_taxa()/get_metaphlan_phyloseq()",
+                      txt_gp = gpar(col = "darkblue", cex = .8))
+TransformLOD <- boxGrob("Step2: Transform LOD into Zeros\naggregate_LOD_taxa()",
+                      txt_gp = gpar(col = "darkblue", cex = .8))
+RefCheck <- boxGrob("Step3: BRS checking\nsummarize_taxa()/run_RefCheck()/get_GroupPhyloseq()",
+                      txt_gp = gpar(col = "darkblue", cex = .8))
+Extract <- boxGrob("Step4: Extract specific taxonomic level\nsummarize_taxa()",
+                      txt_gp = gpar(col = "darkblue", cex = .8))
+
+GlobalView <- boxGrob("Step5: GlobalView",
+                      txt_gp = gpar(col = "darkblue", cex = .8)) 
+GlobalView_a <- boxGrob("Step5.1: Alpha diveristy\nrun_alpha_diversity()/plot_boxplot()",
+                      txt_gp = gpar(col = "darkblue", cex = .6)) 
+GlobalView_b <- boxGrob("Step5.2: Beta diveristy\nrun_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()",
+                      txt_gp = gpar(col = "darkblue", cex = .6))  
+GlobalView_c <- boxGrob("Step5.3: Composition\nplot_stacked_bar_XIVZ()/plot_core_taxa()/core_members()",
+                      txt_gp = gpar(col = "darkblue", cex = .6))  
+
+Differential <- boxGrob("Step6: DifferentialAnalysis\nrun_filter()/run_trim()/run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()",
+                      txt_gp = gpar(col = "darkblue", cex = .8))  
 
 
-# global node settings
-node [shape = rectangle, style = filled, fillcolor = Linen, fontname = arial, width = 4]
- 
-tab1 [label = '@@1']  
-tab2 [label = '@@2']  
-tab3 [label = '@@3']
-tab4 [label = '@@4']  
-tab5 [label = '@@5']  
-tab6 [label = '@@6']
-tab7 [label = '@@7']  
-tab8 [label = '@@8']
- 
-tab1 -> tab2 -> tab3 -> tab4 -> tab5 -> tab6 -> tab7 -> tab8;  
-}  
+grid.newpage()
+vert <- spreadVertical(ImportData,
+                       TransformLOD = TransformLOD,
+                       RefCheck = RefCheck,
+                       Extract = Extract,
+                       GlobalView = GlobalView,
+                       grps = GlobalView_a,
+                       Differential = Differential)
+grps <- alignVertical(reference = vert$grps,
+                      GlobalView_a, GlobalView_b, GlobalView_c) %>%
+  spreadHorizontal()
 
-  
-[1]: paste0('Importing data: import_metaphlan_taxa()/import_metaphlan2()/summarize_phyloseq()')
-[2]: paste0('Quality Control(RefCheck/Remove): run_RefCheck()/get_GroupPhyloseq()')
-[3]: paste0('Data processing(Extract specific taxonomic level): summarize_taxa()') 
-[4]: paste0('Data processing(Filter&trim): run_filter()/run_trim()') 
-[5]: paste0('GlobalView(Alpha diveristy): run_alpha_diversity()/plot_boxplot()') 
-[6]: paste0('GlobalView(Beta diveristy): run_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()') 
-[7]: paste0('GlobalView(microbial composition): plot_StackBarPlot()/plot_core_taxa()/core_members()')
-[8]: paste0('DifferentialAnalysis: run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()')
-")
+vert$grps <- NULL
+
+for (i in 1:(length(vert) - 1)) {
+  connectGrob(vert[[i]], vert[[i + 1]], type = "vert") %>%
+    print
+}
+
+connectGrob(vert$GlobalView, grps[[1]], type = "N")
+connectGrob(vert$GlobalView, grps[[2]], type = "N")
+connectGrob(vert$GlobalView, grps[[3]], type = "N")
+
+vert
+grps
 ```
+
