@@ -130,7 +130,7 @@ saveRDS(metaphlan2_ps_remove_BRS_LOD_genus, "DataSet/Step4/Donor_MGS_phyloseq_re
 ```
 
 
-## Step7: GlobalView
+## Step5: GlobalView
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=5, fig.cap="diversity and ordination and composition(Example)"}
 metaphlan2_ps_remove_BRS_LOD_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS")
 
