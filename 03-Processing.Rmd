@@ -15,13 +15,19 @@ This part has too may procedures and we only choose some of them. Please go to *
 
 ## Extracting specific taxonomic level
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps_Species_LOD_remove_BRS, taxa_level = "Species")
+metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps_Species_remove_BRS, taxa_level = "Species")
 metaphlan2_ps_species
 ```
 
 Finally, we obtained the final phyloseq-class object _metaphlan2\_ps\_species_.
 
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_genus <- summarize_taxa(metaphlan2_ps_Species_remove_BRS, taxa_level = "Genus")
+metaphlan2_ps_genus
+```
+
+
 ## Systematic Information
 ```{r}
-sessionInfo()
+devtools::session_info()
 ```

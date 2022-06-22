@@ -44,5 +44,5 @@ metaphlan2_ps_beta$BetaDispersion
 
 ## Systematic Information
 ```{r}
-sessionInfo()
+devtools::session_info()
 ```

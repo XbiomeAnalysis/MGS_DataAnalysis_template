@@ -24,7 +24,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-06-02" />
+<meta name="date" content="2022-06-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -234,12 +234,11 @@ div.csl-indent {
 <li class="chapter" data-level="9.1" data-path="test-example.html"><a href="test-example.html#loading-packages"><i class="fa fa-check"></i><b>9.1</b> Loading packages<span></span></a></li>
 <li class="chapter" data-level="9.2" data-path="test-example.html"><a href="test-example.html#loading-data"><i class="fa fa-check"></i><b>9.2</b> Loading data<span></span></a></li>
 <li class="chapter" data-level="9.3" data-path="test-example.html"><a href="test-example.html#step1-convert-inputs-into-phyloseq-data"><i class="fa fa-check"></i><b>9.3</b> Step1: Convert inputs into phyloseq data<span></span></a></li>
-<li class="chapter" data-level="9.4" data-path="test-example.html"><a href="test-example.html#step2-transform-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>9.4</b> Step2: Transform limit of detection (LOD) into Zeros<span></span></a></li>
-<li class="chapter" data-level="9.5" data-path="test-example.html"><a href="test-example.html#step3-brs-checking"><i class="fa fa-check"></i><b>9.5</b> Step3: BRS checking<span></span></a></li>
-<li class="chapter" data-level="9.6" data-path="test-example.html"><a href="test-example.html#step4-extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>9.6</b> Step4: Extracting specific taxonomic level<span></span></a></li>
-<li class="chapter" data-level="9.7" data-path="test-example.html"><a href="test-example.html#step5-globalview"><i class="fa fa-check"></i><b>9.7</b> Step5: GlobalView<span></span></a></li>
-<li class="chapter" data-level="9.8" data-path="test-example.html"><a href="test-example.html#step6-differential-analysis"><i class="fa fa-check"></i><b>9.8</b> Step6: Differential Analysis<span></span></a></li>
-<li class="chapter" data-level="9.9" data-path="test-example.html"><a href="test-example.html#systematic-information-7"><i class="fa fa-check"></i><b>9.9</b> Systematic Information<span></span></a></li>
+<li class="chapter" data-level="9.4" data-path="test-example.html"><a href="test-example.html#step2-brs-checking"><i class="fa fa-check"></i><b>9.4</b> Step2: BRS checking<span></span></a></li>
+<li class="chapter" data-level="9.5" data-path="test-example.html"><a href="test-example.html#step3-extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>9.5</b> Step3: Extracting specific taxonomic level<span></span></a></li>
+<li class="chapter" data-level="9.6" data-path="test-example.html"><a href="test-example.html#step4-globalview"><i class="fa fa-check"></i><b>9.6</b> Step4: GlobalView<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="test-example.html"><a href="test-example.html#step6-differential-analysis"><i class="fa fa-check"></i><b>9.7</b> Step6: Differential Analysis<span></span></a></li>
+<li class="chapter" data-level="9.8" data-path="test-example.html"><a href="test-example.html#systematic-information-7"><i class="fa fa-check"></i><b>9.8</b> Systematic Information<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
 <li class="divider"></li>
@@ -275,7 +274,8 @@ div.csl-indent {
 <ul>
 <li>get the BRS_ID</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quality-control.html#cb16-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_Species_LOD<span class="sc">@</span>sam_data</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quality-control.html#cb16-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species <span class="ot">&lt;-</span> <span class="fu">summarize_taxa</span>(metaphlan2_ps, <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb16-2"><a href="quality-control.html#cb16-2" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species<span class="sc">@</span>sam_data</span></code></pre></div>
 <pre><code>##      Group phynotype
 ## s1      BB      0.00
 ## s2      AA      2.50
@@ -304,115 +304,260 @@ div.csl-indent {
 <li>run <code>run_RefCheck</code></li>
 </ul>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="quality-control.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">run_RefCheck</span>(</span>
-<span id="cb18-2"><a href="quality-control.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ps=</span>metaphlan2_ps_Species_LOD,</span>
+<span id="cb18-2"><a href="quality-control.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">ps=</span>metaphlan2_ps_species,</span>
 <span id="cb18-3"><a href="quality-control.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">BRS_ID=</span><span class="st">&quot;refE&quot;</span>,</span>
 <span id="cb18-4"><a href="quality-control.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">Reference=</span><span class="cn">NULL</span>,</span>
 <span id="cb18-5"><a href="quality-control.html#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">Ref_type=</span><span class="st">&quot;MGS&quot;</span>,</span>
 <span id="cb18-6"><a href="quality-control.html#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Save=</span><span class="cn">NULL</span>)</span>
-<span id="cb18-7"><a href="quality-control.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">##                                         7682    7683    7684    7685     7842     7843     7844     7845     refE        mean</span></span>
-<span id="cb18-8"><a href="quality-control.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum              10.31563 9.25812 9.69184 7.76031 11.03311 11.61484 12.29030 11.69019  0.01646  9.29675556</span></span>
-<span id="cb18-9"><a href="quality-control.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis                2.24195 2.24035 1.92015 2.18435  2.43230  2.38180  2.13830  2.41437  0.21061  2.01824222</span></span>
-<span id="cb18-10"><a href="quality-control.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii         0.65615 0.60153 0.60112 0.62079  0.54147  0.55383  0.58806  0.54655  1.61939  0.70321000</span></span>
-<span id="cb18-11"><a href="quality-control.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis         7.05426 6.28460 6.57297 6.25448  4.69357  4.80628  4.94943  4.84278  0.04649  5.05609556</span></span>
-<span id="cb18-12"><a href="quality-control.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron         3.25076 3.31897 3.22418 3.43809  3.35611  3.38323  3.29098  3.30355  1.47422  3.11556556</span></span>
-<span id="cb18-13"><a href="quality-control.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens              0.56220 0.53249 0.60476 0.47934  0.65513  0.68833  0.76063  0.66896  0.07251  0.55826111</span></span>
-<span id="cb18-14"><a href="quality-control.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                    2.28581 2.42978 2.25227 2.82904  1.21527  1.16485  1.07160  1.07834  0.01444  1.59348889</span></span>
-<span id="cb18-15"><a href="quality-control.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans                4.83509 5.02149 5.18268 5.56891  3.34720  3.09877  3.08677  2.70732  0.02775  3.65288667</span></span>
-<span id="cb18-16"><a href="quality-control.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius             3.54266 3.74119 3.62036 4.01546  2.90216  2.70193  2.61760  2.57348  0.02846  2.86036667</span></span>
-<span id="cb18-17"><a href="quality-control.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens            1.55648 1.84824 1.91166 1.85273  1.75220  1.74002  1.69811  1.67676  0.32466  1.59565111</span></span>
-<span id="cb18-18"><a href="quality-control.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                   3.08489 3.27226 3.10904 3.24565  3.51376  3.50063  3.37872  3.42300  0.25782  2.97619667</span></span>
-<span id="cb18-19"><a href="quality-control.html#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                    0.04383 0.04183 0.04107 0.02304  0.03853  0.03464  0.03532  0.03597  0.01307  0.03414444</span></span>
-<span id="cb18-20"><a href="quality-control.html#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                 3.06713 3.20369 3.14979 3.15352  3.24822  3.09280  3.13038  3.06113  2.14684  3.02816667</span></span>
-<span id="cb18-21"><a href="quality-control.html#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                     2.03128 1.99619 1.92504 2.15422  1.57638  1.60584  1.57913  1.59224 60.84109  8.36682333</span></span>
-<span id="cb18-22"><a href="quality-control.html#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum    6.89310 6.36177 7.39605 5.76804  6.19464  6.47094  7.41615  6.27837  0.15023  5.88103222</span></span>
-<span id="cb18-23"><a href="quality-control.html#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA  0.22002 0.26062 0.28058 0.33329  0.07093  0.06778  0.05229  0.04781  0.06825  0.15573000</span></span>
-<span id="cb18-24"><a href="quality-control.html#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                       7.33876 7.34799 7.14891 6.47250  8.88190  9.72198  9.72162 10.57600 32.69000 11.09996222</span></span>
-<span id="cb18-25"><a href="quality-control.html#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="do">##                                                                                Evaluation</span></span>
-<span id="cb18-26"><a href="quality-control.html#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum              refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-27"><a href="quality-control.html#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis               refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-28"><a href="quality-control.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii        refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-29"><a href="quality-control.html#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis        refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-30"><a href="quality-control.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron        refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-31"><a href="quality-control.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens             refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-32"><a href="quality-control.html#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                   refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-33"><a href="quality-control.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans               refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-34"><a href="quality-control.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius            refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-35"><a href="quality-control.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens           refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-36"><a href="quality-control.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                  refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-37"><a href="quality-control.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                   refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-38"><a href="quality-control.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-39"><a href="quality-control.html#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                    refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-40"><a href="quality-control.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum   refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-41"><a href="quality-control.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span>
-<span id="cb18-42"><a href="quality-control.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                      refE didn&#39;t pass the threshold (2022-06-02 11:49:53).</span></span></code></pre></div>
+<span id="cb18-7"><a href="quality-control.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">##                                         7682    7683    7684    7685     7842     7843     7844     7845     refE</span></span>
+<span id="cb18-8"><a href="quality-control.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum              10.31563 9.25812 9.69184 7.76031 11.03311 11.61484 12.29030 11.69019  0.01646</span></span>
+<span id="cb18-9"><a href="quality-control.html#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis                2.24195 2.24035 1.92015 2.18435  2.43230  2.38180  2.13830  2.41437  0.21061</span></span>
+<span id="cb18-10"><a href="quality-control.html#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii         0.65615 0.60153 0.60112 0.62079  0.54147  0.55383  0.58806  0.54655  1.61939</span></span>
+<span id="cb18-11"><a href="quality-control.html#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis         7.05426 6.28460 6.57297 6.25448  4.69357  4.80628  4.94943  4.84278  0.04649</span></span>
+<span id="cb18-12"><a href="quality-control.html#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron         3.25076 3.31897 3.22418 3.43809  3.35611  3.38323  3.29098  3.30355  1.47422</span></span>
+<span id="cb18-13"><a href="quality-control.html#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens              0.56220 0.53249 0.60476 0.47934  0.65513  0.68833  0.76063  0.66896  0.07251</span></span>
+<span id="cb18-14"><a href="quality-control.html#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                    2.28581 2.42978 2.25227 2.82904  1.21527  1.16485  1.07160  1.07834  0.01444</span></span>
+<span id="cb18-15"><a href="quality-control.html#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans                4.83509 5.02149 5.18268 5.56891  3.34720  3.09877  3.08677  2.70732  0.02775</span></span>
+<span id="cb18-16"><a href="quality-control.html#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius             3.54266 3.74119 3.62036 4.01546  2.90216  2.70193  2.61760  2.57348  0.02846</span></span>
+<span id="cb18-17"><a href="quality-control.html#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens            1.55648 1.84824 1.91166 1.85273  1.75220  1.74002  1.69811  1.67676  0.32466</span></span>
+<span id="cb18-18"><a href="quality-control.html#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                   3.08489 3.27226 3.10904 3.24565  3.51376  3.50063  3.37872  3.42300  0.25782</span></span>
+<span id="cb18-19"><a href="quality-control.html#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                    0.04383 0.04183 0.04107 0.02304  0.03853  0.03464  0.03532  0.03597  0.01307</span></span>
+<span id="cb18-20"><a href="quality-control.html#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                 3.06713 3.20369 3.14979 3.15352  3.24822  3.09280  3.13038  3.06113  2.14684</span></span>
+<span id="cb18-21"><a href="quality-control.html#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                     2.03128 1.99619 1.92504 2.15422  1.57638  1.60584  1.57913  1.59224 60.84109</span></span>
+<span id="cb18-22"><a href="quality-control.html#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum    6.89310 6.36177 7.39605 5.76804  6.19464  6.47094  7.41615  6.27837  0.15023</span></span>
+<span id="cb18-23"><a href="quality-control.html#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA  0.22002 0.26062 0.28058 0.33329  0.07093  0.06778  0.05229  0.04781  0.06825</span></span>
+<span id="cb18-24"><a href="quality-control.html#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                       7.33876 7.34799 7.14891 6.47250  8.88190  9.72198  9.72162 10.57600 32.69000</span></span>
+<span id="cb18-25"><a href="quality-control.html#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="do">##                                            mean                                            Evaluation</span></span>
+<span id="cb18-26"><a href="quality-control.html#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_longum               9.29675556 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-27"><a href="quality-control.html#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_uniformis                2.01824222 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-28"><a href="quality-control.html#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Faecalibacterium_prausnitzii         0.70321000 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-29"><a href="quality-control.html#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_adolescentis         5.05609556 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-30"><a href="quality-control.html#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_thetaiotaomicron         3.11556556 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-31"><a href="quality-control.html#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Collinsella_aerofaciens              0.55826111 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-32"><a href="quality-control.html#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="do">## Coprococcus_comes                    1.59348889 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-33"><a href="quality-control.html#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="do">## Dorea_formicigenerans                3.65288667 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-34"><a href="quality-control.html#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Streptococcus_salivarius             2.86036667 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-35"><a href="quality-control.html#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_xylanisolvens            1.59565111 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-36"><a href="quality-control.html#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_ovatus                   2.97619667 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-37"><a href="quality-control.html#cb18-37" aria-hidden="true" tabindex="-1"></a><span class="do">## Roseburia_hominis                    0.03414444 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-38"><a href="quality-control.html#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="do">## Bacteroides_vulgatus                 3.02816667 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-39"><a href="quality-control.html#cb18-39" aria-hidden="true" tabindex="-1"></a><span class="do">## Prevotella_copri                     8.36682333 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-40"><a href="quality-control.html#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Bifidobacterium_pseudocatenulatum    5.88103222 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-41"><a href="quality-control.html#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="do">## Lachnospiraceae_bacterium_5_1_63FAA  0.15573000 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span>
+<span id="cb18-42"><a href="quality-control.html#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Impurity_level                      11.09996222 refE didn&#39;t pass the threshold (2022-06-22 18:21:31).</span></span></code></pre></div>
 </div>
 <div id="spike-in-samples-brs-remove" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Spike-in sample’s (BRS) remove<a href="quality-control.html#spike-in-samples-brs-remove" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="quality-control.html#cb19-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_Species_LOD_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
-<span id="cb19-2"><a href="quality-control.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ps =</span> metaphlan2_ps_Species_LOD,</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="quality-control.html#cb19-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_Species_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
+<span id="cb19-2"><a href="quality-control.html#cb19-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ps =</span> metaphlan2_ps_species,</span>
 <span id="cb19-3"><a href="quality-control.html#cb19-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
-<span id="cb19-4"><a href="quality-control.html#cb19-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>)</span>
-<span id="cb19-5"><a href="quality-control.html#cb19-5" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_Species_LOD_remove_BRS</span></code></pre></div>
+<span id="cb19-4"><a href="quality-control.html#cb19-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>,</span>
+<span id="cb19-5"><a href="quality-control.html#cb19-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">discard =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb19-6"><a href="quality-control.html#cb19-6" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_Species_remove_BRS</span></code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 192 taxa and 22 samples ]
+## otu_table()   OTU Table:         [ 326 taxa and 22 samples ]
 ## sample_data() Sample Data:       [ 22 samples by 2 sample variables ]
-## tax_table()   Taxonomy Table:    [ 192 taxa by 7 taxonomic ranks ]</code></pre>
+## tax_table()   Taxonomy Table:    [ 326 taxa by 7 taxonomic ranks ]</code></pre>
 </div>
 <div id="systematic-information-1" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Systematic Information<a href="quality-control.html#systematic-information-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="quality-control.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span></code></pre></div>
-<pre><code>## R version 4.1.2 (2021-11-01)
-## Platform: x86_64-apple-darwin17.0 (64-bit)
-## Running under: macOS Monterey 12.2.1
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="quality-control.html#cb21-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.1.2 (2021-11-01)
+##  os       macOS Monterey 12.2.1
+##  system   x86_64, darwin17.0
+##  ui       RStudio
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       Asia/Shanghai
+##  date     2022-06-22
+##  rstudio  2022.02.0+443 Prairie Trillium (desktop)
+##  pandoc   2.17.1.1 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/ (via rmarkdown)
 ## 
-## Matrix products: default
-## LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  package              * version  date (UTC) lib source
+##  abind                  1.4-5    2016-07-21 [1] CRAN (R 4.1.0)
+##  ade4                   1.7-18   2021-09-16 [1] CRAN (R 4.1.0)
+##  annotate               1.72.0   2021-10-26 [1] Bioconductor
+##  AnnotationDbi          1.56.2   2021-11-09 [1] Bioconductor
+##  ape                    5.6-2    2022-03-02 [1] CRAN (R 4.1.2)
+##  assertthat             0.2.1    2019-03-21 [1] CRAN (R 4.1.0)
+##  backports              1.4.1    2021-12-13 [1] CRAN (R 4.1.0)
+##  base64enc              0.1-3    2015-07-28 [1] CRAN (R 4.1.0)
+##  bayesm                 3.1-4    2019-10-15 [1] CRAN (R 4.1.0)
+##  Biobase                2.54.0   2021-10-26 [1] Bioconductor
+##  BiocGenerics           0.40.0   2021-10-26 [1] Bioconductor
+##  BiocParallel           1.28.3   2021-12-09 [1] Bioconductor
+##  biomformat             1.22.0   2021-10-26 [1] Bioconductor
+##  Biostrings             2.62.0   2021-10-26 [1] Bioconductor
+##  bit                    4.0.4    2020-08-04 [1] CRAN (R 4.1.0)
+##  bit64                  4.0.5    2020-08-30 [1] CRAN (R 4.1.0)
+##  bitops                 1.0-7    2021-04-24 [1] CRAN (R 4.1.0)
+##  blob                   1.2.2    2021-07-23 [1] CRAN (R 4.1.0)
+##  bookdown               0.24     2021-09-02 [1] CRAN (R 4.1.0)
+##  brio                   1.1.3    2021-11-30 [1] CRAN (R 4.1.0)
+##  broom                  0.7.12   2022-01-28 [1] CRAN (R 4.1.2)
+##  bslib                  0.3.1    2021-10-06 [1] CRAN (R 4.1.0)
+##  cachem                 1.0.6    2021-08-19 [1] CRAN (R 4.1.0)
+##  callr                  3.7.0    2021-04-20 [1] CRAN (R 4.1.0)
+##  car                    3.0-12   2021-11-06 [1] CRAN (R 4.1.0)
+##  carData                3.0-5    2022-01-06 [1] CRAN (R 4.1.2)
+##  caTools                1.18.2   2021-03-28 [1] CRAN (R 4.1.0)
+##  cellranger             1.1.0    2016-07-27 [1] CRAN (R 4.1.0)
+##  checkmate              2.0.0    2020-02-06 [1] CRAN (R 4.1.0)
+##  cli                    3.2.0    2022-02-14 [1] CRAN (R 4.1.2)
+##  cluster                2.1.2    2021-04-17 [1] CRAN (R 4.1.2)
+##  codetools              0.2-18   2020-11-04 [1] CRAN (R 4.1.2)
+##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
+##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
+##  compositions           2.0-4    2022-01-05 [1] CRAN (R 4.1.2)
+##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
+##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
+##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
+##  crosstalk              1.2.0    2021-11-04 [1] CRAN (R 4.1.0)
+##  data.table             1.14.2   2021-09-27 [1] CRAN (R 4.1.0)
+##  DBI                    1.1.2    2021-12-20 [1] CRAN (R 4.1.0)
+##  DelayedArray           0.20.0   2021-10-26 [1] Bioconductor
+##  DEoptimR               1.0-10   2022-01-03 [1] CRAN (R 4.1.2)
+##  desc                   1.4.1    2022-03-06 [1] CRAN (R 4.1.2)
+##  DESeq2                 1.34.0   2021-10-26 [1] Bioconductor
+##  devtools               2.4.3    2021-11-30 [1] CRAN (R 4.1.0)
+##  digest                 0.6.29   2021-12-01 [1] CRAN (R 4.1.0)
+##  dplyr                * 1.0.8    2022-02-08 [1] CRAN (R 4.1.2)
+##  DT                     0.21     2022-02-26 [1] CRAN (R 4.1.2)
+##  edgeR                  3.36.0   2021-10-26 [1] Bioconductor
+##  ellipsis               0.3.2    2021-04-29 [1] CRAN (R 4.1.0)
+##  evaluate               0.15     2022-02-18 [1] CRAN (R 4.1.2)
+##  fansi                  1.0.2    2022-01-14 [1] CRAN (R 4.1.2)
+##  farver                 2.1.0    2021-02-28 [1] CRAN (R 4.1.0)
+##  fastmap                1.1.0    2021-01-25 [1] CRAN (R 4.1.0)
+##  foreach                1.5.2    2022-02-02 [1] CRAN (R 4.1.2)
+##  foreign                0.8-82   2022-01-13 [1] CRAN (R 4.1.2)
+##  forestplot             2.0.1    2021-09-03 [1] CRAN (R 4.1.0)
+##  Formula                1.2-4    2020-10-16 [1] CRAN (R 4.1.0)
+##  fs                     1.5.2    2021-12-08 [1] CRAN (R 4.1.0)
+##  genefilter             1.76.0   2021-10-26 [1] Bioconductor
+##  geneplotter            1.72.0   2021-10-26 [1] Bioconductor
+##  generics               0.1.2    2022-01-31 [1] CRAN (R 4.1.2)
+##  GenomeInfoDb           1.30.1   2022-01-30 [1] Bioconductor
+##  GenomeInfoDbData       1.2.7    2022-03-09 [1] Bioconductor
+##  GenomicRanges          1.46.1   2021-11-18 [1] Bioconductor
+##  ggplot2              * 3.3.5    2021-06-25 [1] CRAN (R 4.1.0)
+##  ggpubr               * 0.4.0    2020-06-27 [1] CRAN (R 4.1.0)
+##  ggrepel                0.9.1    2021-01-15 [1] CRAN (R 4.1.0)
+##  ggsignif               0.6.3    2021-09-09 [1] CRAN (R 4.1.0)
+##  glmnet                 4.1-3    2021-11-02 [1] CRAN (R 4.1.0)
+##  glue                 * 1.6.2    2022-02-24 [1] CRAN (R 4.1.2)
+##  Gmisc                * 3.0.0    2022-01-03 [1] CRAN (R 4.1.2)
+##  gplots                 3.1.1    2020-11-28 [1] CRAN (R 4.1.0)
+##  gridExtra              2.3      2017-09-09 [1] CRAN (R 4.1.0)
+##  gtable                 0.3.0    2019-03-25 [1] CRAN (R 4.1.0)
+##  gtools                 3.9.2    2021-06-06 [1] CRAN (R 4.1.0)
+##  highr                  0.9      2021-04-16 [1] CRAN (R 4.1.0)
+##  Hmisc                  4.6-0    2021-10-07 [1] CRAN (R 4.1.0)
+##  htmlTable            * 2.4.0    2022-01-04 [1] CRAN (R 4.1.2)
+##  htmltools              0.5.2    2021-08-25 [1] CRAN (R 4.1.0)
+##  htmlwidgets            1.5.4    2021-09-08 [1] CRAN (R 4.1.0)
+##  httr                   1.4.2    2020-07-20 [1] CRAN (R 4.1.0)
+##  igraph                 1.2.11   2022-01-04 [1] CRAN (R 4.1.2)
+##  IRanges                2.28.0   2021-10-26 [1] Bioconductor
+##  iterators              1.0.14   2022-02-05 [1] CRAN (R 4.1.2)
+##  jpeg                   0.1-9    2021-07-24 [1] CRAN (R 4.1.0)
+##  jquerylib              0.1.4    2021-04-26 [1] CRAN (R 4.1.0)
+##  jsonlite               1.8.0    2022-02-22 [1] CRAN (R 4.1.2)
+##  KEGGREST               1.34.0   2021-10-26 [1] Bioconductor
+##  KernSmooth             2.23-20  2021-05-03 [1] CRAN (R 4.1.2)
+##  knitr                  1.37     2021-12-16 [1] CRAN (R 4.1.0)
+##  labeling               0.4.2    2020-10-20 [1] CRAN (R 4.1.0)
+##  lattice                0.20-45  2021-09-22 [1] CRAN (R 4.1.2)
+##  latticeExtra           0.6-29   2019-12-19 [1] CRAN (R 4.1.0)
+##  libcoin                1.0-9    2021-09-27 [1] CRAN (R 4.1.0)
+##  lifecycle              1.0.1    2021-09-24 [1] CRAN (R 4.1.0)
+##  limma                  3.50.1   2022-02-17 [1] Bioconductor
+##  locfit                 1.5-9.5  2022-03-03 [1] CRAN (R 4.1.2)
+##  lubridate              1.8.0    2021-10-07 [1] CRAN (R 4.1.0)
+##  magrittr             * 2.0.2    2022-01-26 [1] CRAN (R 4.1.2)
+##  MASS                   7.3-55   2022-01-13 [1] CRAN (R 4.1.2)
+##  Matrix                 1.4-0    2021-12-08 [1] CRAN (R 4.1.0)
+##  MatrixGenerics         1.6.0    2021-10-26 [1] Bioconductor
+##  matrixStats            0.61.0   2021-09-17 [1] CRAN (R 4.1.0)
+##  memoise                2.0.1    2021-11-26 [1] CRAN (R 4.1.0)
+##  metagenomeSeq          1.36.0   2021-10-26 [1] Bioconductor
+##  mgcv                   1.8-39   2022-02-24 [1] CRAN (R 4.1.2)
+##  modeltools             0.2-23   2020-03-05 [1] CRAN (R 4.1.0)
+##  multcomp               1.4-18   2022-01-04 [1] CRAN (R 4.1.2)
+##  multtest               2.50.0   2021-10-26 [1] Bioconductor
+##  munsell                0.5.0    2018-06-12 [1] CRAN (R 4.1.0)
+##  mvtnorm                1.1-3    2021-10-08 [1] CRAN (R 4.1.0)
+##  nlme                   3.1-155  2022-01-13 [1] CRAN (R 4.1.2)
+##  nnet                   7.3-17   2022-01-13 [1] CRAN (R 4.1.2)
+##  permute                0.9-7    2022-01-27 [1] CRAN (R 4.1.2)
+##  pheatmap               1.0.12   2019-01-04 [1] CRAN (R 4.1.0)
+##  phyloseq             * 1.38.0   2021-10-26 [1] Bioconductor
+##  pillar                 1.7.0    2022-02-01 [1] CRAN (R 4.1.2)
+##  pkgbuild               1.3.1    2021-12-20 [1] CRAN (R 4.1.0)
+##  pkgconfig              2.0.3    2019-09-22 [1] CRAN (R 4.1.0)
+##  pkgload                1.2.4    2021-11-30 [1] CRAN (R 4.1.0)
+##  plyr                   1.8.6    2020-03-03 [1] CRAN (R 4.1.0)
+##  png                    0.1-7    2013-12-03 [1] CRAN (R 4.1.0)
+##  prettyunits            1.1.1    2020-01-24 [1] CRAN (R 4.1.0)
+##  processx               3.5.2    2021-04-30 [1] CRAN (R 4.1.0)
+##  ps                     1.6.0    2021-02-28 [1] CRAN (R 4.1.0)
+##  purrr                  0.3.4    2020-04-17 [1] CRAN (R 4.1.0)
+##  R6                     2.5.1    2021-08-19 [1] CRAN (R 4.1.0)
+##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
+##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
+##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
+##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
+##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
+##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
+##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
+##  rhdf5filters           1.6.0    2021-10-26 [1] Bioconductor
+##  Rhdf5lib               1.16.0   2021-10-26 [1] Bioconductor
+##  rlang                  1.0.2    2022-03-04 [1] CRAN (R 4.1.2)
+##  rmarkdown              2.13     2022-03-10 [1] CRAN (R 4.1.2)
+##  robustbase             0.93-9   2021-09-27 [1] CRAN (R 4.1.0)
+##  rpart                  4.1.16   2022-01-24 [1] CRAN (R 4.1.2)
+##  rprojroot              2.0.2    2020-11-15 [1] CRAN (R 4.1.0)
+##  RSQLite                2.2.10   2022-02-17 [1] CRAN (R 4.1.2)
+##  rstatix                0.7.0    2021-02-13 [1] CRAN (R 4.1.0)
+##  rstudioapi             0.13     2020-11-12 [1] CRAN (R 4.1.0)
+##  S4Vectors              0.32.3   2021-11-21 [1] Bioconductor
+##  sandwich               3.0-1    2021-05-18 [1] CRAN (R 4.1.0)
+##  sass                   0.4.0    2021-05-12 [1] CRAN (R 4.1.0)
+##  scales                 1.1.1    2020-05-11 [1] CRAN (R 4.1.0)
+##  sessioninfo            1.2.2    2021-12-06 [1] CRAN (R 4.1.0)
+##  shape                  1.4.6    2021-05-19 [1] CRAN (R 4.1.0)
+##  stringi                1.7.6    2021-11-29 [1] CRAN (R 4.1.0)
+##  stringr                1.4.0    2019-02-10 [1] CRAN (R 4.1.0)
+##  SummarizedExperiment   1.24.0   2021-10-26 [1] Bioconductor
+##  survival               3.3-1    2022-03-03 [1] CRAN (R 4.1.2)
+##  tensorA                0.36.2   2020-11-19 [1] CRAN (R 4.1.0)
+##  testthat               3.1.2    2022-01-20 [1] CRAN (R 4.1.2)
+##  TH.data                1.1-0    2021-09-27 [1] CRAN (R 4.1.0)
+##  tibble               * 3.1.6    2021-11-07 [1] CRAN (R 4.1.0)
+##  tidyr                  1.2.0    2022-02-01 [1] CRAN (R 4.1.2)
+##  tidyselect             1.1.2    2022-02-21 [1] CRAN (R 4.1.2)
+##  usethis                2.1.5    2021-12-09 [1] CRAN (R 4.1.0)
+##  utf8                   1.2.2    2021-07-24 [1] CRAN (R 4.1.0)
+##  vctrs                  0.3.8    2021-04-29 [1] CRAN (R 4.1.0)
+##  vegan                  2.5-7    2020-11-28 [1] CRAN (R 4.1.0)
+##  withr                  2.5.0    2022-03-03 [1] CRAN (R 4.1.2)
+##  Wrench                 1.12.0   2021-10-26 [1] Bioconductor
+##  xfun                   0.30     2022-03-02 [1] CRAN (R 4.1.2)
+##  XMAS2                * 2.1.4    2022-06-22 [1] local
+##  XML                    3.99-0.9 2022-02-24 [1] CRAN (R 4.1.2)
+##  xtable                 1.8-4    2019-04-21 [1] CRAN (R 4.1.0)
+##  XVector                0.34.0   2021-10-26 [1] Bioconductor
+##  yaml                   2.3.5    2022-02-21 [1] CRAN (R 4.1.2)
+##  zlibbioc               1.40.0   2021-10-26 [1] Bioconductor
+##  zoo                    1.8-9    2021-03-09 [1] CRAN (R 4.1.0)
 ## 
-## locale:
-## [1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
 ## 
-## attached base packages:
-## [1] grid      stats     graphics  grDevices utils     datasets  methods   base     
-## 
-## other attached packages:
-## [1] phyloseq_1.38.0 tibble_3.1.6    dplyr_1.0.8     magrittr_2.0.2  glue_1.6.2      Gmisc_3.0.0     htmlTable_2.4.0 Rcpp_1.0.8.2   
-## [9] XMAS2_2.1.3    
-## 
-## loaded via a namespace (and not attached):
-##   [1] backports_1.4.1             Hmisc_4.6-0                 plyr_1.8.6                  igraph_1.2.11              
-##   [5] splines_4.1.2               BiocParallel_1.28.3         GenomeInfoDb_1.30.1         ggplot2_3.3.5              
-##   [9] TH.data_1.1-0               digest_0.6.29               foreach_1.5.2               htmltools_0.5.2            
-##  [13] fansi_1.0.2                 checkmate_2.0.0             memoise_2.0.1               cluster_2.1.2              
-##  [17] limma_3.50.1                Biostrings_2.62.0           annotate_1.72.0             matrixStats_0.61.0         
-##  [21] sandwich_3.0-1              metagenomeSeq_1.36.0        jpeg_0.1-9                  colorspace_2.0-3           
-##  [25] blob_1.2.2                  xfun_0.30                   crayon_1.5.0                RCurl_1.98-1.6             
-##  [29] jsonlite_1.8.0              libcoin_1.0-9               genefilter_1.76.0           survival_3.3-1             
-##  [33] zoo_1.8-9                   iterators_1.0.14            ape_5.6-2                   gtable_0.3.0               
-##  [37] zlibbioc_1.40.0             XVector_0.34.0              DelayedArray_0.20.0         Rhdf5lib_1.16.0            
-##  [41] shape_1.4.6                 BiocGenerics_0.40.0         abind_1.4-5                 scales_1.1.1               
-##  [45] mvtnorm_1.1-3               DBI_1.1.2                   edgeR_3.36.0                xtable_1.8-4               
-##  [49] foreign_0.8-82              bit_4.0.4                   Formula_1.2-4               stats4_4.1.2               
-##  [53] glmnet_4.1-3                htmlwidgets_1.5.4           httr_1.4.2                  gplots_3.1.1               
-##  [57] RColorBrewer_1.1-2          modeltools_0.2-23           ellipsis_0.3.2              pkgconfig_2.0.3            
-##  [61] XML_3.99-0.9                nnet_7.3-17                 sass_0.4.0                  locfit_1.5-9.5             
-##  [65] utf8_1.2.2                  tidyselect_1.1.2            rlang_1.0.2                 reshape2_1.4.4             
-##  [69] AnnotationDbi_1.56.2        munsell_0.5.0               tools_4.1.2                 cachem_1.0.6               
-##  [73] cli_3.2.0                   generics_0.1.2              RSQLite_2.2.10              ade4_1.7-18                
-##  [77] evaluate_0.15               biomformat_1.22.0           stringr_1.4.0               fastmap_1.1.0              
-##  [81] yaml_2.3.5                  knitr_1.37                  bit64_4.0.5                 caTools_1.18.2             
-##  [85] forestplot_2.0.1            purrr_0.3.4                 KEGGREST_1.34.0             coin_1.4-2                 
-##  [89] nlme_3.1-155                compiler_4.1.2              rstudioapi_0.13             png_0.1-7                  
-##  [93] geneplotter_1.72.0          bslib_0.3.1                 stringi_1.7.6               highr_0.9                  
-##  [97] lattice_0.20-45             Matrix_1.4-0                vegan_2.5-7                 permute_0.9-7              
-## [101] multtest_2.50.0             vctrs_0.3.8                 pillar_1.7.0                lifecycle_1.0.1            
-## [105] rhdf5filters_1.6.0          jquerylib_0.1.4             data.table_1.14.2           bitops_1.0-7               
-## [109] GenomicRanges_1.46.1        R6_2.5.1                    latticeExtra_0.6-29         bookdown_0.24              
-## [113] gridExtra_2.3               KernSmooth_2.23-20          IRanges_2.28.0              codetools_0.2-18           
-## [117] MASS_7.3-55                 gtools_3.9.2                assertthat_0.2.1            Wrench_1.12.0              
-## [121] rhdf5_2.38.1                SummarizedExperiment_1.24.0 DESeq2_1.34.0               multcomp_1.4-18            
-## [125] S4Vectors_0.32.3            GenomeInfoDbData_1.2.7      mgcv_1.8-39                 parallel_4.1.2             
-## [129] rpart_4.1.16                tidyr_1.2.0                 rmarkdown_2.13              MatrixGenerics_1.6.0       
-## [133] lubridate_1.8.0             Biobase_2.54.0              base64enc_0.1-3</code></pre>
+## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
 </div>
