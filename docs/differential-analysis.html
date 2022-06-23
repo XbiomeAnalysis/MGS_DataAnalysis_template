@@ -276,6 +276,19 @@ div.csl-indent {
 <p>We suggest that filtering taxa with low abundance (the summarized value under cutoff: <code>1e-4</code>) and trimming taxa with low prevalence (default: <code>0.2</code>).</p>
 <div id="filtering-the-low-relative-abundance-or-unclassified-taxa-by-the-threshold-total-counts-1e-4" class="section level3 hasAnchor" number="8.1.1">
 <h3><span class="header-section-number">8.1.1</span> Filtering the low relative abundance or unclassified taxa by the threshold (total counts &lt; 1e-4)<a href="differential-analysis.html#filtering-the-low-relative-abundance-or-unclassified-taxa-by-the-threshold-total-counts-1e-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The condition to filter low relative abundance is according to this article <span class="citation">(<a href="#ref-thingholm2019obese" role="doc-biblioref">Thingholm et al. 2019</a>)</span>.</p>
+<blockquote>
+<p>Species from taxonomic profiles were retained for further analysis if their mean relative abundance exceeded 0.005
+(0.5%) across the dataset with a minimum abundance of 0.05 (5%) in at least one sample and non-zero abundance in at least
+60% of samples.</p>
+</blockquote>
+<p>There are three conditions</p>
+<ol style="list-style-type: decimal">
+<li><p>Mean relative abundance: 0.005;</p></li>
+<li><p>Minimum relative abundance: 0.05;</p></li>
+<li><p>Occurrence: 60%.</p></li>
+</ol>
+<p>Here, we use 0.01 (the 1e-4 regarded as 0.01 compared to the Referece because Metaphlan2 data had been divided 100)</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="differential-analysis.html#cb55-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species_filter <span class="ot">&lt;-</span> <span class="fu">run_filter</span>(metaphlan2_ps_species, <span class="at">cutoff =</span> <span class="fl">1e-4</span>, <span class="at">unclass =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb55-2"><a href="differential-analysis.html#cb55-2" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_species_filter </span></code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
@@ -504,6 +517,7 @@ Figure 8.4: Multiple DA results
 ##  car                    3.0-12   2021-11-06 [1] CRAN (R 4.1.0)
 ##  carData                3.0-5    2022-01-06 [1] CRAN (R 4.1.2)
 ##  caTools                1.18.2   2021-03-28 [1] CRAN (R 4.1.0)
+##  cellranger             1.1.0    2016-07-27 [1] CRAN (R 4.1.0)
 ##  checkmate              2.0.0    2020-02-06 [1] CRAN (R 4.1.0)
 ##  cli                    3.2.0    2022-02-14 [1] CRAN (R 4.1.2)
 ##  cluster                2.1.2    2021-04-17 [1] CRAN (R 4.1.2)
@@ -511,6 +525,7 @@ Figure 8.4: Multiple DA results
 ##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
 ##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
 ##  compositions           2.0-4    2022-01-05 [1] CRAN (R 4.1.2)
+##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
 ##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
 ##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
 ##  crosstalk              1.2.0    2021-11-04 [1] CRAN (R 4.1.0)
@@ -607,6 +622,7 @@ Figure 8.4: Multiple DA results
 ##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
 ##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
 ##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
+##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
 ##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
 ##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
 ##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
@@ -655,6 +671,12 @@ Figure 8.4: Multiple DA results
 ## 
 ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-thingholm2019obese" class="csl-entry">
+Thingholm, Louise B, Malte C Rühlemann, Manja Koch, Brie Fuqua, Guido Laucke, Ruwen Boehm, Corinna Bang, et al. 2019. <span>“Obese Individuals with and Without Type 2 Diabetes Show Different Gut Microbial Functional Capacity and Composition.”</span> <em>Cell Host &amp; Microbe</em> 26 (2): 252–64.
 </div>
 </div>
             </section>
