@@ -172,7 +172,7 @@ plot_stacked_bar_XIVZ(
         feature = "Group")
 ```
 
-## Step6: Differential Analysis
+## Step5: Differential Analysis
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=5, fig.cap="Differential Analysis (Example)"}
 metaphlan2_ps_remove_BRS_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_species.RDS")
 

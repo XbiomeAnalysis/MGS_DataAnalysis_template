@@ -24,7 +24,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-06-22" />
+<meta name="date" content="2022-06-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -237,7 +237,7 @@ div.csl-indent {
 <li class="chapter" data-level="9.4" data-path="test-example.html"><a href="test-example.html#step2-brs-checking"><i class="fa fa-check"></i><b>9.4</b> Step2: BRS checking<span></span></a></li>
 <li class="chapter" data-level="9.5" data-path="test-example.html"><a href="test-example.html#step3-extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>9.5</b> Step3: Extracting specific taxonomic level<span></span></a></li>
 <li class="chapter" data-level="9.6" data-path="test-example.html"><a href="test-example.html#step4-globalview"><i class="fa fa-check"></i><b>9.6</b> Step4: GlobalView<span></span></a></li>
-<li class="chapter" data-level="9.7" data-path="test-example.html"><a href="test-example.html#step6-differential-analysis"><i class="fa fa-check"></i><b>9.7</b> Step6: Differential Analysis<span></span></a></li>
+<li class="chapter" data-level="9.7" data-path="test-example.html"><a href="test-example.html#step5-differential-analysis"><i class="fa fa-check"></i><b>9.7</b> Step5: Differential Analysis<span></span></a></li>
 <li class="chapter" data-level="9.8" data-path="test-example.html"><a href="test-example.html#systematic-information-7"><i class="fa fa-check"></i><b>9.8</b> Systematic Information<span></span></a></li>
 </ul></li>
 <li><a href="references.html#references">References<span></span></a></li>
@@ -375,9 +375,9 @@ div.csl-indent {
 ## Enterococcus_faecalis 11.46778 12.46200 11.92117 11.95884 13.71474 13.67805 13.21782 13.27297 17.19286 13.209581
 ## Impurity_level         7.33876  7.34799  7.14891  6.47250  8.88190  9.72198  9.72162 10.57600 72.95000 15.573296
 ##                                                                    Evaluation
-## Escherichia_coli      S_7222 didn&#39;t pass the threshold (2022-06-22 18:21:42).
-## Enterococcus_faecalis S_7222 didn&#39;t pass the threshold (2022-06-22 18:21:42).
-## Impurity_level        S_7222 didn&#39;t pass the threshold (2022-06-22 18:21:42).</code></pre>
+## Escherichia_coli      S_7222 didn&#39;t pass the threshold (2022-06-23 10:08:58).
+## Enterococcus_faecalis S_7222 didn&#39;t pass the threshold (2022-06-23 10:08:58).
+## Impurity_level        S_7222 didn&#39;t pass the threshold (2022-06-23 10:08:58).</code></pre>
 <div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="test-example.html#cb81-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
 <span id="cb81-2"><a href="test-example.html#cb81-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">ps =</span> metaphlan2_ps,</span>
 <span id="cb81-3"><a href="test-example.html#cb81-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
@@ -493,8 +493,8 @@ Figure 9.4: diversity and ordination and composition(Example)
 </p>
 </div>
 </div>
-<div id="step6-differential-analysis" class="section level2 hasAnchor" number="9.7">
-<h2><span class="header-section-number">9.7</span> Step6: Differential Analysis<a href="test-example.html#step6-differential-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="step5-differential-analysis" class="section level2 hasAnchor" number="9.7">
+<h2><span class="header-section-number">9.7</span> Step5: Differential Analysis<a href="test-example.html#step5-differential-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="test-example.html#cb97-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_remove_BRS_species <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_species.RDS&quot;</span>)</span>
 <span id="cb97-2"><a href="test-example.html#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-3"><a href="test-example.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># filter &amp; trim</span></span>
@@ -575,7 +575,7 @@ Figure 9.6: Differential Analysis (Example)
 ##  [13] Biobase_2.54.0              highr_0.9                   knitr_1.37                  rstudioapi_0.13            
 ##  [17] stats4_4.1.2                robustbase_0.93-9           bayesm_3.1-4                ggsignif_0.6.3             
 ##  [21] MatrixGenerics_1.6.0        labeling_0.4.2              GenomeInfoDbData_1.2.7      pheatmap_1.0.12            
-##  [25] farver_2.1.0                bit64_4.0.5                 rhdf5_2.38.1                rprojroot_2.0.2            
+##  [25] bit64_4.0.5                 farver_2.1.0                rhdf5_2.38.1                rprojroot_2.0.2            
 ##  [29] vctrs_0.3.8                 generics_0.1.2              TH.data_1.1-0               xfun_0.30                  
 ##  [33] R6_2.5.1                    GenomeInfoDb_1.30.1         locfit_1.5-9.5              bitops_1.0-7               
 ##  [37] rhdf5filters_1.6.0          cachem_1.0.6                DelayedArray_0.20.0         assertthat_0.2.1           

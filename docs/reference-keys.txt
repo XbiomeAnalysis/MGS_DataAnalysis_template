@@ -63,5 +63,5 @@ step1-convert-inputs-into-phyloseq-data
 step2-brs-checking
 step3-extracting-specific-taxonomic-level
 step4-globalview
-step6-differential-analysis
+step5-differential-analysis
 systematic-information-7
