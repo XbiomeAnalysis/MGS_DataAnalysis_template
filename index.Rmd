@@ -46,117 +46,60 @@ The standard data analysis of 16S and MGS data by **XMAS 2.0**. The upstream pro
 
 7. Differential analysis.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.width=8, fig.align="center", fig.cap="Functions of XMAS 2.0"}
+```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.height=7, fig.width=8, fig.align="center", fig.cap="Functions of XMAS 2.0"}
 library(Gmisc, quietly = TRUE)
 library(glue)
 library(htmlTable)
 library(grid)
 library(magrittr)
 
-if(0) {
-  ImportData <- boxGrob("Step1: Importing data\nimport_metaphlan_taxa()/get_metaphlan_phyloseq()",
+
+ImportData <- boxGrob("Step1: Importing data\nimport_metaphlan_taxa()/get_metaphlan_phyloseq()",
                       txt_gp = gpar(col = "darkblue", cex = .8))
-  TransformLOD <- boxGrob("Step2: Transform LOD into Zeros\naggregate_LOD_taxa()",
+TransformLOD <- boxGrob("Step2: Transform LOD into Zeros\naggregate_LOD_taxa()",
                         txt_gp = gpar(col = "darkblue", cex = .8))
-  RefCheck <- boxGrob("Step3: BRS checking\nsummarize_taxa()/run_RefCheck()/get_GroupPhyloseq()",
+RefCheck <- boxGrob("Step3: BRS checking\nsummarize_taxa()/run_RefCheck()/get_GroupPhyloseq()",
                         txt_gp = gpar(col = "darkblue", cex = .8))
-  Extract <- boxGrob("Step4: Extract specific taxonomic level\nsummarize_taxa()",
+Extract <- boxGrob("Step4: Extract specific taxonomic level\nsummarize_taxa()",
                         txt_gp = gpar(col = "darkblue", cex = .8))
   
-  GlobalView <- boxGrob("Step5: GlobalView",
+GlobalView <- boxGrob("Step5: GlobalView",
                         txt_gp = gpar(col = "darkblue", cex = .8)) 
-  GlobalView_a <- boxGrob("Step5.1: Alpha diveristy\nrun_alpha_diversity()/plot_boxplot()",
+GlobalView_a <- boxGrob("Step5.1: Alpha diveristy\nrun_alpha_diversity()/plot_boxplot()",
                         txt_gp = gpar(col = "darkblue", cex = .6)) 
-  GlobalView_b <- boxGrob("Step5.2: Beta diveristy\nrun_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()",
+GlobalView_b <- boxGrob("Step5.2: Beta diveristy\nrun_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()",
                         txt_gp = gpar(col = "darkblue", cex = .6))  
-  GlobalView_c <- boxGrob("Step5.3: Composition\nplot_stacked_bar_XIVZ()/plot_core_taxa()/core_members()",
+GlobalView_c <- boxGrob("Step5.3: Composition\nplot_stacked_bar_XIVZ()/plot_core_taxa()/core_members()",
                         txt_gp = gpar(col = "darkblue", cex = .6))  
   
-  Differential <- boxGrob("Step6: DifferentialAnalysis\nrun_filter()/run_trim()/run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()",
+Differential <- boxGrob("Step6: DifferentialAnalysis\nrun_filter()/run_trim()/run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()",
                         txt_gp = gpar(col = "darkblue", cex = .8))  
   
   
-  grid.newpage()
-  vert <- spreadVertical(ImportData,
+grid.newpage()
+vert <- spreadVertical(ImportData,
                          TransformLOD = TransformLOD,
                          RefCheck = RefCheck,
                          Extract = Extract,
                          GlobalView = GlobalView,
                          grps = GlobalView_a,
                          Differential = Differential)
-  grps <- alignVertical(reference = vert$grps,
+grps <- alignVertical(reference = vert$grps,
                         GlobalView_a, GlobalView_b, GlobalView_c) %>%
     spreadHorizontal()
   
-  vert$grps <- NULL
-  
-  for (i in 1:(length(vert) - 1)) {
-    connectGrob(vert[[i]], vert[[i + 1]], type = "vert") %>%
-      print
-  }
-  
-  connectGrob(vert$GlobalView, grps[[1]], type = "N")
-  connectGrob(vert$GlobalView, grps[[2]], type = "N")
-  connectGrob(vert$GlobalView, grps[[3]], type = "N")
-  
-  vert
-  grps
-}
-
-ImportData <- boxGrob("Step1: Importing data\nimport_metaphlan_taxa()/get_metaphlan_phyloseq()",
-                      txt_gp = gpar(col = "darkblue", cex = .8))
-
-TransformLOD <- boxGrob("Transform LOD into Zeros\naggregate_LOD_taxa()",
-                        txt_gp = gpar(col = "grey", cex = .8))
-
-RefCheck <- boxGrob("Step2: BRS checking\nsummarize_taxa()/run_RefCheck()/get_GroupPhyloseq()",
-                      txt_gp = gpar(col = "darkblue", cex = .8))
-Extract <- boxGrob("Step3: Extract specific taxonomic level\nsummarize_taxa()",
-                      txt_gp = gpar(col = "darkblue", cex = .8))
-GlobalView <- boxGrob("Step4: GlobalView",
-                      txt_gp = gpar(col = "darkblue", cex = .8)) 
-GlobalView_a <- boxGrob("Step4.1: Alpha diveristy\nrun_alpha_diversity()/plot_boxplot()",
-                      txt_gp = gpar(col = "darkblue", cex = .6)) 
-GlobalView_b <- boxGrob("Step4.2: Beta diveristy\nrun_beta_diversity()/run_permanova()/run_ordination()/plot_Ordination()",
-                      txt_gp = gpar(col = "darkblue", cex = .6))  
-GlobalView_c <- boxGrob("Step4.3: Composition\nplot_stacked_bar_XIVZ()/plot_core_taxa()/core_members()",
-                      txt_gp = gpar(col = "darkblue", cex = .6))  
-
-Differential <- boxGrob("Step5: DifferentialAnalysis\nrun_filter()/run_trim()/run_lefse()/plot_lefse()/run_wilcox()/plot_volcano()",
-                      txt_gp = gpar(col = "darkblue", cex = .8))  
-
-
-grid.newpage()
-vert <- spreadVertical(ImportData = ImportData,
-                       RefCheck = RefCheck,
-                       Extract = Extract,
-                       GlobalView = GlobalView,
-                       grps = GlobalView_a,
-                       Differential = Differential)
-grps <- alignVertical(reference = vert$grps,
-                      GlobalView_a, GlobalView_b, GlobalView_c) %>%
-  spreadHorizontal()
-
 vert$grps <- NULL
-
-TransformLOD <- moveBox(TransformLOD,
-                  x = .8,
-                  y = coords(vert$RefCheck)$top + 
-                      Gmisc::distance(vert$RefCheck, vert$Extract, half = TRUE, center = FALSE))
-
+  
 for (i in 1:(length(vert) - 1)) {
   connectGrob(vert[[i]], vert[[i + 1]], type = "vert") %>%
     print
 }
-
+  
 connectGrob(vert$GlobalView, grps[[1]], type = "N")
 connectGrob(vert$GlobalView, grps[[2]], type = "N")
 connectGrob(vert$GlobalView, grps[[3]], type = "N")
-
-connectGrob(vert$ImportData, TransformLOD, type = "L")
-
+  
 vert
 grps
-TransformLOD
 ```
 

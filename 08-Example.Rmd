@@ -55,88 +55,118 @@ saveRDS(metaphlan2_ps, "DataSet/Step1/Donor_MGS_phyloseq.RDS", compress = TRUE)
 ```
 
 
-Transform limit of detection (LOD) into Zeros
+## Step2: Transform limit of detection (LOD) into Zeros
 ```{r, warning=FALSE, message=FALSE}
-if (0) {
 # species
-metaphlan2_ps_species_LOD <- aggregate_LOD_taxa(metaphlan2_ps, 
-                                                taxa_level = "Species", 
-                                                cutoff = 1e-04)
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
+                                              taxa_level = "Species", 
+                                              cutoff = 1e-04)
 
 # genus
-metaphlan2_ps_genus_LOD <- aggregate_LOD_taxa(metaphlan2_ps, 
-                                                taxa_level = "Genus", 
-                                                cutoff = 1e-04)
+metaphlan2_ps_LOD_genus <- aggregate_LOD_taxa(metaphlan2_ps, 
+                                              taxa_level = "Genus", 
+                                              cutoff = 1e-04)
 
 # order
-metaphlan2_ps_order_LOD <- aggregate_LOD_taxa(metaphlan2_ps, 
-                                                taxa_level = "Order", 
-                                                cutoff = 1e-04)
+metaphlan2_ps_LOD_order <- aggregate_LOD_taxa(metaphlan2_ps, 
+                                              taxa_level = "Order", 
+                                              cutoff = 1e-04)
 
 if (!dir.exists("DataSet/Step2/")) {
   dir.create("DataSet/Step2/")
 }
-saveRDS(metaphlan2_ps_species_LOD, "DataSet/Step2/Donor_MGS_phyloseq_species_LOD.RDS", compress = TRUE)
-saveRDS(metaphlan2_ps_genus_LOD, "DataSet/Step2/Donor_MGS_phyloseq_genus_LOD.RDS", compress = TRUE)
-saveRDS(metaphlan2_ps_order_LOD, "DataSet/Step2/Donor_MGS_phyloseq_order_LOD.RDS", compress = TRUE)  
-}
+saveRDS(metaphlan2_ps_LOD_species, "DataSet/Step2/Donor_MGS_phyloseq_LOD_species.RDS", compress = TRUE)
+saveRDS(metaphlan2_ps_LOD_genus, "DataSet/Step2/Donor_MGS_phyloseq_LOD_genus.RDS", compress = TRUE)
+saveRDS(metaphlan2_ps_LOD_order, "DataSet/Step2/Donor_MGS_phyloseq_LOD_order.RDS", compress = TRUE)
 ```
 
 
-## Step2: BRS checking
+## Step3: BRS checking
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps <- readRDS("DataSet/Step1/Donor_MGS_phyloseq.RDS")
-metaphlan2_ps_species <- summarize_taxa(metaphlan2_ps, taxa_level = "Species")
-tail(metaphlan2_ps_species@sam_data %>% data.frame())
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
+                                              taxa_level = "Species", 
+                                              cutoff = 1e-04)
+tail(metaphlan2_ps_LOD_species@sam_data %>% data.frame())
 
 run_RefCheck(
-    ps=metaphlan2_ps_species,
+    ps=metaphlan2_ps_LOD_species,
     BRS_ID="S_7222",
     Reference=NULL,
     Ref_type="MGS",
     Save=NULL)
 
+metaphlan2_ps_LOD_species_remove_BRS <- get_GroupPhyloseq(
+                     ps = metaphlan2_ps_LOD_species,
+                     group = "Group",
+                     group_names = "QC",
+                     discard = TRUE)
+metaphlan2_ps_LOD_species_remove_BRS
+
+if (!dir.exists("DataSet/Step3/")) {
+  dir.create("DataSet/Step3/")
+}
+saveRDS(metaphlan2_ps_LOD_species_remove_BRS, "DataSet/Step3/Donor_MGS_phyloseq_LOD_species_remove_BRS.RDS", compress = TRUE)
+```
+
+
+## Step4: Extracting specific taxonomic level
+
+
+* Removing spike-in sample (BRS)
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps <- readRDS("DataSet/Step1/Donor_MGS_phyloseq.RDS")
 metaphlan2_ps_remove_BRS <- get_GroupPhyloseq(
                      ps = metaphlan2_ps,
                      group = "Group",
                      group_names = "QC",
                      discard = TRUE)
-metaphlan2_ps_remove_BRS
-
-if (!dir.exists("DataSet/Step3/")) {
-  dir.create("DataSet/Step3/")
-}
-saveRDS(metaphlan2_ps_remove_BRS, "DataSet/Step3/Donor_MGS_phyloseq_remove_BRS.RDS", compress = TRUE)
+metaphlan2_ps_LOD_species_remove_BRS
 ```
 
 
-## Step3: Extracting specific taxonomic level
+* Species
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_remove_BRS <- readRDS("DataSet/Step3/Donor_MGS_phyloseq_remove_BRS.RDS")
+metaphlan2_ps_remove_BRS_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+                                                taxa_level = "Species", 
+                                                cutoff = 1e-04)
+metaphlan2_ps_remove_BRS_LOD_species
+```
 
-metaphlan2_ps_remove_BRS_species <- summarize_taxa(metaphlan2_ps_remove_BRS, 
-                                                taxa_level = "Species")
-metaphlan2_ps_remove_BRS_species
+* Genus
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_remove_BRS_LOD_genus <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+                                              taxa_level = "Genus", 
+                                              cutoff = 1e-04)
+metaphlan2_ps_remove_BRS_LOD_genus
+```
 
-metaphlan2_ps_remove_BRS_genus <- summarize_taxa(metaphlan2_ps_remove_BRS, 
-                                                taxa_level = "Genus")
-metaphlan2_ps_remove_BRS_genus
 
+* Phylum
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_remove_BRS_LOD_phylum <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+                                               taxa_level = "Phylum", 
+                                               cutoff = 1e-04)
+metaphlan2_ps_remove_BRS_LOD_phylum
+```
 
+* output
+```{r, warning=FALSE, message=FALSE}
 if (!dir.exists("DataSet/Step4/")) {
   dir.create("DataSet/Step4/")
 }
-saveRDS(metaphlan2_ps_remove_BRS_species, "DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_species.RDS", compress = TRUE)
-saveRDS(metaphlan2_ps_remove_BRS_genus, "DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_genus.RDS", compress = TRUE)
+saveRDS(metaphlan2_ps_remove_BRS_LOD_species, "DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS", compress = TRUE)
+saveRDS(metaphlan2_ps_remove_BRS_LOD_genus, "DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_genus.RDS", compress = TRUE)
+saveRDS(metaphlan2_ps_remove_BRS_LOD_phylum, "DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_phylum.RDS", compress = TRUE)
 ```
 
 
-## Step4: GlobalView
+## Step5: GlobalView
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=5, fig.cap="diversity and ordination and composition(Example)"}
-metaphlan2_ps_remove_BRS_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_species.RDS")
+metaphlan2_ps_remove_BRS_LOD_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS")
 
 # alpha
-metaphlan2_ps_remove_BRS_species_alpha <- run_alpha_diversity(ps=metaphlan2_ps_remove_BRS_species, 
+metaphlan2_ps_remove_BRS_species_alpha <- run_alpha_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, 
                                                 measures = c("Shannon", "Simpson", "InvSimpson"))
 plot_boxplot(data=metaphlan2_ps_remove_BRS_species_alpha,
              y_index = c("Shannon", "Simpson", "InvSimpson"),
@@ -145,18 +175,18 @@ plot_boxplot(data=metaphlan2_ps_remove_BRS_species_alpha,
              group_color = c("red", "blue"))
 
 # beta
-metaphlan2_ps_remove_BRS_species_beta <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_species, method = "bray")
+metaphlan2_ps_remove_BRS_species_beta <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray")
 plot_distance_corrplot(metaphlan2_ps_remove_BRS_species_beta$BetaDistance)
 
 # permanova
-run_permanova(ps=metaphlan2_ps_remove_BRS_species, method = "bray", columns = "Group")
+run_permanova(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray", columns = "Group")
 
 # beta dispersion
-beta_df <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_species, method = "bray", group = "Group")
+beta_df <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray", group = "Group")
 
 # ordination
 metaphlan2_ps_ordination <- run_ordination(
-                       ps = metaphlan2_ps_remove_BRS_species,
+                       ps = metaphlan2_ps_remove_BRS_LOD_species,
                        group = "Group",
                        method = "PCoA")
 
@@ -167,17 +197,17 @@ plot_Ordination(ResultList = metaphlan2_ps_ordination,
 
 # Microbial composition
 plot_stacked_bar_XIVZ(
-        phyloseq = metaphlan2_ps_remove_BRS_species,
+        phyloseq = metaphlan2_ps_remove_BRS_LOD_species,
         level = "Phylum",
         feature = "Group")
 ```
 
-## Step5: Differential Analysis
+## Step6: Differential Analysis
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=5, fig.cap="Differential Analysis (Example)"}
-metaphlan2_ps_remove_BRS_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_species.RDS")
+metaphlan2_ps_remove_BRS_LOD_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS")
 
 # filter & trim
-metaphlan2_ps_remove_BRS_species_filter <- run_filter(metaphlan2_ps_remove_BRS_species, cutoff = 1e-4, unclass = TRUE)
+metaphlan2_ps_remove_BRS_species_filter <- run_filter(metaphlan2_ps_remove_BRS_LOD_species, cutoff = 1e-4, unclass = TRUE)
 metaphlan2_ps_remove_BRS_species_filter_trim <- run_trim(metaphlan2_ps_remove_BRS_species_filter, cutoff = 0.1, trim = "feature")
 metaphlan2_ps_remove_BRS_species_filter_trim
 
@@ -219,5 +249,5 @@ saveRDS(metaphlan2_ps_remove_BRS_species_filter_trim, "DataSet/Step6/Donor_MGS_p
 
 ## Systematic Information
 ```{r}
-sessionInfo()
+devtools::session_info()
 ```

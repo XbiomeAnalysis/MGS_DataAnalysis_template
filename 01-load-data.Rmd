@@ -83,10 +83,10 @@ Here, the phyloseq object comprises five components (*OTU Table*, *Sample Data*,
 
 ## Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_Species_LOD <- aggregate_LOD_taxa(metaphlan2_ps, 
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
                                                 taxa_level = "Species", 
                                                 cutoff = 1e-04)
-metaphlan2_ps_Species_LOD
+metaphlan2_ps_LOD_species
 ```
 
 

@@ -19,7 +19,7 @@ A whole picture of the microbial composition.
 * **XVIZ** package
 ```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=9, fig.align="center", fig.cap="Microbial composition in XVIZ"}
 plot_stacked_bar_XIVZ(
-        phyloseq = metaphlan2_ps_species,
+        phyloseq = metaphlan2_ps_LOD_species,
         level = "Phylum",
         feature = "Group")
 ```
@@ -28,7 +28,7 @@ plot_stacked_bar_XIVZ(
 * **XMAS** package
 ```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=7, fig.align="center", fig.cap="Microbial composition"}
 plot_StackBarPlot(
-        ps=metaphlan2_ps_species,
+        ps=metaphlan2_ps_LOD_species,
         taxa_level="Phylum",
         group = "Group",
         cluster = TRUE)
@@ -39,7 +39,7 @@ plot_StackBarPlot(
 prevalences <- seq(0.05, 1, 0.05)
 detections <- 10^seq(log10(1e-3), log10(0.2), length = 10)
 
-pl_core <- plot_core_taxa(metaphlan2_ps_species, 
+pl_core <- plot_core_taxa(metaphlan2_ps_LOD_species, 
                     plot.type = "heatmap", 
                     colours = gray(seq(0, 1, length=5)),
                     prevalences = prevalences, 
@@ -54,7 +54,7 @@ The degree of color indicates the size of abundance and prevalence.
 
 * Use `core_members` to obtain the core taxa. detection for abundance and prevalence for occurrence.
 ```{r, warning=FALSE, message=FALSE}
-core_taxa_name <- core_members(metaphlan2_ps_species, detection = 0.01, prevalence = 0.5)
+core_taxa_name <- core_members(metaphlan2_ps_LOD_species, detection = 0.01, prevalence = 0.5)
 print(core_taxa_name)
 ```
 

@@ -17,30 +17,32 @@ There are more than 10 approaches to perform differential analysis. Here, we cho
 
 ## Filtering & Trimming
 
-We suggest that filtering taxa with low abundance (the summarized value under cutoff: `1e-4`) and trimming taxa with low prevalence (default: `0.2`).
+We suggest that filtering taxa with low abundance (the summarized value under cutoff: `1e-4`) and trimming taxa with low prevalence (default: `0.1`).
 
 ### Filtering the low relative abundance or unclassified taxa by the threshold (total counts < 1e-4)
 
-The condition to filter low relative abundance is according to this article [@thingholm2019obese].
+* filter by sum relative abundance
+```{r, warning=FALSE, message=FALSE}
+metaphlan2_ps_species_filter <- run_filter(metaphlan2_ps_LOD_species_remove_BRS, cutoff = 1e-4, unclass = TRUE)
+metaphlan2_ps_species_filter 
+```
+
+* filter by following two criterion [@thingholm2019obese]
 
 > Species from taxonomic profiles were retained for further analysis if their mean relative abundance exceeded 0.005
 (0.5%) across the dataset with a minimum abundance of 0.05 (5%) in at least one sample and non-zero abundance in at least
 60% of samples. 
 
-There are three conditions
-
 1. Mean relative abundance: 0.005; 
 
 2. Minimum relative abundance: 0.05;
 
-3. Occurrence: 60%. 
-
-Here, we use 0.01 (the 1e-4 regarded as 0.01 compared to the Referece because Metaphlan2 data had been divided 100)
-
+Here, we use 0.01 (the 1e-4 regarded as 0.01 compared to the Referece because Metaphlan2 data had been divided 100).
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_species_filter <- run_filter(metaphlan2_ps_species, cutoff = 1e-4, unclass = TRUE)
-metaphlan2_ps_species_filter 
+metaphlan2_ps_species_filter2 <- run_filter2(metaphlan2_ps_LOD_species_remove_BRS, cutoff_mean = 1e-04, cutoff_one = 1e-03, unclass = TRUE)
+metaphlan2_ps_species_filter2
 ```
+
 
 ### Trimming the taxa with low occurrence less than threshold
 ```{r, warning=FALSE, message=FALSE}
@@ -120,7 +122,7 @@ plot_topN_boxplot(
 
 ## Multiple differential analysis by one function
 
-here, we provide the `run_multiple_da` for obtaining the results list from multiple differential analysis methods.
+Here, we provide the `run_multiple_da` for obtaining the results list from multiple differential analysis methods.
 
 ```{r, warning=FALSE, message=FALSE}
 multiple_res <- run_multiple_da(
@@ -131,7 +133,6 @@ multiple_res <- run_multiple_da(
 
 names(multiple_res)
 ```
-
 
 * plot  results
 ```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=13, fig.cap="Multiple DA results"}
