@@ -23,13 +23,21 @@ metaphlan2_ps_LOD_species@sam_data
 ```
 
 * run `run_RefCheck`
-```{r, warning=FALSE, message=FALSE, collapse=TRUE}
+```markdown
 run_RefCheck(
-    ps=metaphlan2_ps_LOD_species,
-    BRS_ID="refE",
-    Reference=NULL,
-    Ref_type="MGS",
-    Save=NULL)
+    ps = metaphlan2_ps_LOD_species,
+    BRS_ID=  "refE",
+    Ref_type = "MGS")
+```
+
+
+```{r, warning=FALSE, message=TRUE, collapse=TRUE, echo=FALSE}
+run_RefCheck(
+    ps = metaphlan2_ps_LOD_species,
+    BRS_ID = "refE",
+    Reference = NULL,
+    Ref_type = "MGS",
+    Save = NULL)
 ```
 
 ## Spike-in sample's (BRS) remove

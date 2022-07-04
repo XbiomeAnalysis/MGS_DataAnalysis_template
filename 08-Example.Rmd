@@ -89,13 +89,26 @@ metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps,
                                               cutoff = 1e-04)
 tail(metaphlan2_ps_LOD_species@sam_data %>% data.frame())
 
-run_RefCheck(
-    ps=metaphlan2_ps_LOD_species,
-    BRS_ID="S_7222",
-    Reference=NULL,
-    Ref_type="MGS",
-    Save=NULL)
+```
 
+
+```markdown
+run_RefCheck(
+    ps = metaphlan2_ps_LOD_species,
+    BRS_ID = "S_7222",
+    Ref_type = "MGS"L)
+```
+
+```{r, warning=FALSE, message=TRUE, collapse=TRUE, echo=FALSE}
+run_RefCheck(
+    ps = metaphlan2_ps_LOD_species,
+    BRS_ID = "S_7222",
+    Reference = NULL,
+    Ref_type = "MGS",
+    Save = NULL)
+```
+
+```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_LOD_species_remove_BRS <- get_GroupPhyloseq(
                      ps = metaphlan2_ps_LOD_species,
                      group = "Group",
