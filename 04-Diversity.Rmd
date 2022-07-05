@@ -17,7 +17,8 @@ library(ggpubr)
 
 **Notes:** choosing the measures (*Shannon, Simpson and InvSimpson*) only for relative abundance. 
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_LOD_species_alpha <- run_alpha_diversity(ps=metaphlan2_ps_LOD_species, measures = c("Shannon", "Simpson", "InvSimpson"))
+metaphlan2_ps_LOD_species_alpha <- run_alpha_diversity(ps = metaphlan2_ps_LOD_species, 
+                                                       measures = c("Shannon", "Simpson", "InvSimpson"))
 DT::datatable(metaphlan2_ps_LOD_species_alpha)
 ```
 
@@ -37,7 +38,9 @@ plot_boxplot(data = metaphlan2_ps_LOD_species_alpha,
 
 * beta dipersion
 ```{r, warning=FALSE, message=FALSE, fig.width=5, fig.height=4, fig.align="center", fig.cap="Beta diversity"}
-metaphlan2_ps_LOD_beta <- run_beta_diversity(ps=metaphlan2_ps_LOD_species, method = "bray", group = "Group")
+metaphlan2_ps_LOD_beta <- run_beta_diversity(ps = metaphlan2_ps_LOD_species, 
+                                             method = "bray", 
+                                             group = "Group")
 metaphlan2_ps_LOD_beta$BetaDispersion
 ```
 

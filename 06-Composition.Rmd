@@ -28,8 +28,8 @@ plot_stacked_bar_XIVZ(
 * **XMAS** package
 ```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=7, fig.align="center", fig.cap="Microbial composition"}
 plot_StackBarPlot(
-        ps=metaphlan2_ps_LOD_species,
-        taxa_level="Phylum",
+        ps = metaphlan2_ps_LOD_species,
+        taxa_level = "Phylum",
         group = "Group",
         cluster = TRUE)
 ```
@@ -54,7 +54,9 @@ The degree of color indicates the size of abundance and prevalence.
 
 * Use `core_members` to obtain the core taxa. detection for abundance and prevalence for occurrence.
 ```{r, warning=FALSE, message=FALSE}
-core_taxa_name <- core_members(metaphlan2_ps_LOD_species, detection = 0.01, prevalence = 0.5)
+core_taxa_name <- core_members(metaphlan2_ps_LOD_species, 
+                               detection = 0.01, 
+                               prevalence = 0.5)
 print(core_taxa_name)
 ```
 

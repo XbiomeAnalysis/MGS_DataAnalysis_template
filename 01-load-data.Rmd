@@ -48,7 +48,8 @@ metaphlan2_sam <- read.table(
 
 ### taxa table
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_res_list <- import_metaphlan_taxa(metaphlan2_res, taxa_level = "Species")
+metaphlan2_res_list <- import_metaphlan_taxa(data_metaphlan2 = metaphlan2_res, 
+                                             taxa_level = "Species")
 tax_tab <- metaphlan2_res_list$tax_tab
 head(tax_tab)
 ```
@@ -56,7 +57,8 @@ head(tax_tab)
 
 ### otu table
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_res_list <- import_metaphlan_taxa(metaphlan2_res, taxa_level = "Species")
+metaphlan2_res_list <- import_metaphlan_taxa(data_metaphlan2 = metaphlan2_res, 
+                                             taxa_level = "Species")
 otu_tab <- metaphlan2_res_list$abu_tab
 head(otu_tab)
 ```
@@ -71,9 +73,10 @@ head(sam_tab)
 
 ### phyloseq object
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps <- get_metaphlan_phyloseq(otu_tab = otu_tab, 
-                                   sam_tab = sam_tab,
-                                   tax_tab = tax_tab)
+metaphlan2_ps <- get_metaphlan_phyloseq(
+                    otu_tab = otu_tab, 
+                    sam_tab = sam_tab,
+                    tax_tab = tax_tab)
 metaphlan2_ps
 ```
 we obtain the **phyloseq-class object** and then use it to perform data analysis.
@@ -83,7 +86,7 @@ Here, the phyloseq object comprises five components (*OTU Table*, *Sample Data*,
 
 ## Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(ps = metaphlan2_ps, 
                                                 taxa_level = "Species", 
                                                 cutoff = 1e-04)
 metaphlan2_ps_LOD_species

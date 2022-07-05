@@ -19,13 +19,14 @@ metaphlan2_res <- read.table("DataSet/RawData/merged_metaphlan2.tsv",
                              header = TRUE, stringsAsFactors = FALSE) %>%
   tibble::rownames_to_column("ID")
 
-metadata <- read_xlsx("DataSet/RawData/诺禾宏基因组678月-ZH.xlsx", sheet = 3)
+metadata <- readxl::read_xlsx("DataSet/RawData/诺禾宏基因组678月-ZH.xlsx", sheet = 3)
 ```
 
 
 ## Step1: Convert inputs into phyloseq data
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_res_list <- import_metaphlan_taxa(metaphlan2_res, taxa_level = "Species")
+metaphlan2_res_list <- import_metaphlan_taxa(data_metaphlan2 = metaphlan2_res, 
+                                             taxa_level = "Species")
 tax_tab <- metaphlan2_res_list$tax_tab
 
 otu_tab <- metaphlan2_res_list$abu_tab
@@ -43,9 +44,10 @@ otu_tab_cln <- otu_tab[, match(overlap_samples, colnames(otu_tab))]
 sam_tab_cln <- sam_tab[match(overlap_samples, rownames(sam_tab)), ]
 rownames(sam_tab_cln) <- overlap_samples
 
-metaphlan2_ps <- get_metaphlan_phyloseq(otu_tab = otu_tab_cln, 
-                                   sam_tab = sam_tab_cln,
-                                   tax_tab = tax_tab)
+metaphlan2_ps <- get_metaphlan_phyloseq(
+                    otu_tab = otu_tab_cln, 
+                    sam_tab = sam_tab_cln,
+                    tax_tab = tax_tab)
 metaphlan2_ps
 
 if (!dir.exists("DataSet/Step1/")) {
@@ -58,17 +60,17 @@ saveRDS(metaphlan2_ps, "DataSet/Step1/Donor_MGS_phyloseq.RDS", compress = TRUE)
 ## Step2: Transform limit of detection (LOD) into Zeros
 ```{r, warning=FALSE, message=FALSE}
 # species
-metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
-                                              taxa_level = "Species", 
-                                              cutoff = 1e-04)
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(ps = metaphlan2_ps, 
+                                                taxa_level = "Species", 
+                                                cutoff = 1e-04)
 
 # genus
-metaphlan2_ps_LOD_genus <- aggregate_LOD_taxa(metaphlan2_ps, 
+metaphlan2_ps_LOD_genus <- aggregate_LOD_taxa(ps = metaphlan2_ps, 
                                               taxa_level = "Genus", 
                                               cutoff = 1e-04)
 
 # order
-metaphlan2_ps_LOD_order <- aggregate_LOD_taxa(metaphlan2_ps, 
+metaphlan2_ps_LOD_order <- aggregate_LOD_taxa(ps = metaphlan2_ps, 
                                               taxa_level = "Order", 
                                               cutoff = 1e-04)
 
@@ -84,9 +86,9 @@ saveRDS(metaphlan2_ps_LOD_order, "DataSet/Step2/Donor_MGS_phyloseq_LOD_order.RDS
 ## Step3: BRS checking
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps <- readRDS("DataSet/Step1/Donor_MGS_phyloseq.RDS")
-metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps, 
-                                              taxa_level = "Species", 
-                                              cutoff = 1e-04)
+metaphlan2_ps_LOD_species <- aggregate_LOD_taxa(ps = metaphlan2_ps, 
+                                                taxa_level = "Species", 
+                                                cutoff = 1e-04)
 tail(metaphlan2_ps_LOD_species@sam_data %>% data.frame())
 
 ```
@@ -110,10 +112,10 @@ run_RefCheck(
 
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps_LOD_species_remove_BRS <- get_GroupPhyloseq(
-                     ps = metaphlan2_ps_LOD_species,
-                     group = "Group",
-                     group_names = "QC",
-                     discard = TRUE)
+                                           ps = metaphlan2_ps_LOD_species,
+                                           group = "Group",
+                                           group_names = "QC",
+                                           discard = TRUE)
 metaphlan2_ps_LOD_species_remove_BRS
 
 if (!dir.exists("DataSet/Step3/")) {
@@ -130,17 +132,18 @@ saveRDS(metaphlan2_ps_LOD_species_remove_BRS, "DataSet/Step3/Donor_MGS_phyloseq_
 ```{r, warning=FALSE, message=FALSE}
 metaphlan2_ps <- readRDS("DataSet/Step1/Donor_MGS_phyloseq.RDS")
 metaphlan2_ps_remove_BRS <- get_GroupPhyloseq(
-                     ps = metaphlan2_ps,
-                     group = "Group",
-                     group_names = "QC",
-                     discard = TRUE)
+                               ps = metaphlan2_ps,
+                               group = "Group",
+                               group_names = "QC",
+                               discard = TRUE)
 metaphlan2_ps_LOD_species_remove_BRS
 ```
 
 
 * Species
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_remove_BRS_LOD_species <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+metaphlan2_ps_remove_BRS_LOD_species <- aggregate_LOD_taxa(
+                                                ps = metaphlan2_ps_remove_BRS, 
                                                 taxa_level = "Species", 
                                                 cutoff = 1e-04)
 metaphlan2_ps_remove_BRS_LOD_species
@@ -148,7 +151,8 @@ metaphlan2_ps_remove_BRS_LOD_species
 
 * Genus
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_remove_BRS_LOD_genus <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+metaphlan2_ps_remove_BRS_LOD_genus <- aggregate_LOD_taxa(
+                                              ps = metaphlan2_ps_remove_BRS, 
                                               taxa_level = "Genus", 
                                               cutoff = 1e-04)
 metaphlan2_ps_remove_BRS_LOD_genus
@@ -157,7 +161,8 @@ metaphlan2_ps_remove_BRS_LOD_genus
 
 * Phylum
 ```{r, warning=FALSE, message=FALSE}
-metaphlan2_ps_remove_BRS_LOD_phylum <- aggregate_LOD_taxa(metaphlan2_ps_remove_BRS, 
+metaphlan2_ps_remove_BRS_LOD_phylum <- aggregate_LOD_taxa(
+                                               ps = metaphlan2_ps_remove_BRS, 
                                                taxa_level = "Phylum", 
                                                cutoff = 1e-04)
 metaphlan2_ps_remove_BRS_LOD_phylum
@@ -179,23 +184,30 @@ saveRDS(metaphlan2_ps_remove_BRS_LOD_phylum, "DataSet/Step4/Donor_MGS_phyloseq_r
 metaphlan2_ps_remove_BRS_LOD_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS")
 
 # alpha
-metaphlan2_ps_remove_BRS_species_alpha <- run_alpha_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, 
-                                                measures = c("Shannon", "Simpson", "InvSimpson"))
-plot_boxplot(data=metaphlan2_ps_remove_BRS_species_alpha,
+metaphlan2_ps_remove_BRS_species_alpha <- run_alpha_diversity(
+                                            ps = metaphlan2_ps_remove_BRS_LOD_species, 
+                                            measures = c("Shannon", "Simpson", "InvSimpson"))
+plot_boxplot(data = metaphlan2_ps_remove_BRS_species_alpha,
              y_index = c("Shannon", "Simpson", "InvSimpson"),
              group = "Group",
              group_names = c("Stool", "Product"),
              group_color = c("red", "blue"))
 
 # beta
-metaphlan2_ps_remove_BRS_species_beta <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray")
-plot_distance_corrplot(metaphlan2_ps_remove_BRS_species_beta$BetaDistance)
+metaphlan2_ps_remove_BRS_species_beta <- run_beta_diversity(
+                                            ps = metaphlan2_ps_remove_BRS_LOD_species, 
+                                            method = "bray")
+plot_distance_corrplot(datMatrix = metaphlan2_ps_remove_BRS_species_beta$BetaDistance)
 
 # permanova
-run_permanova(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray", columns = "Group")
+run_permanova(ps = metaphlan2_ps_remove_BRS_LOD_species, 
+              method = "bray", 
+              columns = "Group")
 
 # beta dispersion
-beta_df <- run_beta_diversity(ps=metaphlan2_ps_remove_BRS_LOD_species, method = "bray", group = "Group")
+beta_df <- run_beta_diversity(ps = metaphlan2_ps_remove_BRS_LOD_species, 
+                              method = "bray", 
+                              group = "Group")
 
 # ordination
 metaphlan2_ps_ordination <- run_ordination(
@@ -220,31 +232,35 @@ plot_stacked_bar_XIVZ(
 metaphlan2_ps_remove_BRS_LOD_species <- readRDS("DataSet/Step4/Donor_MGS_phyloseq_remove_BRS_LOD_species.RDS")
 
 # filter & trim
-metaphlan2_ps_remove_BRS_species_filter <- run_filter(metaphlan2_ps_remove_BRS_LOD_species, cutoff = 1e-4, unclass = TRUE)
-metaphlan2_ps_remove_BRS_species_filter_trim <- run_trim(metaphlan2_ps_remove_BRS_species_filter, cutoff = 0.1, trim = "feature")
+metaphlan2_ps_remove_BRS_species_filter <- run_filter(ps = metaphlan2_ps_remove_BRS_LOD_species, 
+                                                      cutoff = 1e-4, 
+                                                      unclass = TRUE)
+metaphlan2_ps_remove_BRS_species_filter_trim <- run_trim(object = metaphlan2_ps_remove_BRS_species_filter, 
+                                                         cutoff = 0.1, trim = "feature")
 metaphlan2_ps_remove_BRS_species_filter_trim
 
 # lefse
 metaphlan2_ps_lefse <- run_lefse(
-                    metaphlan2_ps_remove_BRS_species_filter_trim,
-                    group = "Group",
-                    group_names = c("Stool", "Product"),
-                    Lda = 2)
+                          ps = metaphlan2_ps_remove_BRS_species_filter_trim,
+                          group = "Group",
+                          group_names = c("Stool", "Product"),
+                          norm = "CPM",
+                          Lda = 2)
 # # don't run this code when you do lefse in reality
 # metaphlan2_ps_lefse$LDA_Score <- metaphlan2_ps_lefse$LDA_Score * 1000
 plot_lefse(
-  da_res = metaphlan2_ps_lefse,
-  x_index = "LDA_Score",
-  x_index_cutoff = 2,
-  group_color = c("green", "red"))
+    da_res = metaphlan2_ps_lefse,
+    x_index = "LDA_Score",
+    x_index_cutoff = 2,
+    group_color = c("green", "red"))
 
 
 metaphlan2_ps_wilcox <- run_wilcox(
-                    metaphlan2_ps_remove_BRS_species_filter_trim,
-                    group = "Group",
-                    group_names = c("Stool", "Product"))
+                          ps = metaphlan2_ps_remove_BRS_species_filter_trim,
+                          group = "Group",
+                          group_names = c("Stool", "Product"))
 plot_volcano(
-    metaphlan2_ps_wilcox,
+    da_res = metaphlan2_ps_wilcox,
     group_names = c("Stool", "Product"),
     x_index = "Log2FoldChange (Rank)\nStool_vs_Product",
     x_index_cutoff = 0.5,
