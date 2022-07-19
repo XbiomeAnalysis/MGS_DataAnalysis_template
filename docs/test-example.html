@@ -24,7 +24,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-07-05" />
+<meta name="date" content="2022-07-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -348,20 +348,20 @@ div.csl-indent {
 <span id="cb84-3"><a href="test-example.html#cb84-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>, </span>
 <span id="cb84-4"><a href="test-example.html#cb84-4" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">cutoff =</span> <span class="fl">1e-04</span>)</span>
 <span id="cb84-5"><a href="test-example.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(metaphlan2_ps_LOD_species<span class="sc">@</span>sam_data <span class="sc">%&gt;%</span> <span class="fu">data.frame</span>())</span></code></pre></div>
-<pre><code>##             SampleTubeID   Group Date_Sequencing ProductID SampleType ProductBatch Date_Sampling Date_Receiving SeqID_MGS
-## S_7769      GGM50-210730   Stool      2021-08-03       M50       粪便 CYM50-210735    2021.07.30     2021-08-06      7769
-## S_7770 CYM50-210735-0727 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.27     2021-08-06      7770
-## S_7771 CYM50-210735-0728 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.28     2021-08-06      7771
-## S_7772 CYM50-210735-0729 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.29     2021-08-06      7772
-## S_7773 CYM50-210735-0730 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.30     2021-08-06      7773
-## S_7222         Community      QC            &lt;NA&gt;       Ref         QC         &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;      7222
-##        SeqID_16s                                             Pipeline_MGS
-## S_7769      7929 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
-## S_7770      7930 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
-## S_7771      7931 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
-## S_7772      7932 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
-## S_7773      7933 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
-## S_7222      7327 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+<pre><code>##             SampleTubeID   Group Date_Sequencing ProductID SampleType ProductBatch Date_Sampling Date_Receiving
+## S_7769      GGM50-210730   Stool      2021-08-03       M50       粪便 CYM50-210735    2021.07.30     2021-08-06
+## S_7770 CYM50-210735-0727 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.27     2021-08-06
+## S_7771 CYM50-210735-0728 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.28     2021-08-06
+## S_7772 CYM50-210735-0729 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.29     2021-08-06
+## S_7773 CYM50-210735-0730 Product      2021-08-03       M50   肠菌胶囊 CYM50-210735    2021.07.30     2021-08-06
+## S_7222         Community      QC            &lt;NA&gt;       Ref         QC         &lt;NA&gt;          &lt;NA&gt;           &lt;NA&gt;
+##        SeqID_MGS SeqID_16s                                             Pipeline_MGS
+## S_7769      7769      7929 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+## S_7770      7770      7930 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+## S_7771      7771      7931 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+## S_7772      7772      7932 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+## S_7773      7773      7933 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
+## S_7222      7222      7327 /share/work/HPC/work_tmp/PipelineJob_180_20210923/output
 ##                                                                Pipeline_16s
 ## S_7769 /share/projects/Engineering/pipeline_output/PipelineJob_304_20211203
 ## S_7770 /share/projects/Engineering/pipeline_output/PipelineJob_304_20211203
@@ -420,9 +420,9 @@ div.csl-indent {
 ## Enterococcus_faecalis 11.46778 12.46200 11.92117 11.95884 13.71474 13.67805 13.21782 13.27297 17.19286 13.209581
 ## Impurity_level         7.33876  7.34799  7.14891  6.47250  8.88190  9.72198  9.72162 10.57600 72.95000 15.573296
 ##                                                                    Evaluation
-## Escherichia_coli      S_7222 didn&#39;t pass the threshold (2022-07-05 14:27:16).
-## Enterococcus_faecalis S_7222 didn&#39;t pass the threshold (2022-07-05 14:27:16).
-## Impurity_level        S_7222 didn&#39;t pass the threshold (2022-07-05 14:27:16).</code></pre>
+## Escherichia_coli      S_7222 didn&#39;t pass the threshold (2022-07-19 17:25:56).
+## Enterococcus_faecalis S_7222 didn&#39;t pass the threshold (2022-07-19 17:25:56).
+## Impurity_level        S_7222 didn&#39;t pass the threshold (2022-07-19 17:25:56).</code></pre>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="test-example.html#cb88-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
 <span id="cb88-2"><a href="test-example.html#cb88-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">ps =</span> metaphlan2_ps_LOD_species,</span>
 <span id="cb88-3"><a href="test-example.html#cb88-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
@@ -645,7 +645,7 @@ Figure 9.6: Differential Analysis (Example)
 <div id="systematic-information-7" class="section level2 hasAnchor" number="9.9">
 <h2><span class="header-section-number">9.9</span> Systematic Information<a href="test-example.html#systematic-information-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="test-example.html#cb113-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────
+<pre><code>## ─ Session info ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value
 ##  version  R version 4.1.2 (2021-11-01)
 ##  os       macOS Monterey 12.2.1
@@ -655,15 +655,14 @@ Figure 9.6: Differential Analysis (Example)
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Asia/Shanghai
-##  date     2022-07-05
+##  date     2022-07-19
 ##  rstudio  2022.02.0+443 Prairie Trillium (desktop)
 ##  pandoc   2.17.1.1 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/ (via rmarkdown)
 ## 
-## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version  date (UTC) lib source
 ##  abind                  1.4-5    2016-07-21 [1] CRAN (R 4.1.0)
 ##  ade4                   1.7-18   2021-09-16 [1] CRAN (R 4.1.0)
-##  ALDEx2                 1.26.0   2021-10-26 [1] Bioconductor
 ##  annotate               1.72.0   2021-10-26 [1] Bioconductor
 ##  AnnotationDbi          1.56.2   2021-11-09 [1] Bioconductor
 ##  ape                    5.6-2    2022-03-02 [1] CRAN (R 4.1.2)
@@ -697,6 +696,7 @@ Figure 9.6: Differential Analysis (Example)
 ##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
 ##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
 ##  compositions           2.0-4    2022-01-05 [1] CRAN (R 4.1.2)
+##  conflicted             1.1.0    2021-11-26 [1] CRAN (R 4.1.0)
 ##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
 ##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
 ##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
@@ -767,7 +767,6 @@ Figure 9.6: Differential Analysis (Example)
 ##  Matrix                 1.4-0    2021-12-08 [1] CRAN (R 4.1.0)
 ##  MatrixGenerics         1.6.0    2021-10-26 [1] Bioconductor
 ##  matrixStats            0.61.0   2021-09-17 [1] CRAN (R 4.1.0)
-##  mbzinb                 0.2      2022-03-16 [1] local
 ##  memoise                2.0.1    2021-11-26 [1] CRAN (R 4.1.0)
 ##  metagenomeSeq          1.36.0   2021-10-26 [1] Bioconductor
 ##  mgcv                   1.8-39   2022-02-24 [1] CRAN (R 4.1.2)
@@ -776,7 +775,6 @@ Figure 9.6: Differential Analysis (Example)
 ##  multtest               2.50.0   2021-10-26 [1] Bioconductor
 ##  munsell                0.5.0    2018-06-12 [1] CRAN (R 4.1.0)
 ##  mvtnorm                1.1-3    2021-10-08 [1] CRAN (R 4.1.0)
-##  NADA                   1.6-1.1  2020-03-22 [1] CRAN (R 4.1.0)
 ##  nlme                   3.1-155  2022-01-13 [1] CRAN (R 4.1.2)
 ##  nnet                   7.3-17   2022-01-13 [1] CRAN (R 4.1.2)
 ##  permute                0.9-7    2022-01-27 [1] CRAN (R 4.1.2)
@@ -791,17 +789,14 @@ Figure 9.6: Differential Analysis (Example)
 ##  prettyunits            1.1.1    2020-01-24 [1] CRAN (R 4.1.0)
 ##  processx               3.5.2    2021-04-30 [1] CRAN (R 4.1.0)
 ##  ps                     1.6.0    2021-02-28 [1] CRAN (R 4.1.0)
-##  pscl                   1.5.5    2020-03-07 [1] CRAN (R 4.1.0)
 ##  purrr                  0.3.4    2020-04-17 [1] CRAN (R 4.1.0)
 ##  R6                     2.5.1    2021-08-19 [1] CRAN (R 4.1.0)
 ##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
 ##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
-##  RcppZiggurat           0.1.6    2020-10-20 [1] CRAN (R 4.1.0)
 ##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
 ##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
 ##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
 ##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
-##  Rfast                  2.0.6    2022-02-16 [1] CRAN (R 4.1.2)
 ##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
 ##  rhdf5filters           1.6.0    2021-10-26 [1] Bioconductor
 ##  Rhdf5lib               1.16.0   2021-10-26 [1] Bioconductor
@@ -829,7 +824,6 @@ Figure 9.6: Differential Analysis (Example)
 ##  tibble               * 3.1.6    2021-11-07 [1] CRAN (R 4.1.0)
 ##  tidyr                  1.2.0    2022-02-01 [1] CRAN (R 4.1.2)
 ##  tidyselect             1.1.2    2022-02-21 [1] CRAN (R 4.1.2)
-##  truncnorm              1.0-8    2018-02-27 [1] CRAN (R 4.1.0)
 ##  usethis                2.1.5    2021-12-09 [1] CRAN (R 4.1.0)
 ##  utf8                   1.2.2    2021-07-24 [1] CRAN (R 4.1.0)
 ##  vctrs                  0.3.8    2021-04-29 [1] CRAN (R 4.1.0)
@@ -837,18 +831,17 @@ Figure 9.6: Differential Analysis (Example)
 ##  withr                  2.5.0    2022-03-03 [1] CRAN (R 4.1.2)
 ##  Wrench                 1.12.0   2021-10-26 [1] Bioconductor
 ##  xfun                   0.30     2022-03-02 [1] CRAN (R 4.1.2)
-##  XMAS2                * 2.1.5    2022-07-05 [1] local
+##  XMAS2                * 2.1.6    2022-07-19 [1] local
 ##  XML                    3.99-0.9 2022-02-24 [1] CRAN (R 4.1.2)
 ##  xtable                 1.8-4    2019-04-21 [1] CRAN (R 4.1.0)
 ##  XVector                0.34.0   2021-10-26 [1] Bioconductor
 ##  yaml                   2.3.5    2022-02-21 [1] CRAN (R 4.1.2)
-##  zCompositions          1.4.0    2022-01-13 [1] CRAN (R 4.1.2)
 ##  zlibbioc               1.40.0   2021-10-26 [1] Bioconductor
 ##  zoo                    1.8-9    2021-03-09 [1] CRAN (R 4.1.0)
 ## 
 ##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
 ## 
-## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+## ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
 </div>
