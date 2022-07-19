@@ -71,7 +71,7 @@ head(metaphlan2_ps_lefse)
 ```
 
 * Visualization
-```{r, warning=FALSE, message=FALSE, fig.width=6, fig.height=4, fig.align="center", fig.cap="Lefse analysis"}
+```{r, warning=FALSE, message=FALSE, fig.width=8, fig.height=6, fig.align="center", fig.cap="Lefse analysis"}
 # # don't run this code when you do lefse in reality
 # metaphlan2_ps_lefse$LDA_Score <- metaphlan2_ps_lefse$LDA_Score * 1000
 plot_lefse(
@@ -114,7 +114,7 @@ plot_volcano(
 
 Display the significant taxa with selection using boxplot.
 
-```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=10, fig.height=4, fig.cap="Dominant Taxa"}
+```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=14, fig.height=4, fig.cap="Dominant Taxa"}
 plot_topN_boxplot(
     ps = metaphlan2_ps_species_filter_trim,
     da_res = metaphlan2_ps_wilcox,
@@ -142,7 +142,7 @@ names(multiple_res)
 ```
 
 * plot  results
-```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=8, fig.height=13, fig.cap="Multiple DA results"}
+```{r, warning=FALSE, message=FALSE, fig.align="center", fig.width=10, fig.height=6, fig.cap="Multiple DA results"}
 plot_multiple_DA(
       Multip_DA_res = multiple_res,
       x_index_list = c("Log2FoldChange (Rank)\nAA_vs_BB", 
@@ -150,7 +150,7 @@ plot_multiple_DA(
                        "Log2FoldChange (geometricmean)\nAA_vs_BB"),
       x_index_cutoff = 0,  
       y_index = "Pvalue",
-      y_index_cutoff = 0.5,
+      y_index_cutoff = 0.05,
       cellwidth = 35,
       cellheight = 10,
       fontsize_number = 15)
