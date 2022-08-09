@@ -21,7 +21,9 @@ example comprises the following steps:
 
 6.  Composition analysis;
 
-7.  Differential analysis.
+7.  Differential analysis;
+
+8.  Network analysis.
 
 <img src="./figures/README-unnamed-chunk-2-1.png" title="Functions of XMAS 2.0" alt="Functions of XMAS 2.0" style="display: block; margin: auto;" />
 
@@ -35,3 +37,4 @@ Xbiome company
 
 -   Submitted to gitlab. (2022-05-28)
 -   upload *bookdwon*. (2022-08-04)
+-   add Chapter *Network Analysis* . (2022-08-04)

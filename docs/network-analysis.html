@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package</title>
+  <meta name="description" content="Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+  <meta name="twitter:description" content="Chapter 9 Network Analysis | MGS microbiota data analysis based on XMAS package" />
+  
+
+<meta name="author" content="Hua Zou" />
+
+
+<meta name="date" content="2022-08-09" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="differential-analysis.html"/>
+<link rel="next" href="test-example.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.21/datatables.js"></script>
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.11.3/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.11.3/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">MGS microbiota data analysis based on XMAS package</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#preparing-for-the-tutorial"><i class="fa fa-check"></i><b>1.1</b> Preparing for the tutorial</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#workflow-description"><i class="fa fa-check"></i><b>1.2</b> Workflow description</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html"><i class="fa fa-check"></i><b>2</b> Convert inputdata into phyloseq object</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metaphlan23"><i class="fa fa-check"></i><b>2.1</b> Metaphlan2/3</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#importing-results"><i class="fa fa-check"></i><b>2.1.1</b> Importing results</a></li>
+<li class="chapter" data-level="2.1.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#taxa-table"><i class="fa fa-check"></i><b>2.1.2</b> taxa table</a></li>
+<li class="chapter" data-level="2.1.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#otu-table"><i class="fa fa-check"></i><b>2.1.3</b> otu table</a></li>
+<li class="chapter" data-level="2.1.4" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metadata-table"><i class="fa fa-check"></i><b>2.1.4</b> metadata table</a></li>
+<li class="chapter" data-level="2.1.5" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object"><i class="fa fa-check"></i><b>2.1.5</b> phyloseq object</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#transform-the-abundance-of-taxa-whose-relative-abundance-under-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>2.2</b> Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros</a></li>
+<li class="chapter" data-level="2.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#systematic-information"><i class="fa fa-check"></i><b>2.3</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="quality-control.html"><a href="quality-control.html"><i class="fa fa-check"></i><b>3</b> Quality Control</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="quality-control.html"><a href="quality-control.html#spike-in-sample-brs"><i class="fa fa-check"></i><b>3.1</b> spike-in sample (BRS)</a></li>
+<li class="chapter" data-level="3.2" data-path="quality-control.html"><a href="quality-control.html#spike-in-samples-brs-remove"><i class="fa fa-check"></i><b>3.2</b> Spike-in sample’s (BRS) remove</a></li>
+<li class="chapter" data-level="3.3" data-path="quality-control.html"><a href="quality-control.html#systematic-information-1"><i class="fa fa-check"></i><b>3.3</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-processing.html"><a href="data-processing.html"><i class="fa fa-check"></i><b>4</b> Data processing</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-processing.html"><a href="data-processing.html#extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>4.1</b> Extracting specific taxonomic level</a></li>
+<li class="chapter" data-level="4.2" data-path="data-processing.html"><a href="data-processing.html#systematic-information-2"><i class="fa fa-check"></i><b>4.2</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="diversity-analysis.html"><a href="diversity-analysis.html"><i class="fa fa-check"></i><b>5</b> Diversity analysis</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="diversity-analysis.html"><a href="diversity-analysis.html#alpha-diveristy"><i class="fa fa-check"></i><b>5.1</b> Alpha diveristy</a></li>
+<li class="chapter" data-level="5.2" data-path="diversity-analysis.html"><a href="diversity-analysis.html#beta-diversity"><i class="fa fa-check"></i><b>5.2</b> Beta diversity</a></li>
+<li class="chapter" data-level="5.3" data-path="diversity-analysis.html"><a href="diversity-analysis.html#systematic-information-3"><i class="fa fa-check"></i><b>5.3</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html"><i class="fa fa-check"></i><b>6</b> PERMANOVA + beta dispersion + Ordination</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#permanova"><i class="fa fa-check"></i><b>6.1</b> PERMANOVA</a></li>
+<li class="chapter" data-level="6.2" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#beta-dispersion"><i class="fa fa-check"></i><b>6.2</b> beta dispersion</a></li>
+<li class="chapter" data-level="6.3" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#ordination"><i class="fa fa-check"></i><b>6.3</b> Ordination</a></li>
+<li class="chapter" data-level="6.4" data-path="permanova-beta-dispersion-ordination.html"><a href="permanova-beta-dispersion-ordination.html#systematic-information-4"><i class="fa fa-check"></i><b>6.4</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="microbial-composition.html"><a href="microbial-composition.html"><i class="fa fa-check"></i><b>7</b> Microbial composition</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="microbial-composition.html"><a href="microbial-composition.html#stacked-barplot"><i class="fa fa-check"></i><b>7.1</b> Stacked barplot</a></li>
+<li class="chapter" data-level="7.2" data-path="microbial-composition.html"><a href="microbial-composition.html#core-microbiota"><i class="fa fa-check"></i><b>7.2</b> Core microbiota</a></li>
+<li class="chapter" data-level="7.3" data-path="microbial-composition.html"><a href="microbial-composition.html#systematic-information-5"><i class="fa fa-check"></i><b>7.3</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="differential-analysis.html"><a href="differential-analysis.html"><i class="fa fa-check"></i><b>8</b> Differential Analysis</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="differential-analysis.html"><a href="differential-analysis.html#filtering-trimming"><i class="fa fa-check"></i><b>8.1</b> Filtering &amp; Trimming</a>
+<ul>
+<li class="chapter" data-level="8.1.1" data-path="differential-analysis.html"><a href="differential-analysis.html#filtering-the-low-relative-abundance-or-unclassified-taxa-by-the-threshold-total-counts-1e-4"><i class="fa fa-check"></i><b>8.1.1</b> Filtering the low relative abundance or unclassified taxa by the threshold (total counts &lt; 1e-4)</a></li>
+<li class="chapter" data-level="8.1.2" data-path="differential-analysis.html"><a href="differential-analysis.html#trimming-the-taxa-with-low-occurrence-less-than-threshold"><i class="fa fa-check"></i><b>8.1.2</b> Trimming the taxa with low occurrence less than threshold</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="differential-analysis.html"><a href="differential-analysis.html#liner-discriminant-analysis-lda-effect-size-lefse"><i class="fa fa-check"></i><b>8.2</b> Liner discriminant analysis (LDA) effect size (LEfSe)</a></li>
+<li class="chapter" data-level="8.3" data-path="differential-analysis.html"><a href="differential-analysis.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>8.3</b> Wilcoxon Rank-Sum test</a></li>
+<li class="chapter" data-level="8.4" data-path="differential-analysis.html"><a href="differential-analysis.html#dominant-taxa"><i class="fa fa-check"></i><b>8.4</b> Dominant taxa</a></li>
+<li class="chapter" data-level="8.5" data-path="differential-analysis.html"><a href="differential-analysis.html#multiple-differential-analysis-by-one-function"><i class="fa fa-check"></i><b>8.5</b> Multiple differential analysis by one function</a></li>
+<li class="chapter" data-level="8.6" data-path="differential-analysis.html"><a href="differential-analysis.html#systematic-information-6"><i class="fa fa-check"></i><b>8.6</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="network-analysis.html"><a href="network-analysis.html"><i class="fa fa-check"></i><b>9</b> Network Analysis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="network-analysis.html"><a href="network-analysis.html#importing-data"><i class="fa fa-check"></i><b>9.1</b> Importing data</a></li>
+<li class="chapter" data-level="9.2" data-path="network-analysis.html"><a href="network-analysis.html#single-network-with-pearson-correlation-as-association-measure"><i class="fa fa-check"></i><b>9.2</b> Single network with Pearson correlation as association measure</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="network-analysis.html"><a href="network-analysis.html#building-network-model"><i class="fa fa-check"></i><b>9.2.1</b> Building network model</a></li>
+<li class="chapter" data-level="9.2.2" data-path="network-analysis.html"><a href="network-analysis.html#analyzing-the-constructed-network"><i class="fa fa-check"></i><b>9.2.2</b> Analyzing the constructed network</a></li>
+<li class="chapter" data-level="9.2.3" data-path="network-analysis.html"><a href="network-analysis.html#visualizing-the-network"><i class="fa fa-check"></i><b>9.2.3</b> Visualizing the network</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="network-analysis.html"><a href="network-analysis.html#dissimilarity-based-networks"><i class="fa fa-check"></i><b>9.3</b> Dissimilarity-based Networks</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="network-analysis.html"><a href="network-analysis.html#building-network-module"><i class="fa fa-check"></i><b>9.3.1</b> Building network module</a></li>
+<li class="chapter" data-level="9.3.2" data-path="network-analysis.html"><a href="network-analysis.html#analyzing-the-constructed-network-1"><i class="fa fa-check"></i><b>9.3.2</b> Analyzing the constructed network</a></li>
+<li class="chapter" data-level="9.3.3" data-path="network-analysis.html"><a href="network-analysis.html#visualizing-the-network-1"><i class="fa fa-check"></i><b>9.3.3</b> Visualizing the network</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="network-analysis.html"><a href="network-analysis.html#systematic-information-7"><i class="fa fa-check"></i><b>9.4</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="test-example.html"><a href="test-example.html"><i class="fa fa-check"></i><b>10</b> Test Example</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="test-example.html"><a href="test-example.html#loading-packages"><i class="fa fa-check"></i><b>10.1</b> Loading packages</a></li>
+<li class="chapter" data-level="10.2" data-path="test-example.html"><a href="test-example.html#loading-data"><i class="fa fa-check"></i><b>10.2</b> Loading data</a></li>
+<li class="chapter" data-level="10.3" data-path="test-example.html"><a href="test-example.html#step1-convert-inputs-into-phyloseq-data"><i class="fa fa-check"></i><b>10.3</b> Step1: Convert inputs into phyloseq data</a></li>
+<li class="chapter" data-level="10.4" data-path="test-example.html"><a href="test-example.html#step2-transform-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>10.4</b> Step2: Transform limit of detection (LOD) into Zeros</a></li>
+<li class="chapter" data-level="10.5" data-path="test-example.html"><a href="test-example.html#step3-brs-checking"><i class="fa fa-check"></i><b>10.5</b> Step3: BRS checking</a></li>
+<li class="chapter" data-level="10.6" data-path="test-example.html"><a href="test-example.html#step4-extracting-specific-taxonomic-level"><i class="fa fa-check"></i><b>10.6</b> Step4: Extracting specific taxonomic level</a></li>
+<li class="chapter" data-level="10.7" data-path="test-example.html"><a href="test-example.html#step5-globalview"><i class="fa fa-check"></i><b>10.7</b> Step5: GlobalView</a></li>
+<li class="chapter" data-level="10.8" data-path="test-example.html"><a href="test-example.html#step6-differential-analysis"><i class="fa fa-check"></i><b>10.8</b> Step6: Differential Analysis</a></li>
+<li class="chapter" data-level="10.9" data-path="test-example.html"><a href="test-example.html#systematic-information-8"><i class="fa fa-check"></i><b>10.9</b> Systematic Information</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">MGS microbiota data analysis based on XMAS package</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="network-analysis" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Network Analysis<a href="network-analysis.html#network-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<blockquote>
+<p>Estimating microbial association networks from high-throughput sequencing data is a common exploratory data analysis approach aiming at understanding the complex interplay of microbial communities in their natural habitat. Statistical network estimation workflows comprise several analysis steps, including methods for zero handling, data normalization and computing microbial associations. Since microbial interactions are likely to change between conditions, e.g. between healthy individuals and patients, identifying network differences between groups is often an integral secondary analysis step.</p>
+</blockquote>
+<p>NetCoMi (Network Construction and Comparison for Microbiome Data) <span class="citation">(<a href="#ref-peschel2021netcomi" role="doc-biblioref">Peschel et al. 2021</a>)</span> provides functionality for constructing, analyzing, and comparing networks suitable for the application on microbial compositional data.</p>
+<p>The following information is from <a href="https://github.com/stefpeschel/NetCoMi">NetCoMi github</a>.</p>
+<p><strong>Association measures:</strong></p>
+<ul>
+<li>Pearson coefficient
+(<a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor"><code>cor()</code></a>
+from <code>stats</code> package)</li>
+<li>Spearman coefficient
+(<a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor"><code>cor()</code></a>
+from <code>stats</code> package)</li>
+<li>Biweight Midcorrelation
+<a href="https://rdrr.io/cran/WGCNA/man/bicor.html"><code>bicor()</code></a> from <code>WGCNA</code>
+package</li>
+<li>SparCC
+(<a href="https://rdrr.io/github/zdk123/SpiecEasi/man/sparcc.html"><code>sparcc()</code></a>
+from <code>SpiecEasi</code> package)</li>
+<li>CCLasso (<a href="https://github.com/huayingfang/CCLasso">R code on GitHub</a>)</li>
+<li>CCREPE
+(<a href="https://bioconductor.org/packages/release/bioc/html/ccrepe.html"><code>ccrepe</code></a>
+package)</li>
+<li>SpiecEasi (<a href="https://github.com/zdk123/SpiecEasi"><code>SpiecEasi</code></a>
+package)</li>
+<li>SPRING (<a href="https://github.com/GraceYoon/SPRING"><code>SPRING</code></a> package)</li>
+<li>gCoda (<a href="https://github.com/huayingfang/gCoda">R code on GitHub</a>)</li>
+<li>propr
+(<a href="https://cran.r-project.org/web/packages/propr/index.html"><code>propr</code></a>
+package)</li>
+</ul>
+<p><strong>Dissimilarity measures:</strong></p>
+<ul>
+<li>Euclidean distance
+(<a href="https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/vegdist"><code>vegdist()</code></a>
+from <code>vegan</code> package)</li>
+<li>Bray-Curtis dissimilarity
+(<a href="https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/vegdist"><code>vegdist()</code></a>
+from <code>vegan</code> package)</li>
+<li>Kullback-Leibler divergence (KLD)
+(<a href="https://rdrr.io/cran/LaplacesDemon/man/KLD.html"><code>KLD()</code></a> from
+<code>LaplacesDemon</code> package)</li>
+<li>Jeffrey divergence (own code using
+<a href="https://rdrr.io/cran/LaplacesDemon/man/KLD.html"><code>KLD()</code></a> from
+<code>LaplacesDemon</code> package)</li>
+<li>Jensen-Shannon divergence (own code using
+<a href="https://rdrr.io/cran/LaplacesDemon/man/KLD.html"><code>KLD()</code></a> from
+<code>LaplacesDemon</code> package)</li>
+<li>Compositional KLD (own implementation following [Martín-Fernández
+et al., 1999])</li>
+<li>Aitchison distance
+(<a href="https://www.rdocumentation.org/packages/vegan/versions/2.4-2/topics/vegdist"><code>vegdist()</code></a>
+and <a href="https://rdrr.io/github/zdk123/SpiecEasi/man/clr.html"><code>clr()</code></a>
+from <code>SpiecEasi</code> package)</li>
+</ul>
+<p><strong>Methods for zero replacement:</strong></p>
+<ul>
+<li>Adding a predefined pseudo count</li>
+<li>Multiplicative replacement
+(<a href="https://rdrr.io/cran/zCompositions/man/multRepl.html"><code>multRepl</code></a>
+from <code>zCompositions</code> package)</li>
+<li>Modified EM alr-algorithm
+(<a href="https://rdrr.io/cran/zCompositions/man/lrEM.html"><code>lrEM</code></a> from
+<code>zCompositions</code> package)</li>
+<li>Bayesian-multiplicative replacement
+(<a href="https://rdrr.io/cran/zCompositions/man/cmultRepl.html"><code>cmultRepl</code></a>
+from <code>zCompositions</code> package)</li>
+</ul>
+<p><strong>Normalization methods:</strong></p>
+<ul>
+<li>Total Sum Scaling (TSS) (own implementation)</li>
+<li>Cumulative Sum Scaling (CSS) (<a href=""><code>cumNormMat</code></a> from <code>metagenomeSeq</code>
+package)</li>
+<li>Common Sum Scaling (COM) (own implementation)</li>
+<li>Rarefying (<a href=""><code>rrarefy</code></a> from <code>vegan</code> package)</li>
+<li>Variance Stabilizing Transformation (VST)
+(<a href=""><code>varianceStabilizingTransformation</code></a> from <code>DESeq2</code> package)</li>
+<li>Centered log-ratio (clr) transformation
+(<a href="https://rdrr.io/github/zdk123/SpiecEasi/man/clr.html"><code>clr()</code></a>
+from <code>SpiecEasi</code> package))</li>
+</ul>
+<p>TSS, CSS, COM, VST, and the clr transformation are described in [Badri
+et al., 2020].</p>
+<p><strong>Loading packages</strong></p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="network-analysis.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS2)</span>
+<span id="cb78-2"><a href="network-analysis.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb78-3"><a href="network-analysis.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb78-4"><a href="network-analysis.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb78-5"><a href="network-analysis.html#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb78-6"><a href="network-analysis.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NetCoMi)</span></code></pre></div>
+<div id="importing-data" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Importing data<a href="network-analysis.html#importing-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="network-analysis.html#cb79-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
+<span id="cb79-2"><a href="network-analysis.html#cb79-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ps =</span> metaphlan2_ps,</span>
+<span id="cb79-3"><a href="network-analysis.html#cb79-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb79-4"><a href="network-analysis.html#cb79-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>,</span>
+<span id="cb79-5"><a href="network-analysis.html#cb79-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">discard =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-6"><a href="network-analysis.html#cb79-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-7"><a href="network-analysis.html#cb79-7" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_genus <span class="ot">&lt;-</span> <span class="fu">summarize_taxa</span>(<span class="at">ps =</span> metaphlan2_ps_remove_BRS, </span>
+<span id="cb79-8"><a href="network-analysis.html#cb79-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">taxa_level =</span> <span class="st">&quot;Genus&quot;</span>)</span>
+<span id="cb79-9"><a href="network-analysis.html#cb79-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-10"><a href="network-analysis.html#cb79-10" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_genus_filter <span class="ot">&lt;-</span> <span class="fu">run_filter</span>(<span class="at">ps =</span> metaphlan2_ps_genus, </span>
+<span id="cb79-11"><a href="network-analysis.html#cb79-11" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">cutoff =</span> <span class="fl">1e-4</span>, </span>
+<span id="cb79-12"><a href="network-analysis.html#cb79-12" aria-hidden="true" tabindex="-1"></a>                                         <span class="at">unclass =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb79-13"><a href="network-analysis.html#cb79-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-14"><a href="network-analysis.html#cb79-14" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_genus_filter</span></code></pre></div>
+<pre><code>## phyloseq-class experiment-level object
+## otu_table()   OTU Table:         [ 76 taxa and 22 samples ]
+## sample_data() Sample Data:       [ 22 samples by 2 sample variables ]
+## tax_table()   Taxonomy Table:    [ 76 taxa by 6 taxonomic ranks ]</code></pre>
+</div>
+<div id="single-network-with-pearson-correlation-as-association-measure" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> Single network with Pearson correlation as association measure<a href="network-analysis.html#single-network-with-pearson-correlation-as-association-measure" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Since Pearson correlations may lead to compositional effects when applied to sequencing data, we use the clr transformation as normalization method. Zero treatment is necessary in this case.</p>
+<p>A threshold of 0.3 is used as sparsification method, so that only OTUs with an absolute correlation greater than or equal to 0.3 are connected.</p>
+<div id="building-network-model" class="section level3 hasAnchor" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Building network model<a href="network-analysis.html#building-network-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="network-analysis.html#cb81-1" aria-hidden="true" tabindex="-1"></a>net_single <span class="ot">&lt;-</span> <span class="fu">netConstruct</span>(metaphlan2_ps_genus_filter,  </span>
+<span id="cb81-2"><a href="network-analysis.html#cb81-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">measure =</span> <span class="st">&quot;pearson&quot;</span>,</span>
+<span id="cb81-3"><a href="network-analysis.html#cb81-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">normMethod =</span> <span class="st">&quot;none&quot;</span>, </span>
+<span id="cb81-4"><a href="network-analysis.html#cb81-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">zeroMethod =</span> <span class="st">&quot;multRepl&quot;</span>,</span>
+<span id="cb81-5"><a href="network-analysis.html#cb81-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">sparsMethod =</span> <span class="st">&quot;threshold&quot;</span>, </span>
+<span id="cb81-6"><a href="network-analysis.html#cb81-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">thresh =</span> <span class="fl">0.7</span>,</span>
+<span id="cb81-7"><a href="network-analysis.html#cb81-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">verbose =</span> <span class="dv">3</span>,</span>
+<span id="cb81-8"><a href="network-analysis.html#cb81-8" aria-hidden="true" tabindex="-1"></a>                           <span class="at">seed =</span> <span class="dv">123</span>)</span></code></pre></div>
+</div>
+<div id="analyzing-the-constructed-network" class="section level3 hasAnchor" number="9.2.2">
+<h3><span class="header-section-number">9.2.2</span> Analyzing the constructed network<a href="network-analysis.html#analyzing-the-constructed-network" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>NetCoMi’s <code>netAnalyze()</code> function is used for analyzing the constructed network(s).</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="network-analysis.html#cb82-1" aria-hidden="true" tabindex="-1"></a>props_single <span class="ot">&lt;-</span> <span class="fu">netAnalyze</span>(net_single, <span class="at">clustMethod =</span> <span class="st">&quot;cluster_fast_greedy&quot;</span>)</span>
+<span id="cb82-2"><a href="network-analysis.html#cb82-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-3"><a href="network-analysis.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(props_single, <span class="at">numbNodes =</span> 5L)</span></code></pre></div>
+<pre><code>## 
+## Component sizes
+## ```````````````                
+## size: 6 4 3 2  1
+##    #: 3 2 3 5 31
+## ______________________________
+## Global network properties
+## `````````````````````````
+## Largest connected component (LCC):
+##                                  
+## Relative LCC size         0.07895
+## Clustering coefficient    0.46800
+## Modularity                0.31944
+## Positive edge percentage 83.33333
+## Edge density              0.40000
+## Natural connectivity      0.33660
+## Vertex connectivity       1.00000
+## Edge connectivity         1.00000
+## Average dissimilarity*    0.76744
+## Average path length**     1.16924
+## 
+## Whole network:
+##                                  
+## Number of components     44.00000
+## Clustering coefficient    0.68941
+## Modularity                0.70247
+## Positive edge percentage 58.33333
+## Edge density              0.01684
+## Natural connectivity      0.01749
+## 
+##  *Dissimilarity = 1 - edge weight
+## **Path length: Units with average dissimilarity
+## 
+## ______________________________
+## Clusters
+## - In the whole network
+## - Algorithm: cluster_fast_greedy
+## ```````````````````````````````` 
+##                                          
+## name:  0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+##    #: 31 4 3 3 6 2 2 3 4 6  2  2  2  3  3
+## 
+## ______________________________
+## Hubs
+## - In alphabetical/numerical order
+## - Based on empirical quantiles of centralities
+## ```````````````````````````````````````````````                 
+##  g__Adlercreutzia
+##  g__Dorea        
+##  g__Leuconostoc  
+##  g__Pediococcus  
+## 
+## ______________________________
+## Centrality measures
+## - In decreasing order
+## - Centrality of disconnected components is zero
+## ````````````````````````````````````````````````
+## Degree (normalized):
+##                            
+## g__Adlercreutzia    0.04000
+## g__Dorea            0.02667
+## g__Faecalibacterium 0.02667
+## g__Leuconostoc      0.02667
+## g__Pediococcus      0.02667
+## 
+## Betweenness centrality (normalized):
+##                        
+## g__Adlercreutzia    0.6
+## g__Dorea            0.6
+## g__Faecalibacterium 0.4
+## g__Acidaminococcus  0.0
+## g__Actinomyces      0.0
+## 
+## Closeness centrality (normalized):
+##                            
+## g__Adlercreutzia    1.72937
+## g__Pediococcus      1.65643
+## g__Leuconostoc      1.51381
+## g__Dorea            1.43794
+## g__Faecalibacterium 1.10438
+## 
+## Eigenvector centrality (normalized):
+##                            
+## g__Adlercreutzia    1.00000
+## g__Pediococcus      0.89515
+## g__Leuconostoc      0.86557
+## g__Dorea            0.50831
+## g__Faecalibacterium 0.21197</code></pre>
+</div>
+<div id="visualizing-the-network" class="section level3 hasAnchor" number="9.2.3">
+<h3><span class="header-section-number">9.2.3</span> Visualizing the network<a href="network-analysis.html#visualizing-the-network" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>primary plot</li>
+</ul>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="network-analysis.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_single, </span>
+<span id="cb84-2"><a href="network-analysis.html#cb84-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;cluster&quot;</span>, </span>
+<span id="cb84-3"><a href="network-analysis.html#cb84-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;eigenvector&quot;</span>,</span>
+<span id="cb84-4"><a href="network-analysis.html#cb84-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on 16s with Pearson correlations&quot;</span>, </span>
+<span id="cb84-5"><a href="network-analysis.html#cb84-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb84-6"><a href="network-analysis.html#cb84-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelLength =</span> <span class="dv">10</span>,</span>
+<span id="cb84-7"><a href="network-analysis.html#cb84-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">1.5</span>)</span>
+<span id="cb84-8"><a href="network-analysis.html#cb84-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="network-analysis.html#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.7</span>, <span class="fl">1.1</span>, <span class="at">cex =</span> <span class="dv">1</span>, <span class="at">title =</span> <span class="st">&quot;estimated correlation:&quot;</span>, </span>
+<span id="cb84-10"><a href="network-analysis.html#cb84-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#009900&quot;</span>,<span class="st">&quot;red&quot;</span>), </span>
+<span id="cb84-11"><a href="network-analysis.html#cb84-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-74"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-74-1.png" alt="Network on 16s with Pearson correlations" width="768" />
+<p class="caption">
+Figure 9.1: Network on 16s with Pearson correlations
+</p>
+</div>
+<ul>
+<li><p>improve the visualization by changing the following arguments:</p>
+<ul>
+<li><p><code>repulsion = 0.8</code>: Place the nodes further apart</p></li>
+<li><p><code>rmSingles = TRUE</code>: Single nodes are removed</p></li>
+<li><p><code>labelScale = FALSE</code> and <code>cexLabels = 1.6</code>: All labels have equal size and are enlarged to improve readability of small node’s labels</p></li>
+<li><p><code>nodeSizeSpread = 3</code> (default is 4): Node sizes are more similar if the value is decreased. This argument (in combination with <code>cexNodes</code>) is useful to enlarge small nodes while keeping the size of big nodes.</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="network-analysis.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_single, </span>
+<span id="cb85-2"><a href="network-analysis.html#cb85-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;cluster&quot;</span>, </span>
+<span id="cb85-3"><a href="network-analysis.html#cb85-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;eigenvector&quot;</span>,</span>
+<span id="cb85-4"><a href="network-analysis.html#cb85-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelLength =</span> <span class="dv">40</span>,</span>
+<span id="cb85-5"><a href="network-analysis.html#cb85-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">repulsion =</span> <span class="fl">0.8</span>,</span>
+<span id="cb85-6"><a href="network-analysis.html#cb85-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">rmSingles =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-7"><a href="network-analysis.html#cb85-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelScale =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb85-8"><a href="network-analysis.html#cb85-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexLabels =</span> <span class="dv">1</span>,</span>
+<span id="cb85-9"><a href="network-analysis.html#cb85-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSizeSpread =</span> <span class="dv">3</span>,</span>
+<span id="cb85-10"><a href="network-analysis.html#cb85-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexNodes =</span> <span class="dv">2</span>,</span>
+<span id="cb85-11"><a href="network-analysis.html#cb85-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on metabolomics with Pearson correlations&quot;</span>, </span>
+<span id="cb85-12"><a href="network-analysis.html#cb85-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb85-13"><a href="network-analysis.html#cb85-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">1.5</span>)</span>
+<span id="cb85-14"><a href="network-analysis.html#cb85-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-15"><a href="network-analysis.html#cb85-15" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.7</span>, <span class="fl">1.1</span>, <span class="at">cex =</span> <span class="fl">1.2</span>, <span class="at">title =</span> <span class="st">&quot;estimated correlation:&quot;</span>,</span>
+<span id="cb85-16"><a href="network-analysis.html#cb85-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#009900&quot;</span>,<span class="st">&quot;red&quot;</span>),</span>
+<span id="cb85-17"><a href="network-analysis.html#cb85-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-75"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-75-1.png" alt="Network on 16s with Pearson correlations" width="1152" />
+<p class="caption">
+Figure 9.2: Network on 16s with Pearson correlations
+</p>
+</div>
+<ul>
+<li>Network on genus level with Pearson correlations</li>
+</ul>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="network-analysis.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb86-2"><a href="network-analysis.html#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="network-analysis.html#cb86-3" aria-hidden="true" tabindex="-1"></a>graph <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">graph_from_adjacency_matrix</span>(net_single<span class="sc">$</span>adjaMat1, <span class="at">weighted =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb86-4"><a href="network-analysis.html#cb86-4" aria-hidden="true" tabindex="-1"></a>lay_fr <span class="ot">&lt;-</span> igraph<span class="sc">::</span><span class="fu">layout_with_fr</span>(graph)</span>
+<span id="cb86-5"><a href="network-analysis.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(lay_fr) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(net_single<span class="sc">$</span>adjaMat1)</span>
+<span id="cb86-6"><a href="network-analysis.html#cb86-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-7"><a href="network-analysis.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_single,</span>
+<span id="cb86-8"><a href="network-analysis.html#cb86-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">layout =</span> <span class="st">&quot;layout_with_fr&quot;</span>,</span>
+<span id="cb86-9"><a href="network-analysis.html#cb86-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">shortenLabels =</span> <span class="st">&quot;simple&quot;</span>,</span>
+<span id="cb86-10"><a href="network-analysis.html#cb86-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelLength =</span> <span class="dv">30</span>,</span>
+<span id="cb86-11"><a href="network-analysis.html#cb86-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">charToRm =</span> <span class="st">&quot;g__&quot;</span>,</span>
+<span id="cb86-12"><a href="network-analysis.html#cb86-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelScale =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb86-13"><a href="network-analysis.html#cb86-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">rmSingles =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-14"><a href="network-analysis.html#cb86-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;clr&quot;</span>,</span>
+<span id="cb86-15"><a href="network-analysis.html#cb86-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;cluster&quot;</span>,</span>
+<span id="cb86-16"><a href="network-analysis.html#cb86-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">hubBorderCol =</span> <span class="st">&quot;darkgray&quot;</span>,</span>
+<span id="cb86-17"><a href="network-analysis.html#cb86-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexNodes =</span> <span class="dv">2</span>,</span>
+<span id="cb86-18"><a href="network-analysis.html#cb86-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexLabels =</span> <span class="fl">1.5</span>,</span>
+<span id="cb86-19"><a href="network-analysis.html#cb86-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexHubLabels =</span> <span class="dv">2</span>,</span>
+<span id="cb86-20"><a href="network-analysis.html#cb86-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on genus level with Pearson correlations&quot;</span>, </span>
+<span id="cb86-21"><a href="network-analysis.html#cb86-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb86-22"><a href="network-analysis.html#cb86-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">2.3</span>)</span>
+<span id="cb86-23"><a href="network-analysis.html#cb86-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-24"><a href="network-analysis.html#cb86-24" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.7</span>, <span class="fl">1.1</span>, <span class="at">cex =</span> <span class="fl">2.2</span>, <span class="at">title =</span> <span class="st">&quot;estimated correlation:&quot;</span>,</span>
+<span id="cb86-25"><a href="network-analysis.html#cb86-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;#009900&quot;</span>,<span class="st">&quot;red&quot;</span>), </span>
+<span id="cb86-26"><a href="network-analysis.html#cb86-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-76"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-76-1.png" alt="Network on 16s with Pearson correlations (Genus)" width="1152" />
+<p class="caption">
+Figure 9.3: Network on 16s with Pearson correlations (Genus)
+</p>
+</div>
+<p>Let’s check whether the largest nodes are actually those with highest column sums in the matrix with normalized counts returned by netConstruct().</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="network-analysis.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">colSums</span>(net_single<span class="sc">$</span>normCounts1), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<pre><code>##      g__Bacteroides  g__Bifidobacterium       g__Prevotella      g__Eubacterium g__Faecalibacterium    g__Streptococcus 
+##           6.2673586           2.3606139           2.0131986           1.2916323           1.2684436           0.8139481 
+##     g__Ruminococcus        g__Megamonas          g__Blautia    g__Lactobacillus 
+##           0.7899630           0.7172208           0.5348218           0.4701725</code></pre>
+<ul>
+<li>Network on genus level with Pearson correlations with phylum annotation</li>
+</ul>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="network-analysis.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get phyla names from the taxonomic table created before</span></span>
+<span id="cb89-2"><a href="network-analysis.html#cb89-2" aria-hidden="true" tabindex="-1"></a>taxatab <span class="ot">&lt;-</span> metaphlan2_ps_genus_filter<span class="sc">@</span>tax_table <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="network-analysis.html#cb89-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb89-4"><a href="network-analysis.html#cb89-4" aria-hidden="true" tabindex="-1"></a>phyla <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">gsub</span>(<span class="st">&quot;p__&quot;</span>, <span class="st">&quot;&quot;</span>, taxatab[, <span class="st">&quot;Phylum&quot;</span>]))</span>
+<span id="cb89-5"><a href="network-analysis.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(phyla) <span class="ot">&lt;-</span> taxatab<span class="sc">$</span>Genus</span>
+<span id="cb89-6"><a href="network-analysis.html#cb89-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-7"><a href="network-analysis.html#cb89-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define phylum colors</span></span>
+<span id="cb89-8"><a href="network-analysis.html#cb89-8" aria-hidden="true" tabindex="-1"></a>phylcol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;cyan&quot;</span>, <span class="st">&quot;blue3&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;lawngreen&quot;</span>, <span class="st">&quot;yellow&quot;</span>, <span class="st">&quot;deeppink&quot;</span>, <span class="st">&quot;grey&quot;</span>, <span class="st">&quot;black&quot;</span>)</span>
+<span id="cb89-9"><a href="network-analysis.html#cb89-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-10"><a href="network-analysis.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_single,</span>
+<span id="cb89-11"><a href="network-analysis.html#cb89-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">layout =</span> <span class="st">&quot;spring&quot;</span>,</span>
+<span id="cb89-12"><a href="network-analysis.html#cb89-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">repulsion =</span> <span class="fl">0.84</span>,</span>
+<span id="cb89-13"><a href="network-analysis.html#cb89-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">shortenLabels =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb89-14"><a href="network-analysis.html#cb89-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">charToRm =</span> <span class="st">&quot;g__&quot;</span>,</span>
+<span id="cb89-15"><a href="network-analysis.html#cb89-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelLength =</span> <span class="dv">30</span>,</span>
+<span id="cb89-16"><a href="network-analysis.html#cb89-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelScale =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb89-17"><a href="network-analysis.html#cb89-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">rmSingles =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb89-18"><a href="network-analysis.html#cb89-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;clr&quot;</span>,</span>
+<span id="cb89-19"><a href="network-analysis.html#cb89-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSizeSpread =</span> <span class="dv">4</span>,</span>
+<span id="cb89-20"><a href="network-analysis.html#cb89-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;feature&quot;</span>, </span>
+<span id="cb89-21"><a href="network-analysis.html#cb89-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">featVecCol =</span> phyla, </span>
+<span id="cb89-22"><a href="network-analysis.html#cb89-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">colorVec =</span>  phylcol,</span>
+<span id="cb89-23"><a href="network-analysis.html#cb89-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">posCol =</span> <span class="st">&quot;darkturquoise&quot;</span>, </span>
+<span id="cb89-24"><a href="network-analysis.html#cb89-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">negCol =</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb89-25"><a href="network-analysis.html#cb89-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">edgeTranspLow =</span> <span class="dv">0</span>,</span>
+<span id="cb89-26"><a href="network-analysis.html#cb89-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">edgeTranspHigh =</span> <span class="dv">40</span>,</span>
+<span id="cb89-27"><a href="network-analysis.html#cb89-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexNodes =</span> <span class="dv">2</span>,</span>
+<span id="cb89-28"><a href="network-analysis.html#cb89-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexLabels =</span> <span class="dv">2</span>,</span>
+<span id="cb89-29"><a href="network-analysis.html#cb89-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexHubLabels =</span> <span class="fl">2.5</span>,</span>
+<span id="cb89-30"><a href="network-analysis.html#cb89-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on genus level with Pearson correlations&quot;</span>, </span>
+<span id="cb89-31"><a href="network-analysis.html#cb89-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb89-32"><a href="network-analysis.html#cb89-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">2.3</span>)</span>
+<span id="cb89-33"><a href="network-analysis.html#cb89-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-34"><a href="network-analysis.html#cb89-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors used in the legend should be equally transparent as in the plot</span></span>
+<span id="cb89-35"><a href="network-analysis.html#cb89-35" aria-hidden="true" tabindex="-1"></a>phylcol_transp <span class="ot">&lt;-</span> NetCoMi<span class="sc">:::</span><span class="fu">colToTransp</span>(phylcol, <span class="dv">60</span>)</span>
+<span id="cb89-36"><a href="network-analysis.html#cb89-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-37"><a href="network-analysis.html#cb89-37" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pt.cex =</span> <span class="fl">2.5</span>, <span class="at">title =</span> <span class="st">&quot;Phylum:&quot;</span>, </span>
+<span id="cb89-38"><a href="network-analysis.html#cb89-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend=</span><span class="fu">levels</span>(phyla), <span class="at">col =</span> phylcol_transp, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>) </span>
+<span id="cb89-39"><a href="network-analysis.html#cb89-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-40"><a href="network-analysis.html#cb89-40" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.7</span>, <span class="fl">1.1</span>, <span class="at">cex =</span> <span class="fl">2.2</span>, <span class="at">title =</span> <span class="st">&quot;estimated correlation:&quot;</span>,</span>
+<span id="cb89-41"><a href="network-analysis.html#cb89-41" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;+&quot;</span>,<span class="st">&quot;-&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkturquoise&quot;</span>,<span class="st">&quot;orange&quot;</span>), </span>
+<span id="cb89-42"><a href="network-analysis.html#cb89-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">horiz =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-78"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-78-1.png" alt="Network on 16s with Pearson correlations (Annotation)" width="2016" />
+<p class="caption">
+Figure 9.4: Network on 16s with Pearson correlations (Annotation)
+</p>
+</div>
+</div>
+</div>
+<div id="dissimilarity-based-networks" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> Dissimilarity-based Networks<a href="network-analysis.html#dissimilarity-based-networks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<blockquote>
+<p>If a dissimilarity measure is used for network construction, nodes are subjects instead of OTUs. The estimated dissimilarities are transformed into similarities, which are used as edge weights so that subjects with a similar microbial composition are placed close together in the network plot.</p>
+</blockquote>
+<blockquote>
+<p>We construct a single network using Aitchison’s distance being suitable for the application on compositional data.</p>
+</blockquote>
+<blockquote>
+<p>Since the Aitchison distance is based on the clr-transformation, zeros in the data need to be replaced.</p>
+</blockquote>
+<blockquote>
+<p>The network is sparsified using the k-nearest neighbor (knn) algorithm.</p>
+</blockquote>
+<div id="building-network-module" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Building network module<a href="network-analysis.html#building-network-module" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="network-analysis.html#cb90-1" aria-hidden="true" tabindex="-1"></a>net_aitchison <span class="ot">&lt;-</span> <span class="fu">netConstruct</span>(metaphlan2_ps_genus_filter,</span>
+<span id="cb90-2"><a href="network-analysis.html#cb90-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">measure =</span> <span class="st">&quot;aitchison&quot;</span>,</span>
+<span id="cb90-3"><a href="network-analysis.html#cb90-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">zeroMethod =</span> <span class="st">&quot;multRepl&quot;</span>,</span>
+<span id="cb90-4"><a href="network-analysis.html#cb90-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">sparsMethod =</span> <span class="st">&quot;knn&quot;</span>, </span>
+<span id="cb90-5"><a href="network-analysis.html#cb90-5" aria-hidden="true" tabindex="-1"></a>                              <span class="at">kNeighbor =</span> <span class="dv">3</span>,</span>
+<span id="cb90-6"><a href="network-analysis.html#cb90-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">verbose =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## Infos about changed arguments:</code></pre>
+<pre><code>## Counts normalized to fractions for measure &#39;aitchison&#39;.</code></pre>
+<pre><code>## 76 taxa and 22 samples remaining.</code></pre>
+<pre><code>## 
+## Zero treatment:</code></pre>
+<pre><code>## Execute multRepl() ...</code></pre>
+<pre><code>## Warning in (function (X, label = NULL, dl = NULL, frac = 0.65, imp.missing = FALSE, : Column(s) containing more than 80% zeros/unobserved values were found (check it out using zPatterns).
+##                     (You can use the z.warning argument to modify the warning threshold).</code></pre>
+<pre><code>## Warning in (function (X, label = NULL, dl = NULL, frac = 0.65, imp.missing = FALSE, : Row(s) containing more than 80% zeros/unobserved values were found (check it out using zPatterns).
+##                   (You can use the z.warning argument to modify the warning threshold).</code></pre>
+<pre><code>## Done.
+## 
+## Normalization:
+## Counts normalized by total sum scaling.
+## 
+## Calculate &#39;aitchison&#39; dissimilarities ... Done.
+## 
+## Sparsify dissimilarities via &#39;knn&#39; ... Done.</code></pre>
+</div>
+<div id="analyzing-the-constructed-network-1" class="section level3 hasAnchor" number="9.3.2">
+<h3><span class="header-section-number">9.3.2</span> Analyzing the constructed network<a href="network-analysis.html#analyzing-the-constructed-network-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>NetCoMi’s <code>netAnalyze()</code> function is used for analyzing the constructed network(s).</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="network-analysis.html#cb99-1" aria-hidden="true" tabindex="-1"></a>props_aitchison <span class="ot">&lt;-</span> <span class="fu">netAnalyze</span>(net_aitchison,</span>
+<span id="cb99-2"><a href="network-analysis.html#cb99-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">clustMethod =</span> <span class="st">&quot;hierarchical&quot;</span>,</span>
+<span id="cb99-3"><a href="network-analysis.html#cb99-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">clustPar =</span> <span class="fu">list</span>(<span class="at">method =</span> <span class="st">&quot;average&quot;</span>, <span class="at">k =</span> <span class="dv">3</span>),</span>
+<span id="cb99-4"><a href="network-analysis.html#cb99-4" aria-hidden="true" tabindex="-1"></a>                              <span class="at">hubPar =</span> <span class="st">&quot;eigenvector&quot;</span>)</span>
+<span id="cb99-5"><a href="network-analysis.html#cb99-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb99-6"><a href="network-analysis.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(props_aitchison, <span class="at">numbNodes =</span> 5L)</span></code></pre></div>
+<pre><code>## 
+## Component sizes
+## ```````````````        
+## size: 22
+##    #:  1
+## ______________________________
+## Global network properties
+## `````````````````````````
+##                                   
+## Number of components       1.00000
+## Clustering coefficient     0.39149
+## Modularity                 0.17270
+## Positive edge percentage 100.00000
+## Edge density               0.20346
+## Natural connectivity       0.13977
+## Vertex connectivity        2.00000
+## Edge connectivity          3.00000
+## Average dissimilarity*     0.83658
+## Average path length**      0.45291
+## 
+##  *Dissimilarity = 1 - edge weight
+## **Path length: Units with average dissimilarity
+## 
+## ______________________________
+## Clusters
+## - In the whole network
+## - Algorithm: hierarchical
+## ````````````````````````` 
+##             
+## name:  1 2 3
+##    #: 16 3 3
+## 
+## ______________________________
+## Hubs
+## - In alphabetical/numerical order
+## - Based on empirical quantiles of centralities
+## ```````````````````````````````````````````````    
+##  s15
+##  s8 
+## 
+## ______________________________
+## Centrality measures
+## - In decreasing order
+## - Computed for the complete network
+## ````````````````````````````````````
+## Degree (normalized):
+##            
+## s8  0.42857
+## s10 0.42857
+## s7  0.28571
+## s15 0.28571
+## s12 0.23810
+## 
+## Betweenness centrality (normalized):
+##            
+## s10 0.40476
+## s8  0.30000
+## s20 0.28095
+## s15 0.18095
+## s6  0.14286
+## 
+## Closeness centrality (normalized):
+##            
+## s20 5.45753
+## s15 4.89296
+## s10 4.74808
+## s8  4.72677
+## s13 4.45685
+## 
+## Eigenvector centrality (normalized):
+##            
+## s8  1.00000
+## s15 0.83204
+## s14 0.77744
+## s10 0.73818
+## s7  0.60639</code></pre>
+</div>
+<div id="visualizing-the-network-1" class="section level3 hasAnchor" number="9.3.3">
+<h3><span class="header-section-number">9.3.3</span> Visualizing the network<a href="network-analysis.html#visualizing-the-network-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>primary plot</li>
+</ul>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="network-analysis.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_aitchison, </span>
+<span id="cb101-2"><a href="network-analysis.html#cb101-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;cluster&quot;</span>, </span>
+<span id="cb101-3"><a href="network-analysis.html#cb101-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;eigenvector&quot;</span>,</span>
+<span id="cb101-4"><a href="network-analysis.html#cb101-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">repulsion =</span> <span class="fl">0.8</span>,</span>
+<span id="cb101-5"><a href="network-analysis.html#cb101-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">rmSingles =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb101-6"><a href="network-analysis.html#cb101-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelScale =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb101-7"><a href="network-analysis.html#cb101-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexLabels =</span> <span class="fl">1.6</span>,</span>
+<span id="cb101-8"><a href="network-analysis.html#cb101-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSizeSpread =</span> <span class="dv">3</span>,</span>
+<span id="cb101-9"><a href="network-analysis.html#cb101-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexNodes =</span> <span class="fl">1.5</span>,</span>
+<span id="cb101-10"><a href="network-analysis.html#cb101-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on metagenomics with Aitchison distance&quot;</span>, </span>
+<span id="cb101-11"><a href="network-analysis.html#cb101-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb101-12"><a href="network-analysis.html#cb101-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">1.5</span>,</span>
+<span id="cb101-13"><a href="network-analysis.html#cb101-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">hubTransp =</span> <span class="dv">50</span>,</span>
+<span id="cb101-14"><a href="network-analysis.html#cb101-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">edgeTranspLow =</span> <span class="dv">60</span>,</span>
+<span id="cb101-15"><a href="network-analysis.html#cb101-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">charToRm =</span> <span class="st">&quot;00000&quot;</span>,</span>
+<span id="cb101-16"><a href="network-analysis.html#cb101-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">5</span>))</span>
+<span id="cb101-17"><a href="network-analysis.html#cb101-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-18"><a href="network-analysis.html#cb101-18" aria-hidden="true" tabindex="-1"></a><span class="co"># get green color with 50% transparency</span></span>
+<span id="cb101-19"><a href="network-analysis.html#cb101-19" aria-hidden="true" tabindex="-1"></a>green2 <span class="ot">&lt;-</span> <span class="fu">colToTransp</span>(<span class="st">&quot;#009900&quot;</span>, <span class="dv">40</span>)</span>
+<span id="cb101-20"><a href="network-analysis.html#cb101-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb101-21"><a href="network-analysis.html#cb101-21" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.4</span>, <span class="fl">1.1</span>,</span>
+<span id="cb101-22"><a href="network-analysis.html#cb101-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">1.5</span>,</span>
+<span id="cb101-23"><a href="network-analysis.html#cb101-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;high similarity (low Aitchison distance)&quot;</span>,</span>
+<span id="cb101-24"><a href="network-analysis.html#cb101-24" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;low similarity (high Aitchison distance)&quot;</span>), </span>
+<span id="cb101-25"><a href="network-analysis.html#cb101-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>, </span>
+<span id="cb101-26"><a href="network-analysis.html#cb101-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb101-27"><a href="network-analysis.html#cb101-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkgreen&quot;</span>, green2),</span>
+<span id="cb101-28"><a href="network-analysis.html#cb101-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-81"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-81-1.png" alt="Dissimilarity-based Networks" width="1152" />
+<p class="caption">
+Figure 9.5: Dissimilarity-based Networks
+</p>
+</div>
+<ul>
+<li>plot samples with group information</li>
+</ul>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="network-analysis.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get gorup names from the sample table created before</span></span>
+<span id="cb102-2"><a href="network-analysis.html#cb102-2" aria-hidden="true" tabindex="-1"></a>sampletab <span class="ot">&lt;-</span> metaphlan2_ps_genus_filter<span class="sc">@</span>sam_data <span class="sc">%&gt;%</span></span>
+<span id="cb102-3"><a href="network-analysis.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span>
+<span id="cb102-4"><a href="network-analysis.html#cb102-4" aria-hidden="true" tabindex="-1"></a>group_labels <span class="ot">&lt;-</span> <span class="fu">factor</span>(sampletab<span class="sc">$</span>Group)</span>
+<span id="cb102-5"><a href="network-analysis.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(group_labels) <span class="ot">&lt;-</span> <span class="fu">rownames</span>(sampletab)</span>
+<span id="cb102-6"><a href="network-analysis.html#cb102-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-7"><a href="network-analysis.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Define group colors</span></span>
+<span id="cb102-8"><a href="network-analysis.html#cb102-8" aria-hidden="true" tabindex="-1"></a>group_lcol <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;blue3&quot;</span>, <span class="st">&quot;red&quot;</span>)</span>
+<span id="cb102-9"><a href="network-analysis.html#cb102-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-10"><a href="network-analysis.html#cb102-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(props_aitchison,</span>
+<span id="cb102-11"><a href="network-analysis.html#cb102-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">layout =</span> <span class="st">&quot;spring&quot;</span>,</span>
+<span id="cb102-12"><a href="network-analysis.html#cb102-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">repulsion =</span> <span class="fl">0.84</span>,</span>
+<span id="cb102-13"><a href="network-analysis.html#cb102-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">shortenLabels =</span> <span class="st">&quot;none&quot;</span>,</span>
+<span id="cb102-14"><a href="network-analysis.html#cb102-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">labelScale =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb102-15"><a href="network-analysis.html#cb102-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">rmSingles =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb102-16"><a href="network-analysis.html#cb102-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSize =</span> <span class="st">&quot;eigenvector&quot;</span>,</span>
+<span id="cb102-17"><a href="network-analysis.html#cb102-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeSizeSpread =</span> <span class="dv">4</span>,</span>
+<span id="cb102-18"><a href="network-analysis.html#cb102-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">nodeColor =</span> <span class="st">&quot;feature&quot;</span>, </span>
+<span id="cb102-19"><a href="network-analysis.html#cb102-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">featVecCol =</span> group_labels, </span>
+<span id="cb102-20"><a href="network-analysis.html#cb102-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">colorVec =</span>  group_lcol,</span>
+<span id="cb102-21"><a href="network-analysis.html#cb102-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">posCol =</span> <span class="st">&quot;darkturquoise&quot;</span>, </span>
+<span id="cb102-22"><a href="network-analysis.html#cb102-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">negCol =</span> <span class="st">&quot;orange&quot;</span>,</span>
+<span id="cb102-23"><a href="network-analysis.html#cb102-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">edgeTranspLow =</span> <span class="dv">0</span>,</span>
+<span id="cb102-24"><a href="network-analysis.html#cb102-24" aria-hidden="true" tabindex="-1"></a>     <span class="at">edgeTranspHigh =</span> <span class="dv">40</span>,</span>
+<span id="cb102-25"><a href="network-analysis.html#cb102-25" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexNodes =</span> <span class="dv">2</span>,</span>
+<span id="cb102-26"><a href="network-analysis.html#cb102-26" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexLabels =</span> <span class="dv">2</span>,</span>
+<span id="cb102-27"><a href="network-analysis.html#cb102-27" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexHubLabels =</span> <span class="fl">2.5</span>,</span>
+<span id="cb102-28"><a href="network-analysis.html#cb102-28" aria-hidden="true" tabindex="-1"></a>     <span class="at">title1 =</span> <span class="st">&quot;Network on genus level with Aitchison distance&quot;</span>, </span>
+<span id="cb102-29"><a href="network-analysis.html#cb102-29" aria-hidden="true" tabindex="-1"></a>     <span class="at">showTitle =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb102-30"><a href="network-analysis.html#cb102-30" aria-hidden="true" tabindex="-1"></a>     <span class="at">cexTitle =</span> <span class="fl">2.3</span>)</span>
+<span id="cb102-31"><a href="network-analysis.html#cb102-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-32"><a href="network-analysis.html#cb102-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Colors used in the legend should be equally transparent as in the plot</span></span>
+<span id="cb102-33"><a href="network-analysis.html#cb102-33" aria-hidden="true" tabindex="-1"></a>group_transp <span class="ot">&lt;-</span> NetCoMi<span class="sc">:::</span><span class="fu">colToTransp</span>(group_lcol, <span class="dv">60</span>)</span>
+<span id="cb102-34"><a href="network-analysis.html#cb102-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-35"><a href="network-analysis.html#cb102-35" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="sc">-</span><span class="fl">1.2</span>, <span class="fl">1.2</span>, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">pt.cex =</span> <span class="fl">2.5</span>, <span class="at">title =</span> <span class="st">&quot;Group:&quot;</span>, </span>
+<span id="cb102-36"><a href="network-analysis.html#cb102-36" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">levels</span>(group_labels), <span class="at">col =</span> group_transp, <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>, <span class="at">pch =</span> <span class="dv">16</span>) </span>
+<span id="cb102-37"><a href="network-analysis.html#cb102-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-38"><a href="network-analysis.html#cb102-38" aria-hidden="true" tabindex="-1"></a><span class="co"># get green color with 50% transparency</span></span>
+<span id="cb102-39"><a href="network-analysis.html#cb102-39" aria-hidden="true" tabindex="-1"></a>green2 <span class="ot">&lt;-</span> <span class="fu">colToTransp</span>(<span class="st">&quot;#009900&quot;</span>, <span class="dv">40</span>)</span>
+<span id="cb102-40"><a href="network-analysis.html#cb102-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-41"><a href="network-analysis.html#cb102-41" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="fl">0.4</span>, <span class="fl">1.1</span>,</span>
+<span id="cb102-42"><a href="network-analysis.html#cb102-42" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">1.5</span>,</span>
+<span id="cb102-43"><a href="network-analysis.html#cb102-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;high similarity (low Aitchison distance)&quot;</span>,</span>
+<span id="cb102-44"><a href="network-analysis.html#cb102-44" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;low similarity (high Aitchison distance)&quot;</span>), </span>
+<span id="cb102-45"><a href="network-analysis.html#cb102-45" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="dv">1</span>, </span>
+<span id="cb102-46"><a href="network-analysis.html#cb102-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb102-47"><a href="network-analysis.html#cb102-47" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;darkgreen&quot;</span>, green2),</span>
+<span id="cb102-48"><a href="network-analysis.html#cb102-48" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">&quot;n&quot;</span>)</span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-82"></span>
+<img src="MGS-microbiota-data-analysis-based-on-XMAS-package_files/figure-html/unnamed-chunk-82-1.png" alt="Dissimilarity-based Networks (group information)" width="1920" />
+<p class="caption">
+Figure 9.6: Dissimilarity-based Networks (group information)
+</p>
+</div>
+</div>
+</div>
+<div id="systematic-information-7" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Systematic Information<a href="network-analysis.html#systematic-information-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="network-analysis.html#cb103-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  setting  value
+##  version  R version 4.1.2 (2021-11-01)
+##  os       macOS Monterey 12.2.1
+##  system   x86_64, darwin17.0
+##  ui       RStudio
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       Asia/Shanghai
+##  date     2022-08-09
+##  rstudio  2022.07.1+554 Spotted Wakerobin (desktop)
+##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
+## 
+## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##  package              * version  date (UTC) lib source
+##  abind                  1.4-5    2016-07-21 [1] CRAN (R 4.1.0)
+##  ade4                   1.7-18   2021-09-16 [1] CRAN (R 4.1.0)
+##  ALDEx2                 1.26.0   2021-10-26 [1] Bioconductor
+##  annotate               1.72.0   2021-10-26 [1] Bioconductor
+##  AnnotationDbi          1.56.2   2021-11-09 [1] Bioconductor
+##  ape                    5.6-2    2022-03-02 [1] CRAN (R 4.1.2)
+##  assertthat             0.2.1    2019-03-21 [1] CRAN (R 4.1.0)
+##  backports              1.4.1    2021-12-13 [1] CRAN (R 4.1.0)
+##  base64enc              0.1-3    2015-07-28 [1] CRAN (R 4.1.0)
+##  bayesm                 3.1-4    2019-10-15 [1] CRAN (R 4.1.0)
+##  Biobase                2.54.0   2021-10-26 [1] Bioconductor
+##  BiocGenerics           0.40.0   2021-10-26 [1] Bioconductor
+##  BiocParallel           1.28.3   2021-12-09 [1] Bioconductor
+##  biomformat             1.22.0   2021-10-26 [1] Bioconductor
+##  Biostrings             2.62.0   2021-10-26 [1] Bioconductor
+##  bit                    4.0.4    2020-08-04 [1] CRAN (R 4.1.0)
+##  bit64                  4.0.5    2020-08-30 [1] CRAN (R 4.1.0)
+##  bitops                 1.0-7    2021-04-24 [1] CRAN (R 4.1.0)
+##  blob                   1.2.2    2021-07-23 [1] CRAN (R 4.1.0)
+##  bookdown               0.27     2022-06-14 [1] CRAN (R 4.1.2)
+##  brio                   1.1.3    2021-11-30 [1] CRAN (R 4.1.0)
+##  broom                  0.7.12   2022-01-28 [1] CRAN (R 4.1.2)
+##  bslib                  0.3.1    2021-10-06 [1] CRAN (R 4.1.0)
+##  cachem                 1.0.6    2021-08-19 [1] CRAN (R 4.1.0)
+##  callr                  3.7.0    2021-04-20 [1] CRAN (R 4.1.0)
+##  car                    3.0-12   2021-11-06 [1] CRAN (R 4.1.0)
+##  carData                3.0-5    2022-01-06 [1] CRAN (R 4.1.2)
+##  caTools                1.18.2   2021-03-28 [1] CRAN (R 4.1.0)
+##  cccd                   1.6      2022-04-08 [1] CRAN (R 4.1.2)
+##  cellranger             1.1.0    2016-07-27 [1] CRAN (R 4.1.0)
+##  checkmate              2.0.0    2020-02-06 [1] CRAN (R 4.1.0)
+##  cli                    3.3.0    2022-04-25 [1] CRAN (R 4.1.2)
+##  cluster                2.1.2    2021-04-17 [1] CRAN (R 4.1.2)
+##  codetools              0.2-18   2020-11-04 [1] CRAN (R 4.1.2)
+##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
+##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
+##  compositions           2.0-4    2022-01-05 [1] CRAN (R 4.1.2)
+##  conflicted             1.1.0    2021-11-26 [1] CRAN (R 4.1.0)
+##  corpcor                1.6.10   2021-09-16 [1] CRAN (R 4.1.0)
+##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
+##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
+##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
+##  crosstalk              1.2.0    2021-11-04 [1] CRAN (R 4.1.0)
+##  data.table             1.14.2   2021-09-27 [1] CRAN (R 4.1.0)
+##  DBI                    1.1.2    2021-12-20 [1] CRAN (R 4.1.0)
+##  DelayedArray           0.20.0   2021-10-26 [1] Bioconductor
+##  deldir                 1.0-6    2021-10-23 [1] CRAN (R 4.1.0)
+##  DEoptimR               1.0-10   2022-01-03 [1] CRAN (R 4.1.2)
+##  desc                   1.4.1    2022-03-06 [1] CRAN (R 4.1.2)
+##  DESeq2                 1.34.0   2021-10-26 [1] Bioconductor
+##  devtools               2.4.3    2021-11-30 [1] CRAN (R 4.1.0)
+##  digest                 0.6.29   2021-12-01 [1] CRAN (R 4.1.0)
+##  doParallel             1.0.17   2022-02-07 [1] CRAN (R 4.1.2)
+##  doSNOW                 1.0.20   2022-02-04 [1] CRAN (R 4.1.2)
+##  dplyr                * 1.0.8    2022-02-08 [1] CRAN (R 4.1.2)
+##  DT                     0.21     2022-02-26 [1] CRAN (R 4.1.2)
+##  dynamicTreeCut         1.63-1   2016-03-11 [1] CRAN (R 4.1.0)
+##  edgeR                  3.36.0   2021-10-26 [1] Bioconductor
+##  ellipsis               0.3.2    2021-04-29 [1] CRAN (R 4.1.0)
+##  evaluate               0.15     2022-02-18 [1] CRAN (R 4.1.2)
+##  fansi                  1.0.2    2022-01-14 [1] CRAN (R 4.1.2)
+##  farver                 2.1.0    2021-02-28 [1] CRAN (R 4.1.0)
+##  fastcluster            1.2.3    2021-05-24 [1] CRAN (R 4.1.0)
+##  fastmap                1.1.0    2021-01-25 [1] CRAN (R 4.1.0)
+##  fdrtool                1.2.17   2021-11-13 [1] CRAN (R 4.1.0)
+##  filematrix             1.3      2018-02-27 [1] CRAN (R 4.1.0)
+##  FNN                    1.1.3    2019-02-15 [1] CRAN (R 4.1.0)
+##  foreach                1.5.2    2022-02-02 [1] CRAN (R 4.1.2)
+##  foreign                0.8-82   2022-01-13 [1] CRAN (R 4.1.2)
+##  forestplot             2.0.1    2021-09-03 [1] CRAN (R 4.1.0)
+##  Formula                1.2-4    2020-10-16 [1] CRAN (R 4.1.0)
+##  fs                     1.5.2    2021-12-08 [1] CRAN (R 4.1.0)
+##  genefilter             1.76.0   2021-10-26 [1] Bioconductor
+##  geneplotter            1.72.0   2021-10-26 [1] Bioconductor
+##  generics               0.1.2    2022-01-31 [1] CRAN (R 4.1.2)
+##  GenomeInfoDb           1.30.1   2022-01-30 [1] Bioconductor
+##  GenomeInfoDbData       1.2.7    2022-03-09 [1] Bioconductor
+##  GenomicRanges          1.46.1   2021-11-18 [1] Bioconductor
+##  ggplot2              * 3.3.5    2021-06-25 [1] CRAN (R 4.1.0)
+##  ggpubr               * 0.4.0    2020-06-27 [1] CRAN (R 4.1.0)
+##  ggrepel                0.9.1    2021-01-15 [1] CRAN (R 4.1.0)
+##  ggsignif               0.6.3    2021-09-09 [1] CRAN (R 4.1.0)
+##  glasso                 1.11     2019-10-01 [1] CRAN (R 4.1.0)
+##  glmnet                 4.1-3    2021-11-02 [1] CRAN (R 4.1.0)
+##  glue                 * 1.6.2    2022-02-24 [1] CRAN (R 4.1.2)
+##  Gmisc                * 3.0.0    2022-01-03 [1] CRAN (R 4.1.2)
+##  GO.db                  3.14.0   2022-04-11 [1] Bioconductor
+##  gplots                 3.1.1    2020-11-28 [1] CRAN (R 4.1.0)
+##  gridExtra              2.3      2017-09-09 [1] CRAN (R 4.1.0)
+##  gtable                 0.3.0    2019-03-25 [1] CRAN (R 4.1.0)
+##  gtools                 3.9.2    2021-06-06 [1] CRAN (R 4.1.0)
+##  highr                  0.9      2021-04-16 [1] CRAN (R 4.1.0)
+##  Hmisc                  4.6-0    2021-10-07 [1] CRAN (R 4.1.0)
+##  htmlTable            * 2.4.0    2022-01-04 [1] CRAN (R 4.1.2)
+##  htmltools              0.5.2    2021-08-25 [1] CRAN (R 4.1.0)
+##  htmlwidgets            1.5.4    2021-09-08 [1] CRAN (R 4.1.0)
+##  httr                   1.4.2    2020-07-20 [1] CRAN (R 4.1.0)
+##  huge                   1.3.5    2021-06-30 [1] CRAN (R 4.1.0)
+##  igraph                 1.2.11   2022-01-04 [1] CRAN (R 4.1.2)
+##  impute                 1.68.0   2021-10-26 [1] Bioconductor
+##  IRanges                2.28.0   2021-10-26 [1] Bioconductor
+##  irlba                  2.3.5    2021-12-06 [1] CRAN (R 4.1.0)
+##  iterators              1.0.14   2022-02-05 [1] CRAN (R 4.1.2)
+##  jpeg                   0.1-9    2021-07-24 [1] CRAN (R 4.1.0)
+##  jquerylib              0.1.4    2021-04-26 [1] CRAN (R 4.1.0)
+##  jsonlite               1.8.0    2022-02-22 [1] CRAN (R 4.1.2)
+##  KEGGREST               1.34.0   2021-10-26 [1] Bioconductor
+##  KernSmooth             2.23-20  2021-05-03 [1] CRAN (R 4.1.2)
+##  knitr                  1.39     2022-04-26 [1] CRAN (R 4.1.2)
+##  labeling               0.4.2    2020-10-20 [1] CRAN (R 4.1.0)
+##  lattice                0.20-45  2021-09-22 [1] CRAN (R 4.1.2)
+##  latticeExtra           0.6-29   2019-12-19 [1] CRAN (R 4.1.0)
+##  lavaan                 0.6-11   2022-03-31 [1] CRAN (R 4.1.2)
+##  libcoin                1.0-9    2021-09-27 [1] CRAN (R 4.1.0)
+##  lifecycle              1.0.1    2021-09-24 [1] CRAN (R 4.1.0)
+##  limma                  3.50.1   2022-02-17 [1] Bioconductor
+##  locfit                 1.5-9.5  2022-03-03 [1] CRAN (R 4.1.2)
+##  lubridate              1.8.0    2021-10-07 [1] CRAN (R 4.1.0)
+##  magrittr             * 2.0.2    2022-01-26 [1] CRAN (R 4.1.2)
+##  MASS                   7.3-55   2022-01-13 [1] CRAN (R 4.1.2)
+##  Matrix                 1.4-0    2021-12-08 [1] CRAN (R 4.1.0)
+##  MatrixGenerics         1.6.0    2021-10-26 [1] Bioconductor
+##  matrixStats            0.61.0   2021-09-17 [1] CRAN (R 4.1.0)
+##  mbzinb                 0.2      2022-03-16 [1] local
+##  memoise                2.0.1    2021-11-26 [1] CRAN (R 4.1.0)
+##  metagenomeSeq          1.36.0   2021-10-26 [1] Bioconductor
+##  mgcv                   1.8-39   2022-02-24 [1] CRAN (R 4.1.2)
+##  mixedCCA               1.5.2    2022-07-14 [1] Github (irinagain/mixedCCA@c6d41a3)
+##  mnormt                 2.0.2    2020-09-01 [1] CRAN (R 4.1.0)
+##  modeltools             0.2-23   2020-03-05 [1] CRAN (R 4.1.0)
+##  multcomp               1.4-18   2022-01-04 [1] CRAN (R 4.1.2)
+##  multtest               2.50.0   2021-10-26 [1] Bioconductor
+##  munsell                0.5.0    2018-06-12 [1] CRAN (R 4.1.0)
+##  mvtnorm                1.1-3    2021-10-08 [1] CRAN (R 4.1.0)
+##  NADA                   1.6-1.1  2020-03-22 [1] CRAN (R 4.1.0)
+##  NetCoMi              * 1.0.3    2022-07-14 [1] Github (stefpeschel/NetCoMi@d4d80d3)
+##  nlme                   3.1-155  2022-01-13 [1] CRAN (R 4.1.2)
+##  nnet                   7.3-17   2022-01-13 [1] CRAN (R 4.1.2)
+##  pbapply                1.5-0    2021-09-16 [1] CRAN (R 4.1.0)
+##  pbivnorm               0.6.0    2015-01-23 [1] CRAN (R 4.1.0)
+##  pcaPP                  1.9-74   2021-04-23 [1] CRAN (R 4.1.0)
+##  permute                0.9-7    2022-01-27 [1] CRAN (R 4.1.2)
+##  pheatmap               1.0.12   2019-01-04 [1] CRAN (R 4.1.0)
+##  phyloseq             * 1.38.0   2021-10-26 [1] Bioconductor
+##  pillar                 1.7.0    2022-02-01 [1] CRAN (R 4.1.2)
+##  pkgbuild               1.3.1    2021-12-20 [1] CRAN (R 4.1.0)
+##  pkgconfig              2.0.3    2019-09-22 [1] CRAN (R 4.1.0)
+##  pkgload                1.2.4    2021-11-30 [1] CRAN (R 4.1.0)
+##  plyr                   1.8.6    2020-03-03 [1] CRAN (R 4.1.0)
+##  png                    0.1-7    2013-12-03 [1] CRAN (R 4.1.0)
+##  preprocessCore         1.56.0   2021-10-26 [1] Bioconductor
+##  prettyunits            1.1.1    2020-01-24 [1] CRAN (R 4.1.0)
+##  processx               3.5.2    2021-04-30 [1] CRAN (R 4.1.0)
+##  proxy                  0.4-26   2021-06-07 [1] CRAN (R 4.1.0)
+##  ps                     1.6.0    2021-02-28 [1] CRAN (R 4.1.0)
+##  pscl                   1.5.5    2020-03-07 [1] CRAN (R 4.1.0)
+##  psych                  2.2.5    2022-05-10 [1] CRAN (R 4.1.2)
+##  pulsar                 0.3.7    2020-08-07 [1] CRAN (R 4.1.0)
+##  purrr                  0.3.4    2020-04-17 [1] CRAN (R 4.1.0)
+##  qgraph                 1.9.2    2022-03-04 [1] CRAN (R 4.1.2)
+##  R6                     2.5.1    2021-08-19 [1] CRAN (R 4.1.0)
+##  rbibutils              2.2.7    2021-12-07 [1] CRAN (R 4.1.0)
+##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
+##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
+##  RcppZiggurat           0.1.6    2020-10-20 [1] CRAN (R 4.1.0)
+##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
+##  Rdpack                 2.2      2022-03-19 [1] CRAN (R 4.1.2)
+##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
+##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
+##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
+##  Rfast                  2.0.6    2022-02-16 [1] CRAN (R 4.1.2)
+##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
+##  rhdf5filters           1.6.0    2021-10-26 [1] Bioconductor
+##  Rhdf5lib               1.16.0   2021-10-26 [1] Bioconductor
+##  rlang                  1.0.2    2022-03-04 [1] CRAN (R 4.1.2)
+##  rmarkdown              2.14     2022-04-25 [1] CRAN (R 4.1.2)
+##  robustbase             0.93-9   2021-09-27 [1] CRAN (R 4.1.0)
+##  rootSolve              1.8.2.3  2021-09-29 [1] CRAN (R 4.1.0)
+##  rpart                  4.1.16   2022-01-24 [1] CRAN (R 4.1.2)
+##  rprojroot              2.0.2    2020-11-15 [1] CRAN (R 4.1.0)
+##  RSQLite                2.2.10   2022-02-17 [1] CRAN (R 4.1.2)
+##  rstatix                0.7.0    2021-02-13 [1] CRAN (R 4.1.0)
+##  rstudioapi             0.13     2020-11-12 [1] CRAN (R 4.1.0)
+##  S4Vectors              0.32.3   2021-11-21 [1] Bioconductor
+##  sandwich               3.0-1    2021-05-18 [1] CRAN (R 4.1.0)
+##  sass                   0.4.0    2021-05-12 [1] CRAN (R 4.1.0)
+##  scales                 1.1.1    2020-05-11 [1] CRAN (R 4.1.0)
+##  sessioninfo            1.2.2    2021-12-06 [1] CRAN (R 4.1.0)
+##  shape                  1.4.6    2021-05-19 [1] CRAN (R 4.1.0)
+##  snow                   0.4-4    2021-10-27 [1] CRAN (R 4.1.0)
+##  SpiecEasi            * 1.1.2    2022-07-14 [1] Github (zdk123/SpiecEasi@c463727)
+##  SPRING                 1.0.4    2022-08-03 [1] Github (GraceYoon/SPRING@3d641a4)
+##  stringi                1.7.6    2021-11-29 [1] CRAN (R 4.1.0)
+##  stringr                1.4.0    2019-02-10 [1] CRAN (R 4.1.0)
+##  SummarizedExperiment   1.24.0   2021-10-26 [1] Bioconductor
+##  survival               3.3-1    2022-03-03 [1] CRAN (R 4.1.2)
+##  tensorA                0.36.2   2020-11-19 [1] CRAN (R 4.1.0)
+##  testthat               3.1.2    2022-01-20 [1] CRAN (R 4.1.2)
+##  TH.data                1.1-0    2021-09-27 [1] CRAN (R 4.1.0)
+##  tibble               * 3.1.6    2021-11-07 [1] CRAN (R 4.1.0)
+##  tidyr                  1.2.0    2022-02-01 [1] CRAN (R 4.1.2)
+##  tidyselect             1.1.2    2022-02-21 [1] CRAN (R 4.1.2)
+##  tmvnsim                1.0-2    2016-12-15 [1] CRAN (R 4.1.0)
+##  truncnorm              1.0-8    2018-02-27 [1] CRAN (R 4.1.0)
+##  usethis                2.1.5    2021-12-09 [1] CRAN (R 4.1.0)
+##  utf8                   1.2.2    2021-07-24 [1] CRAN (R 4.1.0)
+##  vctrs                  0.3.8    2021-04-29 [1] CRAN (R 4.1.0)
+##  vegan                  2.5-7    2020-11-28 [1] CRAN (R 4.1.0)
+##  VGAM                   1.1-6    2022-02-14 [1] CRAN (R 4.1.2)
+##  WGCNA                  1.71     2022-04-22 [1] CRAN (R 4.1.2)
+##  withr                  2.5.0    2022-03-03 [1] CRAN (R 4.1.2)
+##  Wrench                 1.12.0   2021-10-26 [1] Bioconductor
+##  xfun                   0.30     2022-03-02 [1] CRAN (R 4.1.2)
+##  XMAS2                * 2.1.7.4  2022-08-09 [1] local
+##  XML                    3.99-0.9 2022-02-24 [1] CRAN (R 4.1.2)
+##  xtable                 1.8-4    2019-04-21 [1] CRAN (R 4.1.0)
+##  XVector                0.34.0   2021-10-26 [1] Bioconductor
+##  yaml                   2.3.5    2022-02-21 [1] CRAN (R 4.1.2)
+##  zCompositions          1.4.0    2022-01-13 [1] CRAN (R 4.1.2)
+##  zlibbioc               1.40.0   2021-10-26 [1] Bioconductor
+##  zoo                    1.8-9    2021-03-09 [1] CRAN (R 4.1.0)
+## 
+##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
+## 
+## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+
+</div>
+</div>
+<h3>References<a href="references.html#references" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-peschel2021netcomi" class="csl-entry">
+Peschel, Stefanie, Christian L Müller, Erika von Mutius, Anne-Laure Boulesteix, and Martin Depner. 2021. <span>“NetCoMi: Network Construction and Comparison for Microbiome Data in r.”</span> <em>Briefings in Bioinformatics</em> 22 (4): bbaa290.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="differential-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="test-example.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/XbiomeAnalysis/MGS_DataAnalysis_template/blob/main/08-Network_Analysis.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["MGS microbiota data analysis based on XMAS package.pdf", "MGS microbiota data analysis based on XMAS package.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true,
+"toc_depth": 3
+}
+});
+});
+</script>
+
+</body>
+
+</html>
