@@ -3,11 +3,5 @@
 .RData
 .Ruserdata
 .rsconnect
-#_book
-#_bookdown_files
 *.DS_Store
 
-# folders
-DataSet/
-docs/
-_bookdown_files/
