@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package</title>
   <meta name="description" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Quality Control | MGS microbiota data analysis based on XMAS package" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-08-09" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -100,7 +100,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -113,7 +113,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -175,11 +175,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metaphlan23"><i class="fa fa-check"></i><b>2.1</b> Metaphlan2/3</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#importing-results"><i class="fa fa-check"></i><b>2.1.1</b> Importing results</a></li>
-<li class="chapter" data-level="2.1.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#taxa-table"><i class="fa fa-check"></i><b>2.1.2</b> taxa table</a></li>
-<li class="chapter" data-level="2.1.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#otu-table"><i class="fa fa-check"></i><b>2.1.3</b> otu table</a></li>
-<li class="chapter" data-level="2.1.4" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metadata-table"><i class="fa fa-check"></i><b>2.1.4</b> metadata table</a></li>
-<li class="chapter" data-level="2.1.5" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object"><i class="fa fa-check"></i><b>2.1.5</b> phyloseq object</a></li>
+<li class="chapter" data-level="2.1.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#merging-output-of-metaphlan"><i class="fa fa-check"></i><b>2.1.1</b> Merging output of metaphlan</a></li>
+<li class="chapter" data-level="2.1.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#importing-results"><i class="fa fa-check"></i><b>2.1.2</b> Importing results</a></li>
+<li class="chapter" data-level="2.1.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#taxa-table"><i class="fa fa-check"></i><b>2.1.3</b> taxa table</a></li>
+<li class="chapter" data-level="2.1.4" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#otu-table"><i class="fa fa-check"></i><b>2.1.4</b> otu table</a></li>
+<li class="chapter" data-level="2.1.5" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metadata-table"><i class="fa fa-check"></i><b>2.1.5</b> metadata table</a></li>
+<li class="chapter" data-level="2.1.6" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object"><i class="fa fa-check"></i><b>2.1.6</b> phyloseq object</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#transform-the-abundance-of-taxa-whose-relative-abundance-under-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>2.2</b> Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros</a></li>
 <li class="chapter" data-level="2.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#systematic-information"><i class="fa fa-check"></i><b>2.3</b> Systematic Information</a></li>
@@ -280,20 +281,20 @@ div.csl-indent {
 <div id="quality-control" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Quality Control<a href="quality-control.html#quality-control" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><strong>Loading packages</strong></p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="quality-control.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS2)</span>
-<span id="cb15-2"><a href="quality-control.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb15-3"><a href="quality-control.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
-<span id="cb15-4"><a href="quality-control.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="quality-control.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(XMAS2)</span>
+<span id="cb19-2"><a href="quality-control.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb19-3"><a href="quality-control.html#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tibble)</span>
+<span id="cb19-4"><a href="quality-control.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span></code></pre></div>
 <p>The taxonomic levels of spike-in sample’s bacteria is species. Firstly, using the <code>summarize_taxa</code> to get the species level phyloseq object and then do <code>run_RefCheck</code> under the optimal parameters.</p>
 <div id="spike-in-sample-brs" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> spike-in sample (BRS)<a href="quality-control.html#spike-in-sample-brs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li>get the BRS_ID</li>
 </ul>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="quality-control.html#cb16-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species <span class="ot">&lt;-</span> <span class="fu">aggregate_LOD_taxa</span>(<span class="at">ps =</span> metaphlan2_ps, </span>
-<span id="cb16-2"><a href="quality-control.html#cb16-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>, </span>
-<span id="cb16-3"><a href="quality-control.html#cb16-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">cutoff =</span> <span class="fl">1e-04</span>)</span>
-<span id="cb16-4"><a href="quality-control.html#cb16-4" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species<span class="sc">@</span>sam_data</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="quality-control.html#cb20-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species <span class="ot">&lt;-</span> <span class="fu">aggregate_LOD_taxa</span>(<span class="at">ps =</span> metaphlan2_ps, </span>
+<span id="cb20-2"><a href="quality-control.html#cb20-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>, </span>
+<span id="cb20-3"><a href="quality-control.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">cutoff =</span> <span class="fl">1e-04</span>)</span>
+<span id="cb20-4"><a href="quality-control.html#cb20-4" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species<span class="sc">@</span>sam_data</span></code></pre></div>
 <pre><code>##      Group phynotype
 ## s1      BB      0.00
 ## s2      AA      2.50
@@ -321,97 +322,183 @@ div.csl-indent {
 <ul>
 <li>run <code>run_RefCheck</code></li>
 </ul>
-<div class="sourceCode" id="cb18"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb18-1"><a href="quality-control.html#cb18-1" aria-hidden="true" tabindex="-1"></a>run_RefCheck(</span>
-<span id="cb18-2"><a href="quality-control.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    ps = metaphlan2_ps_LOD_species,</span>
-<span id="cb18-3"><a href="quality-control.html#cb18-3" aria-hidden="true" tabindex="-1"></a>    BRS_ID = &quot;refE&quot;,</span>
-<span id="cb18-4"><a href="quality-control.html#cb18-4" aria-hidden="true" tabindex="-1"></a>    Ref_type = &quot;MGS&quot;)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb22-1"><a href="quality-control.html#cb22-1" aria-hidden="true" tabindex="-1"></a>run_RefCheck(</span>
+<span id="cb22-2"><a href="quality-control.html#cb22-2" aria-hidden="true" tabindex="-1"></a>    ps = metaphlan2_ps_LOD_species,</span>
+<span id="cb22-3"><a href="quality-control.html#cb22-3" aria-hidden="true" tabindex="-1"></a>    BRS_ID = &quot;refE&quot;,</span>
+<span id="cb22-4"><a href="quality-control.html#cb22-4" aria-hidden="true" tabindex="-1"></a>    Ref_type = &quot;MGS&quot;)</span></code></pre></div>
 <pre><code>## Noting: the Reference Matrix is for MGS
 ## 
 ## ############Matched baterica of the BRS sample#############
 ## The number of BRS&#39; bacteria matched the Reference Matrix is [16]
 ## s__Bifidobacterium_longum
-## s__Bacteroides_uniformis
-## s__Faecalibacterium_prausnitzii
+## s__Bacteroides_ovatus
+## s__Coprococcus_comes
+## s__Bacteroides_vulgatus
 ## s__Bifidobacterium_adolescentis
 ## s__Bacteroides_thetaiotaomicron
-## s__Collinsella_aerofaciens
-## s__Coprococcus_comes
-## s__Dorea_formicigenerans
 ## s__Streptococcus_salivarius
-## s__Bacteroides_xylanisolvens
-## s__Bacteroides_ovatus
-## s__Roseburia_hominis
-## s__Bacteroides_vulgatus
-## s__Prevotella_copri
+## s__Dorea_formicigenerans
 ## s__Bifidobacterium_pseudocatenulatum
+## s__Bacteroides_uniformis
+## s__Bacteroides_xylanisolvens
+## s__Prevotella_copri
+## s__Faecalibacterium_prausnitzii
+## s__Collinsella_aerofaciens
 ## s__Lachnospiraceae_bacterium_5_1_63FAA
-## The number of bacteria unmatched the Reference Matrix is [9]
-## s__Lactobacillus_salivarius
+## s__Roseburia_hominis
+## The number of bacteria unmatched the Reference Matrix is [11]
+## s__Enterococcus_faecalis
+## s__Escherichia_coli
 ## s__Bacteroides_fragilis
 ## s__Parabacteroides_goldsteinii
-## s__Escherichia_coli
-## s__Enterococcus_faecalis
+## s__Lactobacillus_salivarius
+## s__Enterococcus_faecium
 ## s__Bifidobacterium_bifidum
 ## s__Lactobacillus_pentosus
-## s__Bacteroides_intestinalis
 ## s__Eggerthella_unclassified
+## s__Propionibacterium_acnes
+## s__Bacteroides_intestinalis
 ## The number of the additional bacteria compared to the Reference Matrix is [44]
 ## ###########################################################
 ## 
 ## ##################Status of the BRS sample##################
 ## Whether the BRS has the all bateria of Reference Matrix: FALSE
-## Correlation Coefficient of the BRS is: -0.06471
-## Bray Curtis of the BRS is: 0.8752
+## Correlation Coefficient of the BRS is: -0.04118
+## Bray Curtis of the BRS is: 0.8735
 ## Impurity of the BRS is: 32.69
 ## ###########################################################
 ## #####Final Evaluation Results of the BRS #######
 ## The BRS of sequencing dataset didn&#39;t pass the cutoff of the Reference Matrix
 ## ###########################################################
-##                                         7682    7683    7684    7685     7842     7843     7844     7845     refE        mean
-## Bifidobacterium_longum              10.31563 9.25812 9.69184 7.76031 11.03311 11.61484 12.29030 11.69019  0.01646  9.29675556
-## Bacteroides_uniformis                2.24195 2.24035 1.92015 2.18435  2.43230  2.38180  2.13830  2.41437  0.21061  2.01824222
-## Faecalibacterium_prausnitzii         0.65615 0.60153 0.60112 0.62079  0.54147  0.55383  0.58806  0.54655  1.61939  0.70321000
-## Bifidobacterium_adolescentis         7.05426 6.28460 6.57297 6.25448  4.69357  4.80628  4.94943  4.84278  0.04649  5.05609556
-## Bacteroides_thetaiotaomicron         3.25076 3.31897 3.22418 3.43809  3.35611  3.38323  3.29098  3.30355  1.47422  3.11556556
-## Collinsella_aerofaciens              0.56220 0.53249 0.60476 0.47934  0.65513  0.68833  0.76063  0.66896  0.07251  0.55826111
-## Coprococcus_comes                    2.28581 2.42978 2.25227 2.82904  1.21527  1.16485  1.07160  1.07834  0.01444  1.59348889
-## Dorea_formicigenerans                4.83509 5.02149 5.18268 5.56891  3.34720  3.09877  3.08677  2.70732  0.02775  3.65288667
-## Streptococcus_salivarius             3.54266 3.74119 3.62036 4.01546  2.90216  2.70193  2.61760  2.57348  0.02846  2.86036667
-## Bacteroides_xylanisolvens            1.55648 1.84824 1.91166 1.85273  1.75220  1.74002  1.69811  1.67676  0.32466  1.59565111
-## Bacteroides_ovatus                   3.08489 3.27226 3.10904 3.24565  3.51376  3.50063  3.37872  3.42300  0.25782  2.97619667
-## Roseburia_hominis                    0.04383 0.04183 0.04107 0.02304  0.03853  0.03464  0.03532  0.03597  0.01307  0.03414444
-## Bacteroides_vulgatus                 3.06713 3.20369 3.14979 3.15352  3.24822  3.09280  3.13038  3.06113  2.14684  3.02816667
-## Prevotella_copri                     2.03128 1.99619 1.92504 2.15422  1.57638  1.60584  1.57913  1.59224 60.84109  8.36682333
-## Bifidobacterium_pseudocatenulatum    6.89310 6.36177 7.39605 5.76804  6.19464  6.47094  7.41615  6.27837  0.15023  5.88103222
-## Lachnospiraceae_bacterium_5_1_63FAA  0.22002 0.26062 0.28058 0.33329  0.07093  0.06778  0.05229  0.04781  0.06825  0.15573000
-## Impurity_level                       7.33876 7.34799 7.14891 6.47250  8.88190  9.72198  9.72162 10.57600 32.69000 11.09996222
+##                                       10471   10636   10637   10639   10640    10769    11115    11708   12592    13164    13331
+## Bifidobacterium_longum              8.11381 7.67316 7.50927 5.70807 4.86413 11.54558 13.32375 12.83483 8.31626 12.25656 11.64168
+## Bacteroides_ovatus                  3.96168 3.92905 3.86741 4.44106 4.15994  2.99928  2.88927  2.74802 3.05585  2.78285  2.30211
+## Coprococcus_comes                   4.16280 4.18702 4.65603 4.40718 5.15653  1.73091  1.44618  1.57966 1.78718  1.34019  1.50536
+## Bacteroides_vulgatus                3.35465 3.47741 3.43735 4.01041 3.92425  2.84171  2.73213  2.52132 3.08322  2.66631  2.21000
+## Bifidobacterium_adolescentis        5.11369 5.10202 5.16323 3.75219 3.55822  7.14673  7.12725  7.89869 5.49066  6.57327  8.94479
+## Bacteroides_thetaiotaomicron        3.24092 3.21696 3.20104 3.49194 3.50958  2.97032  3.00366  2.75088 3.22968  2.92743  2.43185
+## Streptococcus_salivarius            3.03030 2.85413 2.95267 2.96550 3.04982  3.35350  3.15495  3.10234 3.62476  3.37613  3.44728
+## Dorea_formicigenerans               2.79346 2.77945 2.91141 2.75671 3.01534  5.81678  4.69992  4.59889 5.74800  4.69777  5.32816
+## Bifidobacterium_pseudocatenulatum   3.38286 3.16577 3.07946 2.67246 2.40422  7.49415  8.06924  6.93314 5.83010  7.11283  6.83227
+## Bacteroides_uniformis               2.69622 2.41265 2.41435 2.59011 2.40581  1.73867  2.27891  1.82426 1.99951  1.96071  1.83481
+## Bacteroides_xylanisolvens           3.28194 3.29517 1.72138 2.23987 3.72633  3.04333  1.36887  2.58554 2.99954  1.36453  2.31131
+## Prevotella_copri                    2.06364 1.82281 1.87249 1.93086 1.88097  1.91383  1.81769  1.79535 1.84980  1.93870  1.88402
+## Faecalibacterium_prausnitzii        0.77201 0.75578 0.79594 0.37908 0.35665  0.63169  0.86543  0.87373 0.37657  0.73631  0.78754
+## Collinsella_aerofaciens             0.53383 0.49729 0.50462 0.30319 0.25888  0.58329  0.82169  0.84559 0.41288  0.77006  0.75924
+## Lachnospiraceae_bacterium_5_1_63FAA 0.08820 0.10673 0.11128 0.10783 0.16420  0.16237  0.09083  0.09210 0.15412  0.08988  0.14991
+## Roseburia_hominis                   0.06173 0.05838 0.06817 0.05414 0.04661  0.04053  0.05378  0.04942 0.04577  0.04584  0.04223
+##                                        13837    13864   13883    14294    14353   14514   14692   15043    15377   15378    15919
+## Bifidobacterium_longum              12.64388 11.36085 9.62482 14.35451 16.63263 9.93664 9.47707 7.11444 10.55997 9.07591 10.01176
+## Bacteroides_ovatus                   3.17694  2.66994 3.27074  2.79573  2.87388 2.76674 3.46729 3.61227  3.49421 3.03110  2.76744
+## Coprococcus_comes                    1.50964  2.40314 1.57698  1.80259  0.90812 2.26324 1.14835 2.96786  1.63088 2.32643  3.01294
+## Bacteroides_vulgatus                 2.96186  2.72145 3.14976  2.63946  2.48610 1.13907 3.31856 3.57799  3.09254 2.91354  2.74777
+## Bifidobacterium_adolescentis         5.61210  8.56589 4.65487 10.81433  7.48894 6.53874 3.67914 5.04893  4.97484 6.27492  7.89443
+## Bacteroides_thetaiotaomicron         3.08880  2.69349 3.16444  2.91993  2.85340 2.73612 3.35522 3.27933  3.31300 2.86402  2.80401
+## Streptococcus_salivarius             2.77444  3.02809 3.36832  2.02332  1.53413 3.34476 2.87564 3.03138  3.04584 3.40593  3.34746
+## Dorea_formicigenerans                3.87336  5.77030 4.74969  3.53538  2.11433 5.06140 4.15264 4.08469  3.82179 4.98571  5.45250
+## Bifidobacterium_pseudocatenulatum    6.94208  7.37838 6.99361  7.25508  7.47245 6.23862 7.24651 4.26102  5.33878 5.24604  5.91290
+## Bacteroides_uniformis                2.04324  1.78350 2.02260  2.01742  1.98683 1.82686 2.04989 2.41251  2.38475 2.14047  1.77245
+## Bacteroides_xylanisolvens            2.89389  1.56784 1.85183  2.81483  2.68261 1.41685 2.07120 2.13182  1.70626 1.60105  2.74080
+## Prevotella_copri                     1.78612  1.79223 1.83212  1.42012  1.17209 2.40416 1.65334 1.96898  1.69163 1.79573  1.88316
+## Faecalibacterium_prausnitzii         0.64940  0.70535 0.60128  0.56506  0.64019 0.88437 0.50048 0.45379  0.61515 0.73538  0.55683
+## Collinsella_aerofaciens              0.70488  0.63986 0.58174  0.67414  0.83075 0.76540 0.52348 0.42563  0.65863 0.58767  0.54864
+## Lachnospiraceae_bacterium_5_1_63FAA  0.08142  0.27602 0.12902  0.14446  0.04769 0.15494 0.08348 0.13126  0.07500 0.16364  0.28232
+## Roseburia_hominis                    0.04609  0.04508 0.04129  0.03465  0.04144 0.05359 0.03803 0.05785  0.04990 0.04607  0.05414
+##                                       16048   16316   16319   16347   16379   16416    16643   17346   17358    17367   17447
+## Bifidobacterium_longum              9.69043 7.52306 7.55665 9.70590 6.84815 9.89749 11.31632 7.66734 9.86840 10.87283 3.25866
+## Bacteroides_ovatus                  3.03531 3.32437 3.45295 3.62218 3.75943 2.96599  3.02706 3.40560 3.41400  3.08738 6.09596
+## Coprococcus_comes                   2.96924 3.59466 3.57862 1.76048 2.61452 2.04108  1.76011 3.69207 2.09069  2.24782 2.02841
+## Bacteroides_vulgatus                3.09935 3.44793 3.53090 3.23231 3.49744 2.82052  3.00506 3.46903 3.43126  3.08539 6.05372
+## Bifidobacterium_adolescentis        6.52876 5.88728 5.87504 4.35779 4.40074 5.76228  5.49289 6.01398 5.36079  6.43311 2.12800
+## Bacteroides_thetaiotaomicron        3.13347 3.04083 3.11459 3.14863 3.26102 3.08699  3.02583 3.08416 3.41487  3.08820 5.93408
+## Streptococcus_salivarius            3.71090 3.67183 3.79982 3.06091 3.75770 3.55959  3.12754 3.69879 3.50295  3.44364 1.88983
+## Dorea_formicigenerans               4.72522 4.64591 4.55858 2.69263 3.56759 4.79519  4.50406 4.68564 4.01979  4.17924 1.81824
+## Bifidobacterium_pseudocatenulatum   5.77564 4.57475 4.62962 4.96492 3.94615 6.14754  7.24626 4.57054 6.23848  6.40033 2.29354
+## Bacteroides_uniformis               1.98889 2.21392 2.01888 2.42394 2.38767 2.05014  2.07140 2.26052 2.19181  2.14782 3.36615
+## Bacteroides_xylanisolvens           1.62204 3.19530 2.09612 3.13471 3.43980 1.53912  1.63411 1.87350 3.22991  2.79352 4.25302
+## Prevotella_copri                    2.07287 1.97112 1.93353 1.71181 1.91259 1.90389  1.82113 1.97873 2.03877  1.98940 3.87635
+## Faecalibacterium_prausnitzii        0.90999 0.47017 0.44729 0.57450 0.52308 0.68340  0.62311 0.47828 0.71111  0.83658 0.71278
+## Collinsella_aerofaciens             0.67753 0.37548 0.39634 0.58473 0.44993 0.63777  0.67223 0.42236 0.62913  0.68843 0.11636
+## Lachnospiraceae_bacterium_5_1_63FAA 0.20016 0.21536 0.24479 0.05832 0.10769 0.14313  0.10475 0.22438 0.11106  0.11605 0.10150
+## Roseburia_hominis                   0.05873 0.03554 0.03999 0.04928 0.04970 0.04974  0.04541 0.05218 0.06504  0.05955 0.07687
+##                                       17574    17614    17907    18003    18123   18158   18254   18652    18748   18883    19025
+## Bifidobacterium_longum              9.70406 12.12046 11.29858 12.01189 12.41898 4.70889 9.50685 8.61060 10.72595 2.23603 11.74855
+## Bacteroides_ovatus                  3.54582  3.36962  3.43196  3.25432  3.33751 4.70126 3.99162 3.65097  3.61472 4.00635  3.48854
+## Coprococcus_comes                   2.65329  1.61138  1.25244  1.16593  1.32943 1.40043 1.30588 2.02912  1.43181 1.89141  1.34869
+## Bacteroides_vulgatus                3.56764  3.17270  3.06646  2.90266  2.94911 4.49320 3.65775 1.26550  3.17810 4.38594  3.23491
+## Bifidobacterium_adolescentis        6.20718  5.07402  4.43160  4.60358  4.28572 1.30207 2.33770 3.42930  4.09908 0.94154  3.49924
+## Bacteroides_thetaiotaomicron        3.56745  3.27350  3.26772  3.23674  3.41009 4.11730 3.64058 3.49090  3.39957 3.64130  3.39626
+## Streptococcus_salivarius            2.80874  3.07036  2.35949  2.37727  2.65054 2.85711 2.75597 3.69704  2.82017 3.50685  2.92942
+## Dorea_formicigenerans               5.04111  3.41703  2.39040  2.56918  2.72636 2.71430 2.65012 3.86167  2.61596 3.73633  3.41932
+## Bifidobacterium_pseudocatenulatum   7.95284  7.22140  5.17439  6.28844  3.52229 3.57447 5.32369 4.92522  5.16928 1.98442  6.81628
+## Bacteroides_uniformis               2.19323  2.31014  2.40477  2.34879  2.39751 2.37414 2.45354 2.46187  2.60847 1.67152  2.32171
+## Bacteroides_xylanisolvens           3.45689  1.71452  3.01134  2.84196  3.26709 3.28925 2.01041 3.45202  1.59493 4.40960  1.76766
+## Prevotella_copri                    2.16416  1.90331  1.42260  1.55162  1.66520 1.44533 1.65372 2.31028  1.58613 1.18808  1.70884
+## Faecalibacterium_prausnitzii        1.03155  0.66410  0.55844  0.56703  0.73728 0.25535 0.43809 0.69166  0.55123 0.15787  0.62797
+## Collinsella_aerofaciens             0.66214  0.71605  0.62589  0.62440  0.82628 0.23027 0.48497 0.44362  0.56426 0.10648  0.66458
+## Lachnospiraceae_bacterium_5_1_63FAA 0.14738  0.07041  0.04965  0.03878  0.06610 0.05536 0.05088 0.07484  0.05303 0.13114  0.05452
+## Roseburia_hominis                   0.06064  0.05456  0.03377  0.04043  0.05243 0.02538 0.04090 0.04658  0.03987 0.02035  0.03542
+##                                        19151   19175     7682    7683     7684    7685     7842     7843     7844     7845    8108
+## Bifidobacterium_longum              12.83975 9.35652 10.61692 9.70452 10.26646 7.90970 11.09287 11.49847 12.31085 11.76466 9.55827
+## Bacteroides_ovatus                   3.42018 3.75385  3.09351 3.31482  3.12081 3.31232  3.53564  3.46157  3.38687  3.44778 3.66184
+## Coprococcus_comes                    1.07983 1.49248  2.25102 2.31762  2.12264 2.45777  1.21536  1.14849  1.07774  1.08142 1.32528
+## Bacteroides_vulgatus                 3.14217 3.41299  3.05040 3.30423  3.22814 3.27619  3.28027  3.18516  3.11734  3.07863 3.52520
+## Bifidobacterium_adolescentis         3.48965 3.62408  7.16903 6.45453  6.70040 6.27837  4.72418  4.74670  4.96916  4.86254 4.15176
+## Bacteroides_thetaiotaomicron         3.24309 3.31257  3.27164 3.33818  3.30218 3.46399  3.39208  3.37336  3.33352  3.35704 3.39183
+## Streptococcus_salivarius             2.45071 3.03755  3.05755 3.16055  3.01270 3.87922  2.89674  2.66865  2.60725  2.59000 3.08853
+## Dorea_formicigenerans                2.69458 3.28704  4.86800 5.05830  5.04009 5.51199  3.42631  3.08640  3.15582  2.74630 3.58930
+## Bifidobacterium_pseudocatenulatum    7.13176 5.15000  6.09864 6.02910  6.40770 5.17550  5.83949  5.98674  7.11737  5.97672 5.82470
+## Bacteroides_uniformis                2.30261 2.36019  2.27961 2.24583  1.91842 2.19582  2.40040  2.31289  2.33899  2.40465 2.29439
+## Bacteroides_xylanisolvens            1.74067 3.38269  3.18674 3.28090  3.16414 3.41045  1.74224  3.26467  1.68023  1.61949 3.44844
+## Prevotella_copri                     1.59313 1.67610  1.83093 1.78060  1.72074 2.06993  1.59277  1.59619  1.60078  1.62372 1.66857
+## Faecalibacterium_prausnitzii         0.57442 0.47734  0.48718 0.44086  0.46882 0.50270  0.53280  0.54786  0.57838  0.53260 0.49590
+## Collinsella_aerofaciens              0.70420 0.49820  0.46253 0.41782  0.49708 0.44309  0.65567  0.67716  0.74469  0.66016 0.56383
+## Lachnospiraceae_bacterium_5_1_63FAA  0.03893 0.06620  0.21907 0.24488  0.24101 0.28909  0.06532  0.06853  0.05540  0.05118 0.09357
+## Roseburia_hominis                    0.04302 0.03460  0.04239 0.03360  0.03617 0.02561  0.04120  0.03532  0.03681  0.03786 0.03727
+##                                         8635    8952    9456     9474     refE       mean
+## Bifidobacterium_longum              11.16770 4.86230 6.59407 10.18399  0.01646 9.56031933
+## Bacteroides_ovatus                   3.98663 4.11944 3.92516  2.55709  0.25782 3.38335083
+## Coprococcus_comes                    1.15150 1.33169 1.19713  2.89442  0.01444 2.05775917
+## Bacteroides_vulgatus                 3.62765 4.19069 3.80546  2.61231  2.14684 3.19229017
+## Bifidobacterium_adolescentis         2.92750 1.96201 2.61821  9.42034  0.04649 5.16690850
+## Bacteroides_thetaiotaomicron         3.96140 4.19124 3.99868  2.51572  1.47422 3.26234733
+## Streptococcus_salivarius             2.21486 3.35305 3.19640  4.85477  0.02846 3.03073567
+## Dorea_formicigenerans                2.38047 3.72882 3.78772  9.53378  0.02775 3.90007033
+## Bifidobacterium_pseudocatenulatum    4.42916 3.93062 5.15710  6.29975  0.15023 5.47845067
+## Bacteroides_uniformis                2.53793 2.12691 2.16248  1.81519  0.21061 2.18617133
+## Bacteroides_xylanisolvens            2.09226 4.32609 3.18280  2.51190  0.32466 2.55669967
+## Prevotella_copri                     1.40278 1.52016 1.60503  2.15390 60.84109 2.80426200
+## Faecalibacterium_prausnitzii         0.56323 0.26951 0.39457  0.83952  1.61939 0.61356583
+## Collinsella_aerofaciens              0.69060 0.26595 0.35697  0.66164  0.07251 0.55337850
+## Lachnospiraceae_bacterium_5_1_63FAA  0.05638 0.12398 0.09152  0.28340  0.06825 0.12271150
+## Roseburia_hominis                    0.04124 0.02332 0.02846  0.05067  0.01307 0.04446167
 ##                                                                                Evaluation
-## Bifidobacterium_longum              refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bacteroides_uniformis               refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Faecalibacterium_prausnitzii        refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bifidobacterium_adolescentis        refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bacteroides_thetaiotaomicron        refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Collinsella_aerofaciens             refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Coprococcus_comes                   refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Dorea_formicigenerans               refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Streptococcus_salivarius            refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bacteroides_xylanisolvens           refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bacteroides_ovatus                  refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Roseburia_hominis                   refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bacteroides_vulgatus                refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Prevotella_copri                    refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Bifidobacterium_pseudocatenulatum   refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Lachnospiraceae_bacterium_5_1_63FAA refE didn&#39;t pass the threshold (2022-08-09 16:25:27).
-## Impurity_level                      refE didn&#39;t pass the threshold (2022-08-09 16:25:27).</code></pre>
+## Bifidobacterium_longum              refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bacteroides_ovatus                  refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Coprococcus_comes                   refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bacteroides_vulgatus                refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bifidobacterium_adolescentis        refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bacteroides_thetaiotaomicron        refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Streptococcus_salivarius            refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Dorea_formicigenerans               refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bifidobacterium_pseudocatenulatum   refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bacteroides_uniformis               refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Bacteroides_xylanisolvens           refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Prevotella_copri                    refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Faecalibacterium_prausnitzii        refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Collinsella_aerofaciens             refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Lachnospiraceae_bacterium_5_1_63FAA refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+## Roseburia_hominis                   refE didn&#39;t pass the threshold (2023-04-12 14:11:30).
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 1 rows ]</code></pre>
 </div>
 <div id="spike-in-samples-brs-remove" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Spike-in sample’s (BRS) remove<a href="quality-control.html#spike-in-samples-brs-remove" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="quality-control.html#cb20-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
-<span id="cb20-2"><a href="quality-control.html#cb20-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">ps =</span> metaphlan2_ps_LOD_species,</span>
-<span id="cb20-3"><a href="quality-control.html#cb20-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
-<span id="cb20-4"><a href="quality-control.html#cb20-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>,</span>
-<span id="cb20-5"><a href="quality-control.html#cb20-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">discard =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb20-6"><a href="quality-control.html#cb20-6" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species_remove_BRS</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="quality-control.html#cb24-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species_remove_BRS <span class="ot">&lt;-</span> <span class="fu">get_GroupPhyloseq</span>(</span>
+<span id="cb24-2"><a href="quality-control.html#cb24-2" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">ps =</span> metaphlan2_ps_LOD_species,</span>
+<span id="cb24-3"><a href="quality-control.html#cb24-3" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">group =</span> <span class="st">&quot;Group&quot;</span>,</span>
+<span id="cb24-4"><a href="quality-control.html#cb24-4" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">group_names =</span> <span class="st">&quot;QC&quot;</span>,</span>
+<span id="cb24-5"><a href="quality-control.html#cb24-5" aria-hidden="true" tabindex="-1"></a>                                           <span class="at">discard =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb24-6"><a href="quality-control.html#cb24-6" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species_remove_BRS</span></code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
 ## otu_table()   OTU Table:         [ 192 taxa and 22 samples ]
 ## sample_data() Sample Data:       [ 22 samples by 2 sample variables ]
@@ -419,8 +506,8 @@ div.csl-indent {
 </div>
 <div id="systematic-information-1" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Systematic Information<a href="quality-control.html#systematic-information-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="quality-control.html#cb22-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="quality-control.html#cb26-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value
 ##  version  R version 4.1.2 (2021-11-01)
 ##  os       macOS Monterey 12.2.1
@@ -430,17 +517,16 @@ div.csl-indent {
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Asia/Shanghai
-##  date     2022-08-09
-##  rstudio  2022.07.1+554 Spotted Wakerobin (desktop)
-##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
+##  date     2023-04-12
+##  rstudio  2022.07.2+576 Spotted Wakerobin (desktop)
+##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version  date (UTC) lib source
 ##  abind                  1.4-5    2016-07-21 [1] CRAN (R 4.1.0)
 ##  ade4                   1.7-18   2021-09-16 [1] CRAN (R 4.1.0)
-##  ALDEx2                 1.26.0   2021-10-26 [1] Bioconductor
 ##  annotate               1.72.0   2021-10-26 [1] Bioconductor
-##  AnnotationDbi          1.56.2   2021-11-09 [1] Bioconductor
+##  AnnotationDbi          1.60.2   2023-03-10 [1] Bioconductor
 ##  ape                    5.6-2    2022-03-02 [1] CRAN (R 4.1.2)
 ##  assertthat             0.2.1    2019-03-21 [1] CRAN (R 4.1.0)
 ##  backports              1.4.1    2021-12-13 [1] CRAN (R 4.1.0)
@@ -454,50 +540,47 @@ div.csl-indent {
 ##  bit64                  4.0.5    2020-08-30 [1] CRAN (R 4.1.0)
 ##  bitops                 1.0-7    2021-04-24 [1] CRAN (R 4.1.0)
 ##  blob                   1.2.2    2021-07-23 [1] CRAN (R 4.1.0)
-##  bookdown               0.27     2022-06-14 [1] CRAN (R 4.1.2)
+##  bookdown               0.29     2022-09-12 [1] CRAN (R 4.1.2)
 ##  brio                   1.1.3    2021-11-30 [1] CRAN (R 4.1.0)
-##  broom                  0.7.12   2022-01-28 [1] CRAN (R 4.1.2)
-##  bslib                  0.3.1    2021-10-06 [1] CRAN (R 4.1.0)
+##  broom                  1.0.1    2022-08-29 [1] CRAN (R 4.1.2)
+##  bslib                  0.4.0    2022-07-16 [1] CRAN (R 4.1.2)
 ##  cachem                 1.0.6    2021-08-19 [1] CRAN (R 4.1.0)
 ##  callr                  3.7.0    2021-04-20 [1] CRAN (R 4.1.0)
 ##  car                    3.0-12   2021-11-06 [1] CRAN (R 4.1.0)
 ##  carData                3.0-5    2022-01-06 [1] CRAN (R 4.1.2)
 ##  caTools                1.18.2   2021-03-28 [1] CRAN (R 4.1.0)
-##  cccd                   1.6      2022-04-08 [1] CRAN (R 4.1.2)
 ##  cellranger             1.1.0    2016-07-27 [1] CRAN (R 4.1.0)
 ##  checkmate              2.0.0    2020-02-06 [1] CRAN (R 4.1.0)
-##  cli                    3.3.0    2022-04-25 [1] CRAN (R 4.1.2)
+##  cli                    3.4.1    2022-09-23 [1] CRAN (R 4.1.2)
 ##  cluster                2.1.2    2021-04-17 [1] CRAN (R 4.1.2)
 ##  codetools              0.2-18   2020-11-04 [1] CRAN (R 4.1.2)
 ##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
 ##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
-##  conflicted             1.1.0    2021-11-26 [1] CRAN (R 4.1.0)
 ##  corpcor                1.6.10   2021-09-16 [1] CRAN (R 4.1.0)
-##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
 ##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
 ##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
-##  data.table             1.14.2   2021-09-27 [1] CRAN (R 4.1.0)
+##  crosstalk              1.2.0    2021-11-04 [1] CRAN (R 4.1.0)
+##  data.table             1.14.6   2022-11-16 [1] CRAN (R 4.1.2)
 ##  DBI                    1.1.2    2021-12-20 [1] CRAN (R 4.1.0)
 ##  DelayedArray           0.20.0   2021-10-26 [1] Bioconductor
-##  deldir                 1.0-6    2021-10-23 [1] CRAN (R 4.1.0)
 ##  desc                   1.4.1    2022-03-06 [1] CRAN (R 4.1.2)
 ##  DESeq2                 1.34.0   2021-10-26 [1] Bioconductor
 ##  devtools               2.4.3    2021-11-30 [1] CRAN (R 4.1.0)
-##  digest                 0.6.29   2021-12-01 [1] CRAN (R 4.1.0)
+##  digest                 0.6.30   2022-10-18 [1] CRAN (R 4.1.2)
 ##  doParallel             1.0.17   2022-02-07 [1] CRAN (R 4.1.2)
 ##  doSNOW                 1.0.20   2022-02-04 [1] CRAN (R 4.1.2)
-##  dplyr                * 1.0.8    2022-02-08 [1] CRAN (R 4.1.2)
+##  dplyr                * 1.0.10   2022-09-01 [1] CRAN (R 4.1.2)
+##  DT                     0.21     2022-02-26 [1] CRAN (R 4.1.2)
 ##  dynamicTreeCut         1.63-1   2016-03-11 [1] CRAN (R 4.1.0)
 ##  edgeR                  3.36.0   2021-10-26 [1] Bioconductor
 ##  ellipsis               0.3.2    2021-04-29 [1] CRAN (R 4.1.0)
-##  evaluate               0.15     2022-02-18 [1] CRAN (R 4.1.2)
+##  evaluate               0.17     2022-10-07 [1] CRAN (R 4.1.2)
 ##  fansi                  1.0.2    2022-01-14 [1] CRAN (R 4.1.2)
 ##  farver                 2.1.0    2021-02-28 [1] CRAN (R 4.1.0)
 ##  fastcluster            1.2.3    2021-05-24 [1] CRAN (R 4.1.0)
 ##  fastmap                1.1.0    2021-01-25 [1] CRAN (R 4.1.0)
 ##  fdrtool                1.2.17   2021-11-13 [1] CRAN (R 4.1.0)
 ##  filematrix             1.3      2018-02-27 [1] CRAN (R 4.1.0)
-##  FNN                    1.1.3    2019-02-15 [1] CRAN (R 4.1.0)
 ##  foreach                1.5.2    2022-02-02 [1] CRAN (R 4.1.2)
 ##  foreign                0.8-82   2022-01-13 [1] CRAN (R 4.1.2)
 ##  forestplot             2.0.1    2021-09-03 [1] CRAN (R 4.1.0)
@@ -509,7 +592,9 @@ div.csl-indent {
 ##  GenomeInfoDb           1.30.1   2022-01-30 [1] Bioconductor
 ##  GenomeInfoDbData       1.2.7    2022-03-09 [1] Bioconductor
 ##  GenomicRanges          1.46.1   2021-11-18 [1] Bioconductor
-##  ggplot2              * 3.3.5    2021-06-25 [1] CRAN (R 4.1.0)
+##  ggiraph                0.8.2    2022-02-22 [1] CRAN (R 4.1.2)
+##  ggiraphExtra           0.3.0    2020-10-06 [1] CRAN (R 4.1.2)
+##  ggplot2              * 3.4.0    2022-11-04 [1] CRAN (R 4.1.2)
 ##  ggpubr               * 0.4.0    2020-06-27 [1] CRAN (R 4.1.0)
 ##  ggrepel                0.9.1    2021-01-15 [1] CRAN (R 4.1.0)
 ##  ggsignif               0.6.3    2021-09-09 [1] CRAN (R 4.1.0)
@@ -525,36 +610,36 @@ div.csl-indent {
 ##  highr                  0.9      2021-04-16 [1] CRAN (R 4.1.0)
 ##  Hmisc                  4.6-0    2021-10-07 [1] CRAN (R 4.1.0)
 ##  htmlTable            * 2.4.0    2022-01-04 [1] CRAN (R 4.1.2)
-##  htmltools              0.5.2    2021-08-25 [1] CRAN (R 4.1.0)
+##  htmltools              0.5.3    2022-07-18 [1] CRAN (R 4.1.2)
 ##  htmlwidgets            1.5.4    2021-09-08 [1] CRAN (R 4.1.0)
 ##  httr                   1.4.2    2020-07-20 [1] CRAN (R 4.1.0)
 ##  huge                   1.3.5    2021-06-30 [1] CRAN (R 4.1.0)
 ##  igraph                 1.2.11   2022-01-04 [1] CRAN (R 4.1.2)
 ##  impute                 1.68.0   2021-10-26 [1] Bioconductor
+##  insight                0.17.0   2022-03-29 [1] CRAN (R 4.1.2)
 ##  IRanges                2.28.0   2021-10-26 [1] Bioconductor
 ##  irlba                  2.3.5    2021-12-06 [1] CRAN (R 4.1.0)
 ##  iterators              1.0.14   2022-02-05 [1] CRAN (R 4.1.2)
 ##  jpeg                   0.1-9    2021-07-24 [1] CRAN (R 4.1.0)
 ##  jquerylib              0.1.4    2021-04-26 [1] CRAN (R 4.1.0)
-##  jsonlite               1.8.0    2022-02-22 [1] CRAN (R 4.1.2)
+##  jsonlite               1.8.3    2022-10-21 [1] CRAN (R 4.1.2)
 ##  KEGGREST               1.34.0   2021-10-26 [1] Bioconductor
 ##  KernSmooth             2.23-20  2021-05-03 [1] CRAN (R 4.1.2)
-##  knitr                  1.39     2022-04-26 [1] CRAN (R 4.1.2)
+##  knitr                  1.40     2022-08-24 [1] CRAN (R 4.1.2)
 ##  labeling               0.4.2    2020-10-20 [1] CRAN (R 4.1.0)
 ##  lattice                0.20-45  2021-09-22 [1] CRAN (R 4.1.2)
 ##  latticeExtra           0.6-29   2019-12-19 [1] CRAN (R 4.1.0)
 ##  lavaan                 0.6-11   2022-03-31 [1] CRAN (R 4.1.2)
 ##  libcoin                1.0-9    2021-09-27 [1] CRAN (R 4.1.0)
-##  lifecycle              1.0.1    2021-09-24 [1] CRAN (R 4.1.0)
+##  lifecycle              1.0.3    2022-10-07 [1] CRAN (R 4.1.2)
 ##  limma                  3.50.1   2022-02-17 [1] Bioconductor
 ##  locfit                 1.5-9.5  2022-03-03 [1] CRAN (R 4.1.2)
 ##  lubridate              1.8.0    2021-10-07 [1] CRAN (R 4.1.0)
-##  magrittr             * 2.0.2    2022-01-26 [1] CRAN (R 4.1.2)
+##  magrittr             * 2.0.3    2022-03-30 [1] CRAN (R 4.1.2)
 ##  MASS                   7.3-55   2022-01-13 [1] CRAN (R 4.1.2)
 ##  Matrix                 1.4-0    2021-12-08 [1] CRAN (R 4.1.0)
 ##  MatrixGenerics         1.6.0    2021-10-26 [1] Bioconductor
 ##  matrixStats            0.61.0   2021-09-17 [1] CRAN (R 4.1.0)
-##  mbzinb                 0.2      2022-03-16 [1] local
 ##  memoise                2.0.1    2021-11-26 [1] CRAN (R 4.1.0)
 ##  metagenomeSeq          1.36.0   2021-10-26 [1] Bioconductor
 ##  mgcv                   1.8-39   2022-02-24 [1] CRAN (R 4.1.2)
@@ -565,8 +650,8 @@ div.csl-indent {
 ##  multtest               2.50.0   2021-10-26 [1] Bioconductor
 ##  munsell                0.5.0    2018-06-12 [1] CRAN (R 4.1.0)
 ##  mvtnorm                1.1-3    2021-10-08 [1] CRAN (R 4.1.0)
-##  NADA                   1.6-1.1  2020-03-22 [1] CRAN (R 4.1.0)
-##  NetCoMi              * 1.0.3    2022-07-14 [1] Github (stefpeschel/NetCoMi@d4d80d3)
+##  mycor                  0.1.1    2018-04-10 [1] CRAN (R 4.1.0)
+##  NetCoMi                1.0.3    2022-07-14 [1] Github (stefpeschel/NetCoMi@d4d80d3)
 ##  nlme                   3.1-155  2022-01-13 [1] CRAN (R 4.1.2)
 ##  nnet                   7.3-17   2022-01-13 [1] CRAN (R 4.1.2)
 ##  pbapply                1.5-0    2021-09-16 [1] CRAN (R 4.1.0)
@@ -581,12 +666,11 @@ div.csl-indent {
 ##  pkgload                1.2.4    2021-11-30 [1] CRAN (R 4.1.0)
 ##  plyr                   1.8.6    2020-03-03 [1] CRAN (R 4.1.0)
 ##  png                    0.1-7    2013-12-03 [1] CRAN (R 4.1.0)
+##  ppcor                  1.1      2015-12-03 [1] CRAN (R 4.1.0)
 ##  preprocessCore         1.56.0   2021-10-26 [1] Bioconductor
 ##  prettyunits            1.1.1    2020-01-24 [1] CRAN (R 4.1.0)
 ##  processx               3.5.2    2021-04-30 [1] CRAN (R 4.1.0)
-##  proxy                  0.4-26   2021-06-07 [1] CRAN (R 4.1.0)
 ##  ps                     1.6.0    2021-02-28 [1] CRAN (R 4.1.0)
-##  pscl                   1.5.5    2020-03-07 [1] CRAN (R 4.1.0)
 ##  psych                  2.2.5    2022-05-10 [1] CRAN (R 4.1.2)
 ##  pulsar                 0.3.7    2020-08-07 [1] CRAN (R 4.1.0)
 ##  purrr                  0.3.4    2020-04-17 [1] CRAN (R 4.1.0)
@@ -594,19 +678,17 @@ div.csl-indent {
 ##  R6                     2.5.1    2021-08-19 [1] CRAN (R 4.1.0)
 ##  rbibutils              2.2.7    2021-12-07 [1] CRAN (R 4.1.0)
 ##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
-##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
-##  RcppZiggurat           0.1.6    2020-10-20 [1] CRAN (R 4.1.0)
+##  Rcpp                 * 1.0.10   2023-01-22 [1] CRAN (R 4.1.2)
 ##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
 ##  Rdpack                 2.2      2022-03-19 [1] CRAN (R 4.1.2)
-##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
+##  readxl                 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
 ##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
 ##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
-##  Rfast                  2.0.6    2022-02-16 [1] CRAN (R 4.1.2)
 ##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
 ##  rhdf5filters           1.6.0    2021-10-26 [1] Bioconductor
 ##  Rhdf5lib               1.16.0   2021-10-26 [1] Bioconductor
-##  rlang                  1.0.2    2022-03-04 [1] CRAN (R 4.1.2)
-##  rmarkdown              2.14     2022-04-25 [1] CRAN (R 4.1.2)
+##  rlang                  1.0.6    2022-09-24 [1] CRAN (R 4.1.2)
+##  rmarkdown              2.17     2022-10-07 [1] CRAN (R 4.1.2)
 ##  rootSolve              1.8.2.3  2021-09-29 [1] CRAN (R 4.1.0)
 ##  rpart                  4.1.16   2022-01-24 [1] CRAN (R 4.1.2)
 ##  rprojroot              2.0.2    2020-11-15 [1] CRAN (R 4.1.0)
@@ -615,45 +697,47 @@ div.csl-indent {
 ##  rstudioapi             0.13     2020-11-12 [1] CRAN (R 4.1.0)
 ##  S4Vectors              0.32.3   2021-11-21 [1] Bioconductor
 ##  sandwich               3.0-1    2021-05-18 [1] CRAN (R 4.1.0)
-##  sass                   0.4.0    2021-05-12 [1] CRAN (R 4.1.0)
-##  scales                 1.1.1    2020-05-11 [1] CRAN (R 4.1.0)
+##  sass                   0.4.2    2022-07-16 [1] CRAN (R 4.1.2)
+##  scales                 1.2.1    2022-08-20 [1] CRAN (R 4.1.2)
 ##  sessioninfo            1.2.2    2021-12-06 [1] CRAN (R 4.1.0)
 ##  shape                  1.4.6    2021-05-19 [1] CRAN (R 4.1.0)
+##  sjlabelled             1.2.0    2022-04-10 [1] CRAN (R 4.1.2)
+##  sjmisc                 2.8.9    2021-12-03 [1] CRAN (R 4.1.0)
 ##  snow                   0.4-4    2021-10-27 [1] CRAN (R 4.1.0)
-##  SpiecEasi            * 1.1.2    2022-07-14 [1] Github (zdk123/SpiecEasi@c463727)
+##  SpiecEasi              1.1.2    2022-07-14 [1] Github (zdk123/SpiecEasi@c463727)
 ##  SPRING                 1.0.4    2022-08-03 [1] Github (GraceYoon/SPRING@3d641a4)
-##  stringi                1.7.6    2021-11-29 [1] CRAN (R 4.1.0)
-##  stringr                1.4.0    2019-02-10 [1] CRAN (R 4.1.0)
+##  stringi                1.7.8    2022-07-11 [1] CRAN (R 4.1.2)
+##  stringr                1.4.1    2022-08-20 [1] CRAN (R 4.1.2)
 ##  SummarizedExperiment   1.24.0   2021-10-26 [1] Bioconductor
-##  survival               3.3-1    2022-03-03 [1] CRAN (R 4.1.2)
+##  survival               3.4-0    2022-08-09 [1] CRAN (R 4.1.2)
+##  systemfonts            1.0.4    2022-02-11 [1] CRAN (R 4.1.2)
 ##  testthat               3.1.2    2022-01-20 [1] CRAN (R 4.1.2)
 ##  TH.data                1.1-0    2021-09-27 [1] CRAN (R 4.1.0)
-##  tibble               * 3.1.6    2021-11-07 [1] CRAN (R 4.1.0)
+##  tibble               * 3.1.8    2022-07-22 [1] CRAN (R 4.1.2)
 ##  tidyr                  1.2.0    2022-02-01 [1] CRAN (R 4.1.2)
 ##  tidyselect             1.1.2    2022-02-21 [1] CRAN (R 4.1.2)
 ##  tmvnsim                1.0-2    2016-12-15 [1] CRAN (R 4.1.0)
-##  truncnorm              1.0-8    2018-02-27 [1] CRAN (R 4.1.0)
 ##  usethis                2.1.5    2021-12-09 [1] CRAN (R 4.1.0)
 ##  utf8                   1.2.2    2021-07-24 [1] CRAN (R 4.1.0)
-##  vctrs                  0.3.8    2021-04-29 [1] CRAN (R 4.1.0)
+##  uuid                   1.0-3    2021-11-01 [1] CRAN (R 4.1.0)
+##  vctrs                  0.5.1    2022-11-16 [1] CRAN (R 4.1.2)
 ##  vegan                  2.5-7    2020-11-28 [1] CRAN (R 4.1.0)
 ##  VGAM                   1.1-6    2022-02-14 [1] CRAN (R 4.1.2)
 ##  WGCNA                  1.71     2022-04-22 [1] CRAN (R 4.1.2)
 ##  withr                  2.5.0    2022-03-03 [1] CRAN (R 4.1.2)
 ##  Wrench                 1.12.0   2021-10-26 [1] Bioconductor
-##  xfun                   0.30     2022-03-02 [1] CRAN (R 4.1.2)
-##  XMAS2                * 2.1.7.4  2022-08-09 [1] local
+##  xfun                   0.34     2022-10-18 [1] CRAN (R 4.1.2)
+##  XMAS2                * 2.1.8.7  2023-01-06 [1] local
 ##  XML                    3.99-0.9 2022-02-24 [1] CRAN (R 4.1.2)
 ##  xtable                 1.8-4    2019-04-21 [1] CRAN (R 4.1.0)
 ##  XVector                0.34.0   2021-10-26 [1] Bioconductor
-##  yaml                   2.3.5    2022-02-21 [1] CRAN (R 4.1.2)
-##  zCompositions          1.4.0    2022-01-13 [1] CRAN (R 4.1.2)
+##  yaml                   2.3.6    2022-10-18 [1] CRAN (R 4.1.2)
 ##  zlibbioc               1.40.0   2021-10-26 [1] Bioconductor
 ##  zoo                    1.8-9    2021-03-09 [1] CRAN (R 4.1.0)
 ## 
 ##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
 ## 
-## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
 </div>

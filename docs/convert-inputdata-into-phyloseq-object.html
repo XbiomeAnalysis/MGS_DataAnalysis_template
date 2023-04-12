@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Convert inputdata into phyloseq object | MGS microbiota data analysis based on XMAS package</title>
   <meta name="description" content="Chapter 2 Convert inputdata into phyloseq object | MGS microbiota data analysis based on XMAS package" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Convert inputdata into phyloseq object | MGS microbiota data analysis based on XMAS package" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Hua Zou" />
 
 
-<meta name="date" content="2022-08-09" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -100,7 +100,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -113,7 +113,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -175,11 +175,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="2.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metaphlan23"><i class="fa fa-check"></i><b>2.1</b> Metaphlan2/3</a>
 <ul>
-<li class="chapter" data-level="2.1.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#importing-results"><i class="fa fa-check"></i><b>2.1.1</b> Importing results</a></li>
-<li class="chapter" data-level="2.1.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#taxa-table"><i class="fa fa-check"></i><b>2.1.2</b> taxa table</a></li>
-<li class="chapter" data-level="2.1.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#otu-table"><i class="fa fa-check"></i><b>2.1.3</b> otu table</a></li>
-<li class="chapter" data-level="2.1.4" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metadata-table"><i class="fa fa-check"></i><b>2.1.4</b> metadata table</a></li>
-<li class="chapter" data-level="2.1.5" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object"><i class="fa fa-check"></i><b>2.1.5</b> phyloseq object</a></li>
+<li class="chapter" data-level="2.1.1" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#merging-output-of-metaphlan"><i class="fa fa-check"></i><b>2.1.1</b> Merging output of metaphlan</a></li>
+<li class="chapter" data-level="2.1.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#importing-results"><i class="fa fa-check"></i><b>2.1.2</b> Importing results</a></li>
+<li class="chapter" data-level="2.1.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#taxa-table"><i class="fa fa-check"></i><b>2.1.3</b> taxa table</a></li>
+<li class="chapter" data-level="2.1.4" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#otu-table"><i class="fa fa-check"></i><b>2.1.4</b> otu table</a></li>
+<li class="chapter" data-level="2.1.5" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#metadata-table"><i class="fa fa-check"></i><b>2.1.5</b> metadata table</a></li>
+<li class="chapter" data-level="2.1.6" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object"><i class="fa fa-check"></i><b>2.1.6</b> phyloseq object</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#transform-the-abundance-of-taxa-whose-relative-abundance-under-limit-of-detection-lod-into-zeros"><i class="fa fa-check"></i><b>2.2</b> Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros</a></li>
 <li class="chapter" data-level="2.3" data-path="convert-inputdata-into-phyloseq-object.html"><a href="convert-inputdata-into-phyloseq-object.html#systematic-information"><i class="fa fa-check"></i><b>2.3</b> Systematic Information</a></li>
@@ -289,76 +290,236 @@ div.csl-indent {
 <div id="metaphlan23" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Metaphlan2/3<a href="convert-inputdata-into-phyloseq-object.html#metaphlan23" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The result of the in-house <strong><a href="https://huttenhower.sph.harvard.edu/metaphlan2">Metaphlan2/3</a></strong> pipeline.</p>
-<div id="importing-results" class="section level3 hasAnchor" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Importing results<a href="convert-inputdata-into-phyloseq-object.html#importing-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="merging-output-of-metaphlan" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Merging output of metaphlan<a href="convert-inputdata-into-phyloseq-object.html#merging-output-of-metaphlan" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>go to the directory of metaphlan created by in-house metaphlan pipeline</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="convert-inputdata-into-phyloseq-object.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /share/projects/Engineering/pipeline_output/PipelineJob_141157_20220823/</span></code></pre></div>
+<ul>
+<li>extract the absolute path of output</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="convert-inputdata-into-phyloseq-object.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /share/projects/Engineering/pipeline_output/PipelineJob_141157_20220823/<span class="pp">*</span>/humann2/<span class="pp">*</span>.tsv <span class="kw">|</span> <span class="fu">grep</span> <span class="at">-E</span> <span class="st">&quot;metaphlan&quot;</span> <span class="op">&gt;</span> metaphlan_BJ_RoundG_filepath.tsv</span></code></pre></div>
+<ul>
+<li>Saving the following python codes into <code>merge_metaphlan.py</code></li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="convert-inputdata-into-phyloseq-object.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse <span class="im">as</span> ap</span>
+<span id="cb4-2"><a href="convert-inputdata-into-phyloseq-object.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb4-3"><a href="convert-inputdata-into-phyloseq-object.html#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb4-4"><a href="convert-inputdata-into-phyloseq-object.html#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-5"><a href="convert-inputdata-into-phyloseq-object.html#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-6"><a href="convert-inputdata-into-phyloseq-object.html#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="convert-inputdata-into-phyloseq-object.html#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="convert-inputdata-into-phyloseq-object.html#cb4-8" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> ap.ArgumentParser(description<span class="op">=</span><span class="st">&#39;combining results from metaphlan&#39;</span>)</span>
+<span id="cb4-9"><a href="convert-inputdata-into-phyloseq-object.html#cb4-9" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-f&#39;</span>, <span class="st">&#39;--file&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb4-10"><a href="convert-inputdata-into-phyloseq-object.html#cb4-10" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">help</span><span class="op">=</span><span class="st">&#39;file contains metaphlan results&#39;</span>, required<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-11"><a href="convert-inputdata-into-phyloseq-object.html#cb4-11" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-p&#39;</span>, <span class="st">&#39;--prefix&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>,</span>
+<span id="cb4-12"><a href="convert-inputdata-into-phyloseq-object.html#cb4-12" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">help</span><span class="op">=</span><span class="st">&#39;prefix of output&#39;</span>, required<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-13"><a href="convert-inputdata-into-phyloseq-object.html#cb4-13" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-t&#39;</span>, <span class="st">&#39;--taxa&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">&quot;species&quot;</span>,</span>
+<span id="cb4-14"><a href="convert-inputdata-into-phyloseq-object.html#cb4-14" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">help</span><span class="op">=</span><span class="st">&#39;specific taxa level&#39;</span>, required<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-15"><a href="convert-inputdata-into-phyloseq-object.html#cb4-15" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-k&#39;</span>, <span class="st">&#39;--kind&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">&quot;metaphlan2&quot;</span>,</span>
+<span id="cb4-16"><a href="convert-inputdata-into-phyloseq-object.html#cb4-16" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">help</span><span class="op">=</span><span class="st">&#39;version of metaphlan&#39;</span>, required<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-17"><a href="convert-inputdata-into-phyloseq-object.html#cb4-17" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">&#39;-o&#39;</span>, <span class="st">&#39;--out&#39;</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, default<span class="op">=</span><span class="st">&quot;./&quot;</span>,</span>
+<span id="cb4-18"><a href="convert-inputdata-into-phyloseq-object.html#cb4-18" aria-hidden="true" tabindex="-1"></a>                    <span class="bu">help</span><span class="op">=</span><span class="st">&#39;output path&#39;</span>, required<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-19"><a href="convert-inputdata-into-phyloseq-object.html#cb4-19" aria-hidden="true" tabindex="-1"></a>args <span class="op">=</span> parser.parse_args()</span>
+<span id="cb4-20"><a href="convert-inputdata-into-phyloseq-object.html#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="convert-inputdata-into-phyloseq-object.html#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="convert-inputdata-into-phyloseq-object.html#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Filename_to_filepath(filelist):</span>
+<span id="cb4-23"><a href="convert-inputdata-into-phyloseq-object.html#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="convert-inputdata-into-phyloseq-object.html#cb4-24" aria-hidden="true" tabindex="-1"></a>    file2path <span class="op">=</span> {}</span>
+<span id="cb4-25"><a href="convert-inputdata-into-phyloseq-object.html#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(filelist, <span class="st">&#39;r&#39;</span>) <span class="im">as</span> f:</span>
+<span id="cb4-26"><a href="convert-inputdata-into-phyloseq-object.html#cb4-26" aria-hidden="true" tabindex="-1"></a>        files <span class="op">=</span> f.readlines()</span>
+<span id="cb4-27"><a href="convert-inputdata-into-phyloseq-object.html#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> File <span class="kw">in</span> files:</span>
+<span id="cb4-28"><a href="convert-inputdata-into-phyloseq-object.html#cb4-28" aria-hidden="true" tabindex="-1"></a>        File <span class="op">=</span> File.strip()</span>
+<span id="cb4-29"><a href="convert-inputdata-into-phyloseq-object.html#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> os.path.exists(File):</span>
+<span id="cb4-30"><a href="convert-inputdata-into-phyloseq-object.html#cb4-30" aria-hidden="true" tabindex="-1"></a>            <span class="co"># seqid is either numeric(18933) or character (CJR0607)</span></span>
+<span id="cb4-31"><a href="convert-inputdata-into-phyloseq-object.html#cb4-31" aria-hidden="true" tabindex="-1"></a>            FileName <span class="op">=</span> <span class="bu">str</span>(re.match(<span class="vs">r&#39;\S+[humann2|humann3]\/&#39;</span></span>
+<span id="cb4-32"><a href="convert-inputdata-into-phyloseq-object.html#cb4-32" aria-hidden="true" tabindex="-1"></a>                                    <span class="vs">r&#39;(\d+|\d+\_\d+|\d+\_\d+\_\d+|\w+\d+)&#39;</span></span>
+<span id="cb4-33"><a href="convert-inputdata-into-phyloseq-object.html#cb4-33" aria-hidden="true" tabindex="-1"></a>                                    <span class="vs">r&#39;\_metaphlan_\S+_list.tsv&#39;</span>,</span>
+<span id="cb4-34"><a href="convert-inputdata-into-phyloseq-object.html#cb4-34" aria-hidden="true" tabindex="-1"></a>                                    File)[<span class="dv">1</span>])</span>
+<span id="cb4-35"><a href="convert-inputdata-into-phyloseq-object.html#cb4-35" aria-hidden="true" tabindex="-1"></a>            file2path[FileName] <span class="op">=</span> File</span>
+<span id="cb4-36"><a href="convert-inputdata-into-phyloseq-object.html#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(file2path)</span>
+<span id="cb4-37"><a href="convert-inputdata-into-phyloseq-object.html#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="convert-inputdata-into-phyloseq-object.html#cb4-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-39"><a href="convert-inputdata-into-phyloseq-object.html#cb4-39" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Read_File(filenames, samplenames, taxalevels, filetype):</span>
+<span id="cb4-40"><a href="convert-inputdata-into-phyloseq-object.html#cb4-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-41"><a href="convert-inputdata-into-phyloseq-object.html#cb4-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> filetype <span class="op">==</span> <span class="st">&#39;metaphlan2&#39;</span>:</span>
+<span id="cb4-42"><a href="convert-inputdata-into-phyloseq-object.html#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># skip row with &#39;#&#39; and the 1st row</span></span>
+<span id="cb4-43"><a href="convert-inputdata-into-phyloseq-object.html#cb4-43" aria-hidden="true" tabindex="-1"></a>        dat <span class="op">=</span> pd.read_table(filenames,</span>
+<span id="cb4-44"><a href="convert-inputdata-into-phyloseq-object.html#cb4-44" aria-hidden="true" tabindex="-1"></a>                            sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>,</span>
+<span id="cb4-45"><a href="convert-inputdata-into-phyloseq-object.html#cb4-45" aria-hidden="true" tabindex="-1"></a>                            skip_blank_lines<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-46"><a href="convert-inputdata-into-phyloseq-object.html#cb4-46" aria-hidden="true" tabindex="-1"></a>                            comment<span class="op">=</span><span class="st">&#39;#&#39;</span>,</span>
+<span id="cb4-47"><a href="convert-inputdata-into-phyloseq-object.html#cb4-47" aria-hidden="true" tabindex="-1"></a>                            skiprows<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb4-48"><a href="convert-inputdata-into-phyloseq-object.html#cb4-48" aria-hidden="true" tabindex="-1"></a>                            header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-49"><a href="convert-inputdata-into-phyloseq-object.html#cb4-49" aria-hidden="true" tabindex="-1"></a>        dat1 <span class="op">=</span> dat.iloc[:, <span class="dv">0</span>:<span class="dv">2</span>]</span>
+<span id="cb4-50"><a href="convert-inputdata-into-phyloseq-object.html#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-51"><a href="convert-inputdata-into-phyloseq-object.html#cb4-51" aria-hidden="true" tabindex="-1"></a>        <span class="co"># skip row with &#39;#&#39;</span></span>
+<span id="cb4-52"><a href="convert-inputdata-into-phyloseq-object.html#cb4-52" aria-hidden="true" tabindex="-1"></a>        dat <span class="op">=</span> pd.read_table(filenames,</span>
+<span id="cb4-53"><a href="convert-inputdata-into-phyloseq-object.html#cb4-53" aria-hidden="true" tabindex="-1"></a>                            sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>,</span>
+<span id="cb4-54"><a href="convert-inputdata-into-phyloseq-object.html#cb4-54" aria-hidden="true" tabindex="-1"></a>                            skip_blank_lines<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb4-55"><a href="convert-inputdata-into-phyloseq-object.html#cb4-55" aria-hidden="true" tabindex="-1"></a>                            comment<span class="op">=</span><span class="st">&#39;#&#39;</span>,</span>
+<span id="cb4-56"><a href="convert-inputdata-into-phyloseq-object.html#cb4-56" aria-hidden="true" tabindex="-1"></a>                            <span class="co">#skiprows=1,</span></span>
+<span id="cb4-57"><a href="convert-inputdata-into-phyloseq-object.html#cb4-57" aria-hidden="true" tabindex="-1"></a>                            header<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-58"><a href="convert-inputdata-into-phyloseq-object.html#cb4-58" aria-hidden="true" tabindex="-1"></a>        dat1 <span class="op">=</span> dat.iloc[:, [<span class="dv">0</span>, <span class="dv">2</span>]]</span>
+<span id="cb4-59"><a href="convert-inputdata-into-phyloseq-object.html#cb4-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-60"><a href="convert-inputdata-into-phyloseq-object.html#cb4-60" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> taxalevels[<span class="dv">0</span>] <span class="op">==</span> taxalevels[<span class="dv">1</span>]:</span>
+<span id="cb4-61"><a href="convert-inputdata-into-phyloseq-object.html#cb4-61" aria-hidden="true" tabindex="-1"></a>        df_temp <span class="op">=</span> dat1[dat1.iloc[:, <span class="dv">0</span>].<span class="bu">str</span>.contains(taxalevels[<span class="dv">0</span>])]</span>
+<span id="cb4-62"><a href="convert-inputdata-into-phyloseq-object.html#cb4-62" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-63"><a href="convert-inputdata-into-phyloseq-object.html#cb4-63" aria-hidden="true" tabindex="-1"></a>        <span class="co"># filtering the rows where taxa doesn&#39;t contains the specific taxa level</span></span>
+<span id="cb4-64"><a href="convert-inputdata-into-phyloseq-object.html#cb4-64" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> dat1[dat1.iloc[:, <span class="dv">0</span>].<span class="bu">str</span>.contains(taxalevels[<span class="dv">0</span>])]</span>
+<span id="cb4-65"><a href="convert-inputdata-into-phyloseq-object.html#cb4-65" aria-hidden="true" tabindex="-1"></a>        df_temp <span class="op">=</span> df[df.iloc[:, <span class="dv">0</span>].<span class="bu">str</span>.contains(taxalevels[<span class="dv">1</span>]) <span class="op">==</span> <span class="va">False</span>]</span>
+<span id="cb4-66"><a href="convert-inputdata-into-phyloseq-object.html#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="co"># adding column name to the respective columns</span></span>
+<span id="cb4-67"><a href="convert-inputdata-into-phyloseq-object.html#cb4-67" aria-hidden="true" tabindex="-1"></a>    df_temp.columns <span class="op">=</span> [<span class="st">&#39;taxaid&#39;</span>, samplenames]</span>
+<span id="cb4-68"><a href="convert-inputdata-into-phyloseq-object.html#cb4-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-69"><a href="convert-inputdata-into-phyloseq-object.html#cb4-69" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> df_temp.copy()</span>
+<span id="cb4-70"><a href="convert-inputdata-into-phyloseq-object.html#cb4-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-71"><a href="convert-inputdata-into-phyloseq-object.html#cb4-71" aria-hidden="true" tabindex="-1"></a>    <span class="co"># sorting by taxaid</span></span>
+<span id="cb4-72"><a href="convert-inputdata-into-phyloseq-object.html#cb4-72" aria-hidden="true" tabindex="-1"></a>    res.sort_values(<span class="st">&#39;taxaid&#39;</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-73"><a href="convert-inputdata-into-phyloseq-object.html#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="convert-inputdata-into-phyloseq-object.html#cb4-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># dropping ALL duplicate values</span></span>
+<span id="cb4-75"><a href="convert-inputdata-into-phyloseq-object.html#cb4-75" aria-hidden="true" tabindex="-1"></a>    res.drop_duplicates(</span>
+<span id="cb4-76"><a href="convert-inputdata-into-phyloseq-object.html#cb4-76" aria-hidden="true" tabindex="-1"></a>                        subset<span class="op">=</span><span class="st">&#39;taxaid&#39;</span>,</span>
+<span id="cb4-77"><a href="convert-inputdata-into-phyloseq-object.html#cb4-77" aria-hidden="true" tabindex="-1"></a>                        keep<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb4-78"><a href="convert-inputdata-into-phyloseq-object.html#cb4-78" aria-hidden="true" tabindex="-1"></a>                        inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-79"><a href="convert-inputdata-into-phyloseq-object.html#cb4-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-80"><a href="convert-inputdata-into-phyloseq-object.html#cb4-80" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(res)</span>
+<span id="cb4-81"><a href="convert-inputdata-into-phyloseq-object.html#cb4-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-82"><a href="convert-inputdata-into-phyloseq-object.html#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="convert-inputdata-into-phyloseq-object.html#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Merge_Metaphlan(filedict, taxa, filetype):</span>
+<span id="cb4-84"><a href="convert-inputdata-into-phyloseq-object.html#cb4-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> taxa <span class="op">==</span> <span class="st">&quot;species&quot;</span>:</span>
+<span id="cb4-85"><a href="convert-inputdata-into-phyloseq-object.html#cb4-85" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;s__|t__&#39;</span></span>
+<span id="cb4-86"><a href="convert-inputdata-into-phyloseq-object.html#cb4-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> taxa <span class="op">==</span> <span class="st">&quot;genus&quot;</span>:</span>
+<span id="cb4-87"><a href="convert-inputdata-into-phyloseq-object.html#cb4-87" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;g__|s__&#39;</span></span>
+<span id="cb4-88"><a href="convert-inputdata-into-phyloseq-object.html#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> taxa <span class="op">==</span> <span class="st">&quot;family&quot;</span>:</span>
+<span id="cb4-89"><a href="convert-inputdata-into-phyloseq-object.html#cb4-89" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;f__|g__&#39;</span></span>
+<span id="cb4-90"><a href="convert-inputdata-into-phyloseq-object.html#cb4-90" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> taxa <span class="op">==</span> <span class="st">&quot;order&quot;</span>:</span>
+<span id="cb4-91"><a href="convert-inputdata-into-phyloseq-object.html#cb4-91" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;o__|f__&#39;</span></span>
+<span id="cb4-92"><a href="convert-inputdata-into-phyloseq-object.html#cb4-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> taxa <span class="op">==</span> <span class="st">&quot;class&quot;</span>:</span>
+<span id="cb4-93"><a href="convert-inputdata-into-phyloseq-object.html#cb4-93" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;c__|o__&#39;</span></span>
+<span id="cb4-94"><a href="convert-inputdata-into-phyloseq-object.html#cb4-94" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> taxa <span class="op">==</span> <span class="st">&quot;phylum&quot;</span>:</span>
+<span id="cb4-95"><a href="convert-inputdata-into-phyloseq-object.html#cb4-95" aria-hidden="true" tabindex="-1"></a>        taxalevels <span class="op">=</span> <span class="st">&#39;p__|c__&#39;</span></span>
+<span id="cb4-96"><a href="convert-inputdata-into-phyloseq-object.html#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="convert-inputdata-into-phyloseq-object.html#cb4-97" aria-hidden="true" tabindex="-1"></a>    taxa_levels <span class="op">=</span> taxalevels.split(<span class="st">&#39;|&#39;</span>)</span>
+<span id="cb4-98"><a href="convert-inputdata-into-phyloseq-object.html#cb4-98" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(taxa_levels) <span class="op">!=</span> <span class="dv">2</span>:</span>
+<span id="cb4-99"><a href="convert-inputdata-into-phyloseq-object.html#cb4-99" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">&quot;please check your taxa&quot;</span>)</span>
+<span id="cb4-100"><a href="convert-inputdata-into-phyloseq-object.html#cb4-100" aria-hidden="true" tabindex="-1"></a>        exit()</span>
+<span id="cb4-101"><a href="convert-inputdata-into-phyloseq-object.html#cb4-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-102"><a href="convert-inputdata-into-phyloseq-object.html#cb4-102" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb4-103"><a href="convert-inputdata-into-phyloseq-object.html#cb4-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> key <span class="kw">in</span> filedict:</span>
+<span id="cb4-104"><a href="convert-inputdata-into-phyloseq-object.html#cb4-104" aria-hidden="true" tabindex="-1"></a>        temp_df <span class="op">=</span> Read_File(filedict[key], key, taxa_levels, filetype)</span>
+<span id="cb4-105"><a href="convert-inputdata-into-phyloseq-object.html#cb4-105" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> df.empty:</span>
+<span id="cb4-106"><a href="convert-inputdata-into-phyloseq-object.html#cb4-106" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> temp_df</span>
+<span id="cb4-107"><a href="convert-inputdata-into-phyloseq-object.html#cb4-107" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-108"><a href="convert-inputdata-into-phyloseq-object.html#cb4-108" aria-hidden="true" tabindex="-1"></a>            df <span class="op">=</span> pd.merge(df,</span>
+<span id="cb4-109"><a href="convert-inputdata-into-phyloseq-object.html#cb4-109" aria-hidden="true" tabindex="-1"></a>                          temp_df,</span>
+<span id="cb4-110"><a href="convert-inputdata-into-phyloseq-object.html#cb4-110" aria-hidden="true" tabindex="-1"></a>                          on<span class="op">=</span><span class="st">&quot;taxaid&quot;</span>,</span>
+<span id="cb4-111"><a href="convert-inputdata-into-phyloseq-object.html#cb4-111" aria-hidden="true" tabindex="-1"></a>                          how<span class="op">=</span><span class="st">&#39;outer&#39;</span>)</span>
+<span id="cb4-112"><a href="convert-inputdata-into-phyloseq-object.html#cb4-112" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> df.replace(np.nan, <span class="dv">0</span>)</span>
+<span id="cb4-113"><a href="convert-inputdata-into-phyloseq-object.html#cb4-113" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(res)</span>
+<span id="cb4-114"><a href="convert-inputdata-into-phyloseq-object.html#cb4-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-115"><a href="convert-inputdata-into-phyloseq-object.html#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-116"><a href="convert-inputdata-into-phyloseq-object.html#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> Make_dir(dirpath):</span>
+<span id="cb4-117"><a href="convert-inputdata-into-phyloseq-object.html#cb4-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> os.path.exists(dirpath):</span>
+<span id="cb4-118"><a href="convert-inputdata-into-phyloseq-object.html#cb4-118" aria-hidden="true" tabindex="-1"></a>        os.mkdir(dirpath)</span>
+<span id="cb4-119"><a href="convert-inputdata-into-phyloseq-object.html#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-120"><a href="convert-inputdata-into-phyloseq-object.html#cb4-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-121"><a href="convert-inputdata-into-phyloseq-object.html#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb4-122"><a href="convert-inputdata-into-phyloseq-object.html#cb4-122" aria-hidden="true" tabindex="-1"></a>    <span class="bu">file</span> <span class="op">=</span> args.<span class="bu">file</span></span>
+<span id="cb4-123"><a href="convert-inputdata-into-phyloseq-object.html#cb4-123" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> args.out</span>
+<span id="cb4-124"><a href="convert-inputdata-into-phyloseq-object.html#cb4-124" aria-hidden="true" tabindex="-1"></a>    taxa <span class="op">=</span> args.taxa</span>
+<span id="cb4-125"><a href="convert-inputdata-into-phyloseq-object.html#cb4-125" aria-hidden="true" tabindex="-1"></a>    kind <span class="op">=</span> args.kind</span>
+<span id="cb4-126"><a href="convert-inputdata-into-phyloseq-object.html#cb4-126" aria-hidden="true" tabindex="-1"></a>    prefix <span class="op">=</span> args.prefix</span>
+<span id="cb4-127"><a href="convert-inputdata-into-phyloseq-object.html#cb4-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-128"><a href="convert-inputdata-into-phyloseq-object.html#cb4-128" aria-hidden="true" tabindex="-1"></a>    file2dic <span class="op">=</span> Filename_to_filepath(<span class="bu">file</span>)</span>
+<span id="cb4-129"><a href="convert-inputdata-into-phyloseq-object.html#cb4-129" aria-hidden="true" tabindex="-1"></a>    df_res <span class="op">=</span> Merge_Metaphlan(file2dic, taxa, kind)</span>
+<span id="cb4-130"><a href="convert-inputdata-into-phyloseq-object.html#cb4-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-131"><a href="convert-inputdata-into-phyloseq-object.html#cb4-131" aria-hidden="true" tabindex="-1"></a>    Make_dir(out)</span>
+<span id="cb4-132"><a href="convert-inputdata-into-phyloseq-object.html#cb4-132" aria-hidden="true" tabindex="-1"></a>    outfile_name <span class="op">=</span> out <span class="op">+</span> <span class="st">&quot;/&quot;</span> <span class="op">+</span> prefix <span class="op">+</span> <span class="st">&quot;.csv&quot;</span></span>
+<span id="cb4-133"><a href="convert-inputdata-into-phyloseq-object.html#cb4-133" aria-hidden="true" tabindex="-1"></a>    df_res.to_csv(outfile_name, sep<span class="op">=</span><span class="st">&#39;</span><span class="ch">\t</span><span class="st">&#39;</span>, encoding<span class="op">=</span><span class="st">&#39;utf-8&#39;</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb4-134"><a href="convert-inputdata-into-phyloseq-object.html#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-135"><a href="convert-inputdata-into-phyloseq-object.html#cb4-135" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&#39;Congratulations, Program Ended Without Problem&#39;</span>)</span>
+<span id="cb4-136"><a href="convert-inputdata-into-phyloseq-object.html#cb4-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-137"><a href="convert-inputdata-into-phyloseq-object.html#cb4-137" aria-hidden="true" tabindex="-1"></a>main()</span></code></pre></div>
+<ul>
+<li>merging output: for example: species levels</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="convert-inputdata-into-phyloseq-object.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> merge_metaphlan.py <span class="dt">\</span></span>
+<span id="cb5-2"><a href="convert-inputdata-into-phyloseq-object.html#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">-f</span> metaphlan_BJ_RoundG_filepath.tsv <span class="dt">\</span></span>
+<span id="cb5-3"><a href="convert-inputdata-into-phyloseq-object.html#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">-p</span> metaphlan2_BJ_RoundG_merge_species <span class="dt">\</span></span>
+<span id="cb5-4"><a href="convert-inputdata-into-phyloseq-object.html#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-t</span> species <span class="dt">\</span></span>
+<span id="cb5-5"><a href="convert-inputdata-into-phyloseq-object.html#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-o</span> ./profile/</span></code></pre></div>
+<p>Finally, you would obtain the file integrated all the output in this project folder <code>/share/projects/Engineering/pipeline_output/PipelineJob_141157_20220823/</code>, and then use it to do data analysis.</p>
+</div>
+<div id="importing-results" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Importing results<a href="convert-inputdata-into-phyloseq-object.html#importing-results" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>/home/xuxiaomin/project/standardized_analytics_workflow_R_function/demo_data/MGS/metaphlan2_merged.tsv</p></li>
 <li><p>/home/xuxiaomin/project/standardized_analytics_workflow_R_function/demo_data/MGS/metadata.txt</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="convert-inputdata-into-phyloseq-object.html#cb2-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
-<span id="cb2-2"><a href="convert-inputdata-into-phyloseq-object.html#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system.file</span>(</span>
-<span id="cb2-3"><a href="convert-inputdata-into-phyloseq-object.html#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;metaphlan2_merged.tsv&quot;</span>,</span>
-<span id="cb2-4"><a href="convert-inputdata-into-phyloseq-object.html#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">package =</span> <span class="st">&quot;XMAS2&quot;</span></span>
-<span id="cb2-5"><a href="convert-inputdata-into-phyloseq-object.html#cb2-5" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb2-6"><a href="convert-inputdata-into-phyloseq-object.html#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb2-7"><a href="convert-inputdata-into-phyloseq-object.html#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb2-8"><a href="convert-inputdata-into-phyloseq-object.html#cb2-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-9"><a href="convert-inputdata-into-phyloseq-object.html#cb2-9" aria-hidden="true" tabindex="-1"></a>metaphlan2_sam <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
-<span id="cb2-10"><a href="convert-inputdata-into-phyloseq-object.html#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system.file</span>(</span>
-<span id="cb2-11"><a href="convert-inputdata-into-phyloseq-object.html#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;metaphlan2_metadata.tsv&quot;</span>,</span>
-<span id="cb2-12"><a href="convert-inputdata-into-phyloseq-object.html#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">package =</span> <span class="st">&quot;XMAS2&quot;</span></span>
-<span id="cb2-13"><a href="convert-inputdata-into-phyloseq-object.html#cb2-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb2-14"><a href="convert-inputdata-into-phyloseq-object.html#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,</span>
-<span id="cb2-15"><a href="convert-inputdata-into-phyloseq-object.html#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb2-16"><a href="convert-inputdata-into-phyloseq-object.html#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
-<span id="cb2-17"><a href="convert-inputdata-into-phyloseq-object.html#cb2-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="convert-inputdata-into-phyloseq-object.html#cb6-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb6-2"><a href="convert-inputdata-into-phyloseq-object.html#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system.file</span>(</span>
+<span id="cb6-3"><a href="convert-inputdata-into-phyloseq-object.html#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;metaphlan2_merged.tsv&quot;</span>,</span>
+<span id="cb6-4"><a href="convert-inputdata-into-phyloseq-object.html#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">package =</span> <span class="st">&quot;XMAS2&quot;</span></span>
+<span id="cb6-5"><a href="convert-inputdata-into-phyloseq-object.html#cb6-5" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-6"><a href="convert-inputdata-into-phyloseq-object.html#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb6-7"><a href="convert-inputdata-into-phyloseq-object.html#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-8"><a href="convert-inputdata-into-phyloseq-object.html#cb6-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-9"><a href="convert-inputdata-into-phyloseq-object.html#cb6-9" aria-hidden="true" tabindex="-1"></a>metaphlan2_sam <span class="ot">&lt;-</span> <span class="fu">read.table</span>(</span>
+<span id="cb6-10"><a href="convert-inputdata-into-phyloseq-object.html#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">system.file</span>(</span>
+<span id="cb6-11"><a href="convert-inputdata-into-phyloseq-object.html#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;metaphlan2_metadata.tsv&quot;</span>,</span>
+<span id="cb6-12"><a href="convert-inputdata-into-phyloseq-object.html#cb6-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">package =</span> <span class="st">&quot;XMAS2&quot;</span></span>
+<span id="cb6-13"><a href="convert-inputdata-into-phyloseq-object.html#cb6-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb6-14"><a href="convert-inputdata-into-phyloseq-object.html#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,</span>
+<span id="cb6-15"><a href="convert-inputdata-into-phyloseq-object.html#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-16"><a href="convert-inputdata-into-phyloseq-object.html#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span></span>
+<span id="cb6-17"><a href="convert-inputdata-into-phyloseq-object.html#cb6-17" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
-<div id="taxa-table" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> taxa table<a href="convert-inputdata-into-phyloseq-object.html#taxa-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="convert-inputdata-into-phyloseq-object.html#cb3-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res_list <span class="ot">&lt;-</span> <span class="fu">import_metaphlan_taxa</span>(<span class="at">data_metaphlan2 =</span> metaphlan2_res, </span>
-<span id="cb3-2"><a href="convert-inputdata-into-phyloseq-object.html#cb3-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb3-3"><a href="convert-inputdata-into-phyloseq-object.html#cb3-3" aria-hidden="true" tabindex="-1"></a>tax_tab <span class="ot">&lt;-</span> metaphlan2_res_list<span class="sc">$</span>tax_tab</span>
-<span id="cb3-4"><a href="convert-inputdata-into-phyloseq-object.html#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tax_tab)</span></code></pre></div>
-<pre><code>##                                  Kingdom            Phylum             Class              Order              Family
-## s__Actinomyces_graevenitzii  k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-## s__Actinomyces_johnsonii     k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-## s__Actinomyces_massiliensis  k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-## s__Actinomyces_odontolyticus k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-## s__Actinomyces_oris          k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-## s__Actinomyces_viscosus      k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae
-##                                       Genus                      Species
-## s__Actinomyces_graevenitzii  g__Actinomyces  s__Actinomyces_graevenitzii
-## s__Actinomyces_johnsonii     g__Actinomyces     s__Actinomyces_johnsonii
-## s__Actinomyces_massiliensis  g__Actinomyces  s__Actinomyces_massiliensis
-## s__Actinomyces_odontolyticus g__Actinomyces s__Actinomyces_odontolyticus
-## s__Actinomyces_oris          g__Actinomyces          s__Actinomyces_oris
-## s__Actinomyces_viscosus      g__Actinomyces      s__Actinomyces_viscosus</code></pre>
+<div id="taxa-table" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> taxa table<a href="convert-inputdata-into-phyloseq-object.html#taxa-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="convert-inputdata-into-phyloseq-object.html#cb7-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res_list <span class="ot">&lt;-</span> <span class="fu">import_metaphlan_taxa</span>(<span class="at">data_metaphlan2 =</span> metaphlan2_res, </span>
+<span id="cb7-2"><a href="convert-inputdata-into-phyloseq-object.html#cb7-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb7-3"><a href="convert-inputdata-into-phyloseq-object.html#cb7-3" aria-hidden="true" tabindex="-1"></a>tax_tab <span class="ot">&lt;-</span> metaphlan2_res_list<span class="sc">$</span>tax_tab</span>
+<span id="cb7-4"><a href="convert-inputdata-into-phyloseq-object.html#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(tax_tab)</span></code></pre></div>
+<pre><code>##                                  Kingdom            Phylum             Class              Order              Family          Genus
+## s__Actinomyces_graevenitzii  k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+## s__Actinomyces_johnsonii     k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+## s__Actinomyces_massiliensis  k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+## s__Actinomyces_odontolyticus k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+## s__Actinomyces_oris          k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+## s__Actinomyces_viscosus      k__Bacteria p__Actinobacteria c__Actinobacteria o__Actinomycetales f__Actinomycetaceae g__Actinomyces
+##                                                   Species
+## s__Actinomyces_graevenitzii   s__Actinomyces_graevenitzii
+## s__Actinomyces_johnsonii         s__Actinomyces_johnsonii
+## s__Actinomyces_massiliensis   s__Actinomyces_massiliensis
+## s__Actinomyces_odontolyticus s__Actinomyces_odontolyticus
+## s__Actinomyces_oris                   s__Actinomyces_oris
+## s__Actinomyces_viscosus           s__Actinomyces_viscosus</code></pre>
 </div>
-<div id="otu-table" class="section level3 hasAnchor" number="2.1.3">
-<h3><span class="header-section-number">2.1.3</span> otu table<a href="convert-inputdata-into-phyloseq-object.html#otu-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="convert-inputdata-into-phyloseq-object.html#cb5-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res_list <span class="ot">&lt;-</span> <span class="fu">import_metaphlan_taxa</span>(<span class="at">data_metaphlan2 =</span> metaphlan2_res, </span>
-<span id="cb5-2"><a href="convert-inputdata-into-phyloseq-object.html#cb5-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
-<span id="cb5-3"><a href="convert-inputdata-into-phyloseq-object.html#cb5-3" aria-hidden="true" tabindex="-1"></a>otu_tab <span class="ot">&lt;-</span> metaphlan2_res_list<span class="sc">$</span>abu_tab</span>
-<span id="cb5-4"><a href="convert-inputdata-into-phyloseq-object.html#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(otu_tab)</span></code></pre></div>
-<pre><code>##                                    s1 s2      s3 s4 s5 s6       s7      s8        s9 s10      s11   s12      s13     s14 s15
-## s__Actinomyces_graevenitzii  3.58e-05  0 0.0e+00  0  0  0 7.20e-06 0.0e+00 0.0000000   0 1.40e-05 0e+00 0.00e+00 0.0e+00   0
-## s__Actinomyces_johnsonii     0.00e+00  0 0.0e+00  0  0  0 0.00e+00 0.0e+00 0.0000000   0 0.00e+00 0e+00 1.15e-05 0.0e+00   0
-## s__Actinomyces_massiliensis  0.00e+00  0 0.0e+00  0  0  0 2.95e-05 0.0e+00 0.0000000   0 0.00e+00 0e+00 0.00e+00 0.0e+00   0
-## s__Actinomyces_odontolyticus 7.70e-05  0 1.7e-06  0  0  0 2.47e-05 5.8e-06 0.0001175   0 6.16e-05 0e+00 1.66e-05 3.9e-06   0
-## s__Actinomyces_oris          0.00e+00  0 0.0e+00  0  0  0 2.81e-05 0.0e+00 0.0000135   0 0.00e+00 0e+00 0.00e+00 0.0e+00   0
-## s__Actinomyces_viscosus      4.60e-06  0 0.0e+00  0  0  0 0.00e+00 0.0e+00 0.0000039   0 6.20e-06 7e-06 1.10e-06 0.0e+00   0
-##                              s16 s17     s18      s19 s20 s21      s22 refE
-## s__Actinomyces_graevenitzii    0   0 6.1e-06 1.60e-06   0   0 0.00e+00    0
-## s__Actinomyces_johnsonii       0   0 0.0e+00 0.00e+00   0   0 0.00e+00    0
-## s__Actinomyces_massiliensis    0   0 0.0e+00 0.00e+00   0   0 2.52e-05    0
-## s__Actinomyces_odontolyticus   0   0 0.0e+00 4.19e-05   0   0 0.00e+00    0
-## s__Actinomyces_oris            0   0 0.0e+00 0.00e+00   0   0 7.40e-06    0
-## s__Actinomyces_viscosus        0   0 0.0e+00 0.00e+00   0   0 7.28e-05    0</code></pre>
+<div id="otu-table" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> otu table<a href="convert-inputdata-into-phyloseq-object.html#otu-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="convert-inputdata-into-phyloseq-object.html#cb9-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_res_list <span class="ot">&lt;-</span> <span class="fu">import_metaphlan_taxa</span>(<span class="at">data_metaphlan2 =</span> metaphlan2_res, </span>
+<span id="cb9-2"><a href="convert-inputdata-into-phyloseq-object.html#cb9-2" aria-hidden="true" tabindex="-1"></a>                                             <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>)</span>
+<span id="cb9-3"><a href="convert-inputdata-into-phyloseq-object.html#cb9-3" aria-hidden="true" tabindex="-1"></a>otu_tab <span class="ot">&lt;-</span> metaphlan2_res_list<span class="sc">$</span>abu_tab</span>
+<span id="cb9-4"><a href="convert-inputdata-into-phyloseq-object.html#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(otu_tab)</span></code></pre></div>
+<pre><code>##                                    s1 s2      s3 s4 s5 s6       s7      s8        s9 s10      s11   s12      s13     s14 s15 s16
+## s__Actinomyces_graevenitzii  3.58e-05  0 0.0e+00  0  0  0 7.20e-06 0.0e+00 0.0000000   0 1.40e-05 0e+00 0.00e+00 0.0e+00   0   0
+## s__Actinomyces_johnsonii     0.00e+00  0 0.0e+00  0  0  0 0.00e+00 0.0e+00 0.0000000   0 0.00e+00 0e+00 1.15e-05 0.0e+00   0   0
+## s__Actinomyces_massiliensis  0.00e+00  0 0.0e+00  0  0  0 2.95e-05 0.0e+00 0.0000000   0 0.00e+00 0e+00 0.00e+00 0.0e+00   0   0
+## s__Actinomyces_odontolyticus 7.70e-05  0 1.7e-06  0  0  0 2.47e-05 5.8e-06 0.0001175   0 6.16e-05 0e+00 1.66e-05 3.9e-06   0   0
+## s__Actinomyces_oris          0.00e+00  0 0.0e+00  0  0  0 2.81e-05 0.0e+00 0.0000135   0 0.00e+00 0e+00 0.00e+00 0.0e+00   0   0
+## s__Actinomyces_viscosus      4.60e-06  0 0.0e+00  0  0  0 0.00e+00 0.0e+00 0.0000039   0 6.20e-06 7e-06 1.10e-06 0.0e+00   0   0
+##                              s17     s18      s19 s20 s21      s22 refE
+## s__Actinomyces_graevenitzii    0 6.1e-06 1.60e-06   0   0 0.00e+00    0
+## s__Actinomyces_johnsonii       0 0.0e+00 0.00e+00   0   0 0.00e+00    0
+## s__Actinomyces_massiliensis    0 0.0e+00 0.00e+00   0   0 2.52e-05    0
+## s__Actinomyces_odontolyticus   0 0.0e+00 4.19e-05   0   0 0.00e+00    0
+## s__Actinomyces_oris            0 0.0e+00 0.00e+00   0   0 7.40e-06    0
+## s__Actinomyces_viscosus        0 0.0e+00 0.00e+00   0   0 7.28e-05    0</code></pre>
 </div>
-<div id="metadata-table" class="section level3 hasAnchor" number="2.1.4">
-<h3><span class="header-section-number">2.1.4</span> metadata table<a href="convert-inputdata-into-phyloseq-object.html#metadata-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="convert-inputdata-into-phyloseq-object.html#cb7-1" aria-hidden="true" tabindex="-1"></a>sam_tab <span class="ot">&lt;-</span> metaphlan2_sam <span class="sc">%&gt;%</span> tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="st">&quot;SampleID&quot;</span>)</span>
-<span id="cb7-2"><a href="convert-inputdata-into-phyloseq-object.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sam_tab)</span></code></pre></div>
+<div id="metadata-table" class="section level3 hasAnchor" number="2.1.5">
+<h3><span class="header-section-number">2.1.5</span> metadata table<a href="convert-inputdata-into-phyloseq-object.html#metadata-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="convert-inputdata-into-phyloseq-object.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sam_tab <span class="ot">&lt;-</span> metaphlan2_sam <span class="sc">%&gt;%</span> tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="st">&quot;SampleID&quot;</span>)</span>
+<span id="cb11-2"><a href="convert-inputdata-into-phyloseq-object.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sam_tab)</span></code></pre></div>
 <pre><code>##    Group phynotype
 ## s1    BB      0.00
 ## s2    AA      2.50
@@ -367,27 +528,27 @@ div.csl-indent {
 ## s5    AA     30.00
 ## s6    AA     15.00</code></pre>
 </div>
-<div id="phyloseq-object" class="section level3 hasAnchor" number="2.1.5">
-<h3><span class="header-section-number">2.1.5</span> phyloseq object<a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="convert-inputdata-into-phyloseq-object.html#cb9-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps <span class="ot">&lt;-</span> <span class="fu">get_metaphlan_phyloseq</span>(</span>
-<span id="cb9-2"><a href="convert-inputdata-into-phyloseq-object.html#cb9-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">otu_tab =</span> otu_tab, </span>
-<span id="cb9-3"><a href="convert-inputdata-into-phyloseq-object.html#cb9-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sam_tab =</span> sam_tab,</span>
-<span id="cb9-4"><a href="convert-inputdata-into-phyloseq-object.html#cb9-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">tax_tab =</span> tax_tab)</span>
-<span id="cb9-5"><a href="convert-inputdata-into-phyloseq-object.html#cb9-5" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps</span></code></pre></div>
+<div id="phyloseq-object" class="section level3 hasAnchor" number="2.1.6">
+<h3><span class="header-section-number">2.1.6</span> phyloseq object<a href="convert-inputdata-into-phyloseq-object.html#phyloseq-object" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="convert-inputdata-into-phyloseq-object.html#cb13-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps <span class="ot">&lt;-</span> <span class="fu">get_metaphlan_phyloseq</span>(</span>
+<span id="cb13-2"><a href="convert-inputdata-into-phyloseq-object.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">otu_tab =</span> otu_tab, </span>
+<span id="cb13-3"><a href="convert-inputdata-into-phyloseq-object.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">sam_tab =</span> sam_tab,</span>
+<span id="cb13-4"><a href="convert-inputdata-into-phyloseq-object.html#cb13-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">tax_tab =</span> tax_tab)</span>
+<span id="cb13-5"><a href="convert-inputdata-into-phyloseq-object.html#cb13-5" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps</span></code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 326 taxa and 23 samples ]
+## otu_table()   OTU Table:         [ 322 taxa and 23 samples ]
 ## sample_data() Sample Data:       [ 23 samples by 2 sample variables ]
-## tax_table()   Taxonomy Table:    [ 326 taxa by 7 taxonomic ranks ]</code></pre>
+## tax_table()   Taxonomy Table:    [ 322 taxa by 7 taxonomic ranks ]</code></pre>
 <p>we obtain the <strong>phyloseq-class object</strong> and then use it to perform data analysis.</p>
 <p>Here, the phyloseq object comprises five components (<em>OTU Table</em>, <em>Sample Data</em>, and <em>Taxonomy Table</em>).</p>
 </div>
 </div>
 <div id="transform-the-abundance-of-taxa-whose-relative-abundance-under-limit-of-detection-lod-into-zeros" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Transform the abundance of taxa whose relative abundance under Limit Of Detection (LOD) into Zeros<a href="convert-inputdata-into-phyloseq-object.html#transform-the-abundance-of-taxa-whose-relative-abundance-under-limit-of-detection-lod-into-zeros" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="convert-inputdata-into-phyloseq-object.html#cb11-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species <span class="ot">&lt;-</span> <span class="fu">aggregate_LOD_taxa</span>(<span class="at">ps =</span> metaphlan2_ps, </span>
-<span id="cb11-2"><a href="convert-inputdata-into-phyloseq-object.html#cb11-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>, </span>
-<span id="cb11-3"><a href="convert-inputdata-into-phyloseq-object.html#cb11-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">cutoff =</span> <span class="fl">1e-04</span>)</span>
-<span id="cb11-4"><a href="convert-inputdata-into-phyloseq-object.html#cb11-4" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="convert-inputdata-into-phyloseq-object.html#cb15-1" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species <span class="ot">&lt;-</span> <span class="fu">aggregate_LOD_taxa</span>(<span class="at">ps =</span> metaphlan2_ps, </span>
+<span id="cb15-2"><a href="convert-inputdata-into-phyloseq-object.html#cb15-2" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">taxa_level =</span> <span class="st">&quot;Species&quot;</span>, </span>
+<span id="cb15-3"><a href="convert-inputdata-into-phyloseq-object.html#cb15-3" aria-hidden="true" tabindex="-1"></a>                                                <span class="at">cutoff =</span> <span class="fl">1e-04</span>)</span>
+<span id="cb15-4"><a href="convert-inputdata-into-phyloseq-object.html#cb15-4" aria-hidden="true" tabindex="-1"></a>metaphlan2_ps_LOD_species</span></code></pre></div>
 <pre><code>## phyloseq-class experiment-level object
 ## otu_table()   OTU Table:         [ 192 taxa and 23 samples ]
 ## sample_data() Sample Data:       [ 23 samples by 2 sample variables ]
@@ -395,8 +556,8 @@ div.csl-indent {
 </div>
 <div id="systematic-information" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Systematic Information<a href="convert-inputdata-into-phyloseq-object.html#systematic-information" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="convert-inputdata-into-phyloseq-object.html#cb13-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
-<pre><code>## ─ Session info ──────────────────────────────────────────────────────────────────────────────────────────────────────────────
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="convert-inputdata-into-phyloseq-object.html#cb17-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code></pre></div>
+<pre><code>## ─ Session info ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  setting  value
 ##  version  R version 4.1.2 (2021-11-01)
 ##  os       macOS Monterey 12.2.1
@@ -406,17 +567,16 @@ div.csl-indent {
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Asia/Shanghai
-##  date     2022-08-09
-##  rstudio  2022.07.1+554 Spotted Wakerobin (desktop)
-##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
+##  date     2023-04-12
+##  rstudio  2022.07.2+576 Spotted Wakerobin (desktop)
+##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
 ## 
-## ─ Packages ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## ─ Packages ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ##  package              * version  date (UTC) lib source
 ##  abind                  1.4-5    2016-07-21 [1] CRAN (R 4.1.0)
 ##  ade4                   1.7-18   2021-09-16 [1] CRAN (R 4.1.0)
-##  ALDEx2                 1.26.0   2021-10-26 [1] Bioconductor
 ##  annotate               1.72.0   2021-10-26 [1] Bioconductor
-##  AnnotationDbi          1.56.2   2021-11-09 [1] Bioconductor
+##  AnnotationDbi          1.60.2   2023-03-10 [1] Bioconductor
 ##  ape                    5.6-2    2022-03-02 [1] CRAN (R 4.1.2)
 ##  assertthat             0.2.1    2019-03-21 [1] CRAN (R 4.1.0)
 ##  backports              1.4.1    2021-12-13 [1] CRAN (R 4.1.0)
@@ -430,50 +590,47 @@ div.csl-indent {
 ##  bit64                  4.0.5    2020-08-30 [1] CRAN (R 4.1.0)
 ##  bitops                 1.0-7    2021-04-24 [1] CRAN (R 4.1.0)
 ##  blob                   1.2.2    2021-07-23 [1] CRAN (R 4.1.0)
-##  bookdown               0.27     2022-06-14 [1] CRAN (R 4.1.2)
+##  bookdown               0.29     2022-09-12 [1] CRAN (R 4.1.2)
 ##  brio                   1.1.3    2021-11-30 [1] CRAN (R 4.1.0)
-##  broom                  0.7.12   2022-01-28 [1] CRAN (R 4.1.2)
-##  bslib                  0.3.1    2021-10-06 [1] CRAN (R 4.1.0)
+##  broom                  1.0.1    2022-08-29 [1] CRAN (R 4.1.2)
+##  bslib                  0.4.0    2022-07-16 [1] CRAN (R 4.1.2)
 ##  cachem                 1.0.6    2021-08-19 [1] CRAN (R 4.1.0)
 ##  callr                  3.7.0    2021-04-20 [1] CRAN (R 4.1.0)
 ##  car                    3.0-12   2021-11-06 [1] CRAN (R 4.1.0)
 ##  carData                3.0-5    2022-01-06 [1] CRAN (R 4.1.2)
 ##  caTools                1.18.2   2021-03-28 [1] CRAN (R 4.1.0)
-##  cccd                   1.6      2022-04-08 [1] CRAN (R 4.1.2)
 ##  cellranger             1.1.0    2016-07-27 [1] CRAN (R 4.1.0)
 ##  checkmate              2.0.0    2020-02-06 [1] CRAN (R 4.1.0)
-##  cli                    3.3.0    2022-04-25 [1] CRAN (R 4.1.2)
+##  cli                    3.4.1    2022-09-23 [1] CRAN (R 4.1.2)
 ##  cluster                2.1.2    2021-04-17 [1] CRAN (R 4.1.2)
 ##  codetools              0.2-18   2020-11-04 [1] CRAN (R 4.1.2)
 ##  coin                   1.4-2    2021-10-08 [1] CRAN (R 4.1.0)
 ##  colorspace             2.0-3    2022-02-21 [1] CRAN (R 4.1.2)
-##  conflicted             1.1.0    2021-11-26 [1] CRAN (R 4.1.0)
 ##  corpcor                1.6.10   2021-09-16 [1] CRAN (R 4.1.0)
-##  corrplot               0.92     2021-11-18 [1] CRAN (R 4.1.0)
 ##  cowplot                1.1.1    2020-12-30 [1] CRAN (R 4.1.0)
 ##  crayon                 1.5.0    2022-02-14 [1] CRAN (R 4.1.2)
-##  data.table             1.14.2   2021-09-27 [1] CRAN (R 4.1.0)
+##  crosstalk              1.2.0    2021-11-04 [1] CRAN (R 4.1.0)
+##  data.table             1.14.6   2022-11-16 [1] CRAN (R 4.1.2)
 ##  DBI                    1.1.2    2021-12-20 [1] CRAN (R 4.1.0)
 ##  DelayedArray           0.20.0   2021-10-26 [1] Bioconductor
-##  deldir                 1.0-6    2021-10-23 [1] CRAN (R 4.1.0)
 ##  desc                   1.4.1    2022-03-06 [1] CRAN (R 4.1.2)
 ##  DESeq2                 1.34.0   2021-10-26 [1] Bioconductor
 ##  devtools               2.4.3    2021-11-30 [1] CRAN (R 4.1.0)
-##  digest                 0.6.29   2021-12-01 [1] CRAN (R 4.1.0)
+##  digest                 0.6.30   2022-10-18 [1] CRAN (R 4.1.2)
 ##  doParallel             1.0.17   2022-02-07 [1] CRAN (R 4.1.2)
 ##  doSNOW                 1.0.20   2022-02-04 [1] CRAN (R 4.1.2)
-##  dplyr                * 1.0.8    2022-02-08 [1] CRAN (R 4.1.2)
+##  dplyr                * 1.0.10   2022-09-01 [1] CRAN (R 4.1.2)
+##  DT                     0.21     2022-02-26 [1] CRAN (R 4.1.2)
 ##  dynamicTreeCut         1.63-1   2016-03-11 [1] CRAN (R 4.1.0)
 ##  edgeR                  3.36.0   2021-10-26 [1] Bioconductor
 ##  ellipsis               0.3.2    2021-04-29 [1] CRAN (R 4.1.0)
-##  evaluate               0.15     2022-02-18 [1] CRAN (R 4.1.2)
+##  evaluate               0.17     2022-10-07 [1] CRAN (R 4.1.2)
 ##  fansi                  1.0.2    2022-01-14 [1] CRAN (R 4.1.2)
 ##  farver                 2.1.0    2021-02-28 [1] CRAN (R 4.1.0)
 ##  fastcluster            1.2.3    2021-05-24 [1] CRAN (R 4.1.0)
 ##  fastmap                1.1.0    2021-01-25 [1] CRAN (R 4.1.0)
 ##  fdrtool                1.2.17   2021-11-13 [1] CRAN (R 4.1.0)
 ##  filematrix             1.3      2018-02-27 [1] CRAN (R 4.1.0)
-##  FNN                    1.1.3    2019-02-15 [1] CRAN (R 4.1.0)
 ##  foreach                1.5.2    2022-02-02 [1] CRAN (R 4.1.2)
 ##  foreign                0.8-82   2022-01-13 [1] CRAN (R 4.1.2)
 ##  forestplot             2.0.1    2021-09-03 [1] CRAN (R 4.1.0)
@@ -485,7 +642,9 @@ div.csl-indent {
 ##  GenomeInfoDb           1.30.1   2022-01-30 [1] Bioconductor
 ##  GenomeInfoDbData       1.2.7    2022-03-09 [1] Bioconductor
 ##  GenomicRanges          1.46.1   2021-11-18 [1] Bioconductor
-##  ggplot2              * 3.3.5    2021-06-25 [1] CRAN (R 4.1.0)
+##  ggiraph                0.8.2    2022-02-22 [1] CRAN (R 4.1.2)
+##  ggiraphExtra           0.3.0    2020-10-06 [1] CRAN (R 4.1.2)
+##  ggplot2              * 3.4.0    2022-11-04 [1] CRAN (R 4.1.2)
 ##  ggpubr               * 0.4.0    2020-06-27 [1] CRAN (R 4.1.0)
 ##  ggrepel                0.9.1    2021-01-15 [1] CRAN (R 4.1.0)
 ##  ggsignif               0.6.3    2021-09-09 [1] CRAN (R 4.1.0)
@@ -501,36 +660,36 @@ div.csl-indent {
 ##  highr                  0.9      2021-04-16 [1] CRAN (R 4.1.0)
 ##  Hmisc                  4.6-0    2021-10-07 [1] CRAN (R 4.1.0)
 ##  htmlTable            * 2.4.0    2022-01-04 [1] CRAN (R 4.1.2)
-##  htmltools              0.5.2    2021-08-25 [1] CRAN (R 4.1.0)
+##  htmltools              0.5.3    2022-07-18 [1] CRAN (R 4.1.2)
 ##  htmlwidgets            1.5.4    2021-09-08 [1] CRAN (R 4.1.0)
 ##  httr                   1.4.2    2020-07-20 [1] CRAN (R 4.1.0)
 ##  huge                   1.3.5    2021-06-30 [1] CRAN (R 4.1.0)
 ##  igraph                 1.2.11   2022-01-04 [1] CRAN (R 4.1.2)
 ##  impute                 1.68.0   2021-10-26 [1] Bioconductor
+##  insight                0.17.0   2022-03-29 [1] CRAN (R 4.1.2)
 ##  IRanges                2.28.0   2021-10-26 [1] Bioconductor
 ##  irlba                  2.3.5    2021-12-06 [1] CRAN (R 4.1.0)
 ##  iterators              1.0.14   2022-02-05 [1] CRAN (R 4.1.2)
 ##  jpeg                   0.1-9    2021-07-24 [1] CRAN (R 4.1.0)
 ##  jquerylib              0.1.4    2021-04-26 [1] CRAN (R 4.1.0)
-##  jsonlite               1.8.0    2022-02-22 [1] CRAN (R 4.1.2)
+##  jsonlite               1.8.3    2022-10-21 [1] CRAN (R 4.1.2)
 ##  KEGGREST               1.34.0   2021-10-26 [1] Bioconductor
 ##  KernSmooth             2.23-20  2021-05-03 [1] CRAN (R 4.1.2)
-##  knitr                  1.39     2022-04-26 [1] CRAN (R 4.1.2)
+##  knitr                  1.40     2022-08-24 [1] CRAN (R 4.1.2)
 ##  labeling               0.4.2    2020-10-20 [1] CRAN (R 4.1.0)
 ##  lattice                0.20-45  2021-09-22 [1] CRAN (R 4.1.2)
 ##  latticeExtra           0.6-29   2019-12-19 [1] CRAN (R 4.1.0)
 ##  lavaan                 0.6-11   2022-03-31 [1] CRAN (R 4.1.2)
 ##  libcoin                1.0-9    2021-09-27 [1] CRAN (R 4.1.0)
-##  lifecycle              1.0.1    2021-09-24 [1] CRAN (R 4.1.0)
+##  lifecycle              1.0.3    2022-10-07 [1] CRAN (R 4.1.2)
 ##  limma                  3.50.1   2022-02-17 [1] Bioconductor
 ##  locfit                 1.5-9.5  2022-03-03 [1] CRAN (R 4.1.2)
 ##  lubridate              1.8.0    2021-10-07 [1] CRAN (R 4.1.0)
-##  magrittr             * 2.0.2    2022-01-26 [1] CRAN (R 4.1.2)
+##  magrittr             * 2.0.3    2022-03-30 [1] CRAN (R 4.1.2)
 ##  MASS                   7.3-55   2022-01-13 [1] CRAN (R 4.1.2)
 ##  Matrix                 1.4-0    2021-12-08 [1] CRAN (R 4.1.0)
 ##  MatrixGenerics         1.6.0    2021-10-26 [1] Bioconductor
 ##  matrixStats            0.61.0   2021-09-17 [1] CRAN (R 4.1.0)
-##  mbzinb                 0.2      2022-03-16 [1] local
 ##  memoise                2.0.1    2021-11-26 [1] CRAN (R 4.1.0)
 ##  metagenomeSeq          1.36.0   2021-10-26 [1] Bioconductor
 ##  mgcv                   1.8-39   2022-02-24 [1] CRAN (R 4.1.2)
@@ -541,8 +700,8 @@ div.csl-indent {
 ##  multtest               2.50.0   2021-10-26 [1] Bioconductor
 ##  munsell                0.5.0    2018-06-12 [1] CRAN (R 4.1.0)
 ##  mvtnorm                1.1-3    2021-10-08 [1] CRAN (R 4.1.0)
-##  NADA                   1.6-1.1  2020-03-22 [1] CRAN (R 4.1.0)
-##  NetCoMi              * 1.0.3    2022-07-14 [1] Github (stefpeschel/NetCoMi@d4d80d3)
+##  mycor                  0.1.1    2018-04-10 [1] CRAN (R 4.1.0)
+##  NetCoMi                1.0.3    2022-07-14 [1] Github (stefpeschel/NetCoMi@d4d80d3)
 ##  nlme                   3.1-155  2022-01-13 [1] CRAN (R 4.1.2)
 ##  nnet                   7.3-17   2022-01-13 [1] CRAN (R 4.1.2)
 ##  pbapply                1.5-0    2021-09-16 [1] CRAN (R 4.1.0)
@@ -557,12 +716,11 @@ div.csl-indent {
 ##  pkgload                1.2.4    2021-11-30 [1] CRAN (R 4.1.0)
 ##  plyr                   1.8.6    2020-03-03 [1] CRAN (R 4.1.0)
 ##  png                    0.1-7    2013-12-03 [1] CRAN (R 4.1.0)
+##  ppcor                  1.1      2015-12-03 [1] CRAN (R 4.1.0)
 ##  preprocessCore         1.56.0   2021-10-26 [1] Bioconductor
 ##  prettyunits            1.1.1    2020-01-24 [1] CRAN (R 4.1.0)
 ##  processx               3.5.2    2021-04-30 [1] CRAN (R 4.1.0)
-##  proxy                  0.4-26   2021-06-07 [1] CRAN (R 4.1.0)
 ##  ps                     1.6.0    2021-02-28 [1] CRAN (R 4.1.0)
-##  pscl                   1.5.5    2020-03-07 [1] CRAN (R 4.1.0)
 ##  psych                  2.2.5    2022-05-10 [1] CRAN (R 4.1.2)
 ##  pulsar                 0.3.7    2020-08-07 [1] CRAN (R 4.1.0)
 ##  purrr                  0.3.4    2020-04-17 [1] CRAN (R 4.1.0)
@@ -570,19 +728,17 @@ div.csl-indent {
 ##  R6                     2.5.1    2021-08-19 [1] CRAN (R 4.1.0)
 ##  rbibutils              2.2.7    2021-12-07 [1] CRAN (R 4.1.0)
 ##  RColorBrewer           1.1-2    2014-12-07 [1] CRAN (R 4.1.0)
-##  Rcpp                 * 1.0.8.2  2022-03-11 [1] CRAN (R 4.1.2)
-##  RcppZiggurat           0.1.6    2020-10-20 [1] CRAN (R 4.1.0)
+##  Rcpp                 * 1.0.10   2023-01-22 [1] CRAN (R 4.1.2)
 ##  RCurl                  1.98-1.6 2022-02-08 [1] CRAN (R 4.1.2)
 ##  Rdpack                 2.2      2022-03-19 [1] CRAN (R 4.1.2)
-##  readxl               * 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
+##  readxl                 1.4.0    2022-03-28 [1] CRAN (R 4.1.2)
 ##  remotes                2.4.2    2021-11-30 [1] CRAN (R 4.1.0)
 ##  reshape2               1.4.4    2020-04-09 [1] CRAN (R 4.1.0)
-##  Rfast                  2.0.6    2022-02-16 [1] CRAN (R 4.1.2)
 ##  rhdf5                  2.38.1   2022-03-10 [1] Bioconductor
 ##  rhdf5filters           1.6.0    2021-10-26 [1] Bioconductor
 ##  Rhdf5lib               1.16.0   2021-10-26 [1] Bioconductor
-##  rlang                  1.0.2    2022-03-04 [1] CRAN (R 4.1.2)
-##  rmarkdown              2.14     2022-04-25 [1] CRAN (R 4.1.2)
+##  rlang                  1.0.6    2022-09-24 [1] CRAN (R 4.1.2)
+##  rmarkdown              2.17     2022-10-07 [1] CRAN (R 4.1.2)
 ##  rootSolve              1.8.2.3  2021-09-29 [1] CRAN (R 4.1.0)
 ##  rpart                  4.1.16   2022-01-24 [1] CRAN (R 4.1.2)
 ##  rprojroot              2.0.2    2020-11-15 [1] CRAN (R 4.1.0)
@@ -591,45 +747,47 @@ div.csl-indent {
 ##  rstudioapi             0.13     2020-11-12 [1] CRAN (R 4.1.0)
 ##  S4Vectors              0.32.3   2021-11-21 [1] Bioconductor
 ##  sandwich               3.0-1    2021-05-18 [1] CRAN (R 4.1.0)
-##  sass                   0.4.0    2021-05-12 [1] CRAN (R 4.1.0)
-##  scales                 1.1.1    2020-05-11 [1] CRAN (R 4.1.0)
+##  sass                   0.4.2    2022-07-16 [1] CRAN (R 4.1.2)
+##  scales                 1.2.1    2022-08-20 [1] CRAN (R 4.1.2)
 ##  sessioninfo            1.2.2    2021-12-06 [1] CRAN (R 4.1.0)
 ##  shape                  1.4.6    2021-05-19 [1] CRAN (R 4.1.0)
+##  sjlabelled             1.2.0    2022-04-10 [1] CRAN (R 4.1.2)
+##  sjmisc                 2.8.9    2021-12-03 [1] CRAN (R 4.1.0)
 ##  snow                   0.4-4    2021-10-27 [1] CRAN (R 4.1.0)
-##  SpiecEasi            * 1.1.2    2022-07-14 [1] Github (zdk123/SpiecEasi@c463727)
+##  SpiecEasi              1.1.2    2022-07-14 [1] Github (zdk123/SpiecEasi@c463727)
 ##  SPRING                 1.0.4    2022-08-03 [1] Github (GraceYoon/SPRING@3d641a4)
-##  stringi                1.7.6    2021-11-29 [1] CRAN (R 4.1.0)
-##  stringr                1.4.0    2019-02-10 [1] CRAN (R 4.1.0)
+##  stringi                1.7.8    2022-07-11 [1] CRAN (R 4.1.2)
+##  stringr                1.4.1    2022-08-20 [1] CRAN (R 4.1.2)
 ##  SummarizedExperiment   1.24.0   2021-10-26 [1] Bioconductor
-##  survival               3.3-1    2022-03-03 [1] CRAN (R 4.1.2)
+##  survival               3.4-0    2022-08-09 [1] CRAN (R 4.1.2)
+##  systemfonts            1.0.4    2022-02-11 [1] CRAN (R 4.1.2)
 ##  testthat               3.1.2    2022-01-20 [1] CRAN (R 4.1.2)
 ##  TH.data                1.1-0    2021-09-27 [1] CRAN (R 4.1.0)
-##  tibble               * 3.1.6    2021-11-07 [1] CRAN (R 4.1.0)
+##  tibble               * 3.1.8    2022-07-22 [1] CRAN (R 4.1.2)
 ##  tidyr                  1.2.0    2022-02-01 [1] CRAN (R 4.1.2)
 ##  tidyselect             1.1.2    2022-02-21 [1] CRAN (R 4.1.2)
 ##  tmvnsim                1.0-2    2016-12-15 [1] CRAN (R 4.1.0)
-##  truncnorm              1.0-8    2018-02-27 [1] CRAN (R 4.1.0)
 ##  usethis                2.1.5    2021-12-09 [1] CRAN (R 4.1.0)
 ##  utf8                   1.2.2    2021-07-24 [1] CRAN (R 4.1.0)
-##  vctrs                  0.3.8    2021-04-29 [1] CRAN (R 4.1.0)
+##  uuid                   1.0-3    2021-11-01 [1] CRAN (R 4.1.0)
+##  vctrs                  0.5.1    2022-11-16 [1] CRAN (R 4.1.2)
 ##  vegan                  2.5-7    2020-11-28 [1] CRAN (R 4.1.0)
 ##  VGAM                   1.1-6    2022-02-14 [1] CRAN (R 4.1.2)
 ##  WGCNA                  1.71     2022-04-22 [1] CRAN (R 4.1.2)
 ##  withr                  2.5.0    2022-03-03 [1] CRAN (R 4.1.2)
 ##  Wrench                 1.12.0   2021-10-26 [1] Bioconductor
-##  xfun                   0.30     2022-03-02 [1] CRAN (R 4.1.2)
-##  XMAS2                * 2.1.7.4  2022-08-09 [1] local
+##  xfun                   0.34     2022-10-18 [1] CRAN (R 4.1.2)
+##  XMAS2                * 2.1.8.7  2023-01-06 [1] local
 ##  XML                    3.99-0.9 2022-02-24 [1] CRAN (R 4.1.2)
 ##  xtable                 1.8-4    2019-04-21 [1] CRAN (R 4.1.0)
 ##  XVector                0.34.0   2021-10-26 [1] Bioconductor
-##  yaml                   2.3.5    2022-02-21 [1] CRAN (R 4.1.2)
-##  zCompositions          1.4.0    2022-01-13 [1] CRAN (R 4.1.2)
+##  yaml                   2.3.6    2022-10-18 [1] CRAN (R 4.1.2)
 ##  zlibbioc               1.40.0   2021-10-26 [1] Bioconductor
 ##  zoo                    1.8-9    2021-03-09 [1] CRAN (R 4.1.0)
 ## 
 ##  [1] /Library/Frameworks/R.framework/Versions/4.1/Resources/library
 ## 
-## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
+## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</code></pre>
 
 </div>
 </div>
