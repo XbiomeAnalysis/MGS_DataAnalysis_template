@@ -25,7 +25,14 @@ example comprises the following steps:
 
 8.  Network analysis.
 
-<img src="./figures/README-unnamed-chunk-2-1.png" title="Functions of XMAS 2.0" alt="Functions of XMAS 2.0" style="display: block; margin: auto;" />
+<div class="figure" style="text-align: center">
+
+<img src="./figures/README-unnamed-chunk-2-1.png" alt="Functions of XMAS 2.0"  />
+<p class="caption">
+Functions of XMAS 2.0
+</p>
+
+</div>
 
 ## :writing_hand: Authors
 
@@ -35,6 +42,7 @@ Xbiome company
 
 ## :wrench: Change log
 
--   Submitted to gitlab. (2022-05-28)
--   upload *bookdwon*. (2022-08-04)
--   add Chapter *Network Analysis* . (2022-08-04)
+- Submitted to gitlab. (2022-05-28)
+- Uploaded *bookdwon*. (2022-08-04)
+- Added Chapter *Network Analysis* . (2022-08-04)
+- Updated *bookdwon* by **XMAS version 2.2.0**. (2023-10-27)
